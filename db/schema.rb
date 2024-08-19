@@ -10,9 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_19_053246) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_19_063258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bars", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "mood"
+    t.string "price"
+    t.boolean "smoking"
+    t.boolean "food"
+    t.string "alcohol"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.date "date_time"
+    t.date "deadline"
+    t.string "location"
+    t.bigint "user_id", null: false
+    t.bigint "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_plans_on_bar_id"
+    t.index ["user_id"], name: "index_plans_on_user_id"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.boolean "accepted"
+    t.string "mood"
+    t.string "price"
+    t.boolean "smoking"
+    t.boolean "food"
+    t.string "alcohol"
+    t.bigint "user_id", null: false
+    t.bigint "plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_polls_on_plan_id"
+    t.index ["user_id"], name: "index_polls_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_19_053246) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "plans", "bars"
+  add_foreign_key "plans", "users"
+  add_foreign_key "polls", "plans"
+  add_foreign_key "polls", "users"
 end
