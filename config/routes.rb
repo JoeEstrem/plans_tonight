@@ -2,17 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :users, only: [:index, :show, :create, :update, :destroy] do
+  resources :user, only: [:show, :index] do
   end
 
-  resources :bars, only: [:index, :show, :create, :update, :destroy] do
+  resources :plans, only: [:show, :create, :new, :post, :friends] do
   end
 
-  resources :plans, only: [:index, :show, :create, :update, :destroy] do
-    resources :polls, only: [:index, :show, :create, :update, :destroy]
-  end
+  reources :polls, only: [:create, :edit, :show] do
 
-  resources :polls, only: [:index, :show, :create, :update, :destroy] do
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
