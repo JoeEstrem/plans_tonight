@@ -9,10 +9,9 @@
     </div>
     <!-- Bar Image-->
     <div class="image-bar">
-      <!-- Main Image -->
       <div class="large-image">
-        <% if @var.image.attached? %>
-          <%= cl_image_tag @bar.image.first.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
+        <% if @bar.photo.attached? %>
+          <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
         <% else %>
           <%= image_tag 'https://st4.depositphotos.com/14953852/24787/v/380/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg', alt: 'main image', class: 'img-fluid' %>
         <% end %>
@@ -27,12 +26,11 @@
           <p><strong>Address: </strong><%= @bar.address %></p>
         </div>
         <div class="bar-description-details">
-          <p><strong>Date: </strong><%= @bar.date %></p>
+          <p><strong>Date: </strong><%= @plan.date_time %></p>
           <p><strong>Mood: </strong><%= @bar.mood %></p>
           <p><strong>Smoking: </strong><%= @bar.smoking %></p>
           <p><strong>Food: </strong><%= @bar.food %></p>
           <div class="bar-description-details space-between">
-            <p><strong>Time: </strong><%= @bar.time %></p>
             <p><strong>Price: </strong><%= @bar.price %></p>
             <p><strong>Specialty: </strong><%= @bar.alcohol %></p>
           </div>
