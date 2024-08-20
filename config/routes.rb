@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   resources :plans, only: [:show, :create, :new, :post, :friends] do
   end
 
-  reources :polls, only: [:create, :edit, :show] do
-
+  resources :polls, only: [:create, :edit, :show] do
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
