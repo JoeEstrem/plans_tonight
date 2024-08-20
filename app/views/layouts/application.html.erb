@@ -18,8 +18,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/font-awesome.min.css">
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+  <% unless params[:controller] == "pages" && params[:action] == "home" %>
+    <%= render "shared/navbar" %>
+    <% end %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
   </body>
