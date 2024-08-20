@@ -1,0 +1,51 @@
+<div class="container-main">
+  <div class="confirmation-container" style="padding-top: 16px;">
+    <div class="confirmation" style="width: 65%;">
+      <div>
+        <h1>Your</h1>
+        <h1 class="yellow text">Plans Tonight</h1>
+        <h1>Have Been Confirmed</h1>
+      </div>
+    </div>
+    <!-- Bar Image-->
+    <div class="image-bar">
+      <!-- Main Image -->
+      <div class="large-image">
+        <% if @var.image.attached? %>
+          <%= cl_image_tag @bar.image.first.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
+        <% else %>
+          <%= image_tag 'https://st4.depositphotos.com/14953852/24787/v/380/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg', alt: 'main image', class: 'img-fluid' %>
+        <% end %>
+      </div>
+    </div>
+      <!-- Bar Description -->
+    <div class="description-container" style="padding-top: 16px;">
+      <div class="bar-description" style="width: 65%;">
+        <div>
+          <h2><%= @bar.name %></h2>
+          <p><a href="<%= @bar.url %>" style="text-decoration: none; color: #007BFF;"><%= @bar.url %></a></p>
+          <p><strong>Address: </strong><%= @bar.address %></p>
+        </div>
+        <div class="bar-description-details">
+          <p><strong>Date: </strong><%= @bar.date %></p>
+          <p><strong>Mood: </strong><%= @bar.mood %></p>
+          <p><strong>Smoking: </strong><%= @bar.smoking %></p>
+          <p><strong>Food: </strong><%= @bar.food %></p>
+          <div class="bar-description-details space-between">
+            <p><strong>Time: </strong><%= @bar.time %></p>
+            <p><strong>Price: </strong><%= @bar.price %></p>
+            <p><strong>Specialty: </strong><%= @bar.alcohol %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=btn>Add to Calendar
+    </div>
+    <div>
+      <h1>Map</h1>
+    </div>
+    <div>
+      <h1>Going Friends</h1>
+    </div>
+  </div>
+</div>
