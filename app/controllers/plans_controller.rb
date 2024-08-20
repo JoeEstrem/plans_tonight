@@ -7,6 +7,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    @bar = @plan.bar
   end
 
 end
