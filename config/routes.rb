@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :polls, only: [:create, :edit, :show] do
+
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
