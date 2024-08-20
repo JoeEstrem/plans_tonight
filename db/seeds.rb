@@ -8,7 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
 Bar.create!(
   name: "Craft Beer Bar Monkey Wrench",
   address: "〒214-0032 神奈川県川崎市多摩区枡形3-5-4 1F",
