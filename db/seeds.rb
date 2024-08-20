@@ -22,10 +22,10 @@ bar = Bar.create!(
 
 photo_url = "https://lh3.googleusercontent.com/p/AF1QipPz8eqe8ybBtXmygxakkO-eYg3rEgA19S7Ihgqt=s1360-w1360-h1020"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user1.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "Sputnik",
   address: "2-18-6,Ebisunishi,Shibuya,Tokyo,Japan",
   mood: ["Casual", "Cozy"],
@@ -40,10 +40,10 @@ Bar.create!(
 
 photo_url = "https://lh3.googleusercontent.com/p/AF1QipPjOggnwKN0zVZIISLNx7rByM7VsCuUsPUrZbck=s1360-w1360-h1020"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user2.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "The Music Bar - Cave Shibuya",
   address: "〒150-0002 Tokyo, Shibuya City, Shibuya, 1 Chome-15-12 LAIDOUT SHIBUYA B1F",
   mood: ["Music", "Casual"],
@@ -58,10 +58,10 @@ Bar.create!(
 
 photo_url = "https://lh3.googleusercontent.com/p/AF1QipOe1bx7C9PLI-0xPc4L5hjc0mNyst7bpwCEfA8N=s1360-w1360-h1020"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user3.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "DJ Bar Bridge Shibuya",
   address: "〒150-0002 東京都渋谷区渋谷１丁目２５−６ 渋谷パークサイド共同ビル10F",
   mood: ["Dance"],
@@ -76,10 +76,10 @@ Bar.create!(
 
 photo_url = "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user4.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "Muscle Girls",
   address: "〒171-0014 Tokyo, Toshima City, Ikebukuro, 2 Chome-41-2, Hayama Bld, B1F",
   mood: ["Theme"],
@@ -94,10 +94,10 @@ Bar.create!(
 
 photo_url = "https://thesmartlocal.jp/wp-content/uploads/2023/03/muscle-girls-3-1024x768.jpg"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user5.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "Sky Lounge Stellar Garden",
   address: "〒105-0011 Tokyo, Minato City, Shibakoen, 4 Chome-8-1 33F",
   mood: ["Luxury"],
@@ -112,10 +112,10 @@ Bar.create!(
 
 photo_url = "https://www.princehotels.com/parktower/wp-content/uploads/sites/14/2019/07/res-stellar-platinum.jpg.jpg"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user6.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "WOMB",
   address: "2-16 Maruyamacho, Shibuya City, Tokyo 150-0044",
   mood: ["Dance"],
@@ -130,10 +130,10 @@ Bar.create!(
 
 photo_url = "https://media.timeout.com/images/106017162/image.jpg"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user7.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "Pintology Craft Beer & Whisky",
   address: "〒151-0073 東京都渋谷区笹塚１丁目３３−１０ 香樹ハイツ 101",
   mood: ["Casual"],
@@ -148,10 +148,10 @@ Bar.create!(
 
 photo_url = "https://lh3.googleusercontent.com/p/AF1QipNtGDbqngmYCjWZjsq0UP69Q0GHKb4rgKz5F4Rp=s1360-w1360-h1020"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user8.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+bar = Bar.create!(
   name: "Rooftop Bar Andaz Tokyo Toranomon Hills",
   address: "〒105-0001 Tokyo, Minato City, Toranomon, 1 Chome−23−4 ヒルズ 森タワ アンダーズ 東京52F 虎ノ門ヒルズ森タワー",
   mood: ["Luxury"],
@@ -166,10 +166,10 @@ Bar.create!(
 
 photo_url = "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user9.png', content_type: 'image/png')
   bar.save
 
-Bar.create!(
+  bar = Bar.create!(
   name: "Magic Bar CUORE",
   address: "〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−2−13 新光ビル 5階",
   mood: ["Theme"],
@@ -184,7 +184,7 @@ Bar.create!(
 
 photo_url = "https://rimage.gnst.jp/rest/img/bcx9dk2w0000/s_000n.jpg?dt=1609101354"
   file = URI.open(photo_url)
-  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.photo.attach(io: file, filename: 'user10.png', content_type: 'image/png')
   bar.save
 
 5.times do
@@ -193,7 +193,7 @@ photo_url = "https://rimage.gnst.jp/rest/img/bcx9dk2w0000/s_000n.jpg?dt=16091013
     password: '123123'
   )
   gender = 'all'
-  age = '19-25'
+  age = '26-35'
   ethnicity = 'all'
   url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
   json = URI.open(url).string
