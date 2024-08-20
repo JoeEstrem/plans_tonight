@@ -1,17 +1,15 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'open-uri'
+require 'nokogiri'
+require 'faker'
 
-Bar.create!(
+Poll.destroy_all
+Plan.destroy_all
+Bar.destroy_all
+User.destroy_all
+
+bar = Bar.create!(
   name: "Craft Beer Bar Monkey Wrench",
   address: "〒214-0032 神奈川県川崎市多摩区枡形3-5-4 1F",
-  image: "https://lh3.googleusercontent.com/p/AF1QipPz8eqe8ybBtXmygxakkO-eYg3rEgA19S7Ihgqt=s1360-w1360-h1020",
   mood: ["Casual"],
   price: "$$",
   smoking: true,
@@ -22,10 +20,14 @@ Bar.create!(
   url: "https://tabelog.com/kanagawa/A1405/A140506/14075022/"
 )
 
+photo_url = "https://lh3.googleusercontent.com/p/AF1QipPz8eqe8ybBtXmygxakkO-eYg3rEgA19S7Ihgqt=s1360-w1360-h1020"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "Sputnik",
   address: "2-18-6,Ebisunishi,Shibuya,Tokyo,Japan",
-  image: "https://lh3.googleusercontent.com/p/AF1QipPjOggnwKN0zVZIISLNx7rByM7VsCuUsPUrZbck=s1360-w1360-h1020",
   mood: ["Casual", "Cozy"],
   price: "$$",
   smoking: false,
@@ -36,10 +38,14 @@ Bar.create!(
   url: "https://www.instagram.com/hi_sputnik/"
 )
 
+photo_url = "https://lh3.googleusercontent.com/p/AF1QipPjOggnwKN0zVZIISLNx7rByM7VsCuUsPUrZbck=s1360-w1360-h1020"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "The Music Bar - Cave Shibuya",
   address: "〒150-0002 Tokyo, Shibuya City, Shibuya, 1 Chome-15-12 LAIDOUT SHIBUYA B1F",
-  image: "https://lh3.googleusercontent.com/p/AF1QipOe1bx7C9PLI-0xPc4L5hjc0mNyst7bpwCEfA8N=s1360-w1360-h1020",
   mood: ["Music", "Casual"],
   price: "$$",
   smoking: false,
@@ -50,10 +56,14 @@ Bar.create!(
   url: "https://the-musicbar.jp/wp/wp-content/uploads/2023/10/FOOD_MusicBar_20230929_FIX_ol.pdf"
 )
 
+photo_url = "https://lh3.googleusercontent.com/p/AF1QipOe1bx7C9PLI-0xPc4L5hjc0mNyst7bpwCEfA8N=s1360-w1360-h1020"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "DJ Bar Bridge Shibuya",
   address: "〒150-0002 東京都渋谷区渋谷１丁目２５−６ 渋谷パークサイド共同ビル10F",
-  image: "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020",
   mood: ["Dance"],
   price: "$",
   smoking: true,
@@ -64,10 +74,14 @@ Bar.create!(
   url: "https://djbar-bridge.com/"
 )
 
+photo_url = "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "Muscle Girls",
   address: "〒171-0014 Tokyo, Toshima City, Ikebukuro, 2 Chome-41-2, Hayama Bld, B1F",
-  image: "https://thesmartlocal.jp/wp-content/uploads/2023/03/muscle-girls-3-1024x768.jpg",
   mood: ["Theme"],
   price: "$$",
   smoking: false,
@@ -78,10 +92,14 @@ Bar.create!(
   url: "https://musclegirls.jimdofree.com/"
 )
 
+photo_url = "https://thesmartlocal.jp/wp-content/uploads/2023/03/muscle-girls-3-1024x768.jpg"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "Sky Lounge Stellar Garden",
   address: "〒105-0011 Tokyo, Minato City, Shibakoen, 4 Chome-8-1 33F",
-  image: "https://www.princehotels.com/parktower/wp-content/uploads/sites/14/2019/07/res-stellar-platinum.jpg.jpg",
   mood: ["Luxury"],
   price: "$$$",
   smoking: false,
@@ -92,10 +110,14 @@ Bar.create!(
   url: "https://www.princehotels.co.jp/parktower/restaurant/stellargarden/"
 )
 
+photo_url = "https://www.princehotels.com/parktower/wp-content/uploads/sites/14/2019/07/res-stellar-platinum.jpg.jpg"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "WOMB",
   address: "2-16 Maruyamacho, Shibuya City, Tokyo 150-0044",
-  image: "https://static.ra.co/images/clubs/lg/mainfloor_rx6a4395.jpg?dateUpdated=1486450735843",
   mood: ["Dance"],
   price: "$$$",
   smoking: true,
@@ -106,10 +128,14 @@ Bar.create!(
   url: "https://www.womb.co.jp/reservation/"
 )
 
+photo_url = "https://media.timeout.com/images/106017162/image.jpg"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "Pintology Craft Beer & Whisky",
   address: "〒151-0073 東京都渋谷区笹塚１丁目３３−１０ 香樹ハイツ 101",
-  image: "https://lh3.googleusercontent.com/p/AF1QipNtGDbqngmYCjWZjsq0UP69Q0GHKb4rgKz5F4Rp=s1360-w1360-h1020",
   mood: ["Casual"],
   price: "$$",
   smoking: false,
@@ -120,10 +146,14 @@ Bar.create!(
   url: "https://www.instagram.com/pintologytokyo/"
 )
 
+photo_url = "https://lh3.googleusercontent.com/p/AF1QipNtGDbqngmYCjWZjsq0UP69Q0GHKb4rgKz5F4Rp=s1360-w1360-h1020"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "Rooftop Bar Andaz Tokyo Toranomon Hills",
   address: "〒105-0001 Tokyo, Minato City, Toranomon, 1 Chome−23−4 ヒルズ 森タワ アンダーズ 東京52F 虎ノ門ヒルズ森タワー",
-  image: "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020",
   mood: ["Luxury"],
   price: "$$$",
   smoking: false,
@@ -134,10 +164,14 @@ Bar.create!(
   url: "https://www.andaztokyo.jp/restaurants/jp/rooftop-bar/?utm_source=gmb&utm_medium=organic#menu"
 )
 
+photo_url = "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
 Bar.create!(
   name: "Magic Bar CUORE",
   address: "〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−2−13 新光ビル 5階",
-  image: "https://rimage.gnst.jp/rest/img/bcx9dk2w0000/s_000n.jpg?dt=1609101354",
   mood: ["Theme"],
   price: "$$$",
   smoking: false,
@@ -147,3 +181,46 @@ Bar.create!(
   latitude: 139.70459031687258,
   url: "https://cuore.bar/"
 )
+
+photo_url = "https://rimage.gnst.jp/rest/img/bcx9dk2w0000/s_000n.jpg?dt=1609101354"
+  file = URI.open(photo_url)
+  bar.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  bar.save
+
+5.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: '123123'
+  )
+  gender = 'all'
+  age = '19-25'
+  ethnicity = 'all'
+  url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
+  json = URI.open(url).string
+  src = JSON.parse(json)['src']
+  p photo_url = "https://this-person-does-not-exist.com#{src}"
+  file = URI.open(photo_url)
+  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  user.save
+end
+
+plan = Plan.create!(
+  date_time: DateTime.now,
+  deadline: DateTime.now + 5.hours,
+  location: "Example Location 1",
+  user: User.first,
+  bar: Bar.first
+)
+
+User.all.each do |user|
+    Poll.create!(
+      accepted: [true, false].sample,
+      mood: ["Casual", "Cozy", "Music", "Dance", "Luxury", "Theme"].sample,
+      price: ["$", "$$", "$$$"].sample,
+      smoking: [true, false].sample,
+      food: [true, false].sample,
+      alcohol: ["Craft Beer", "Cocktail", "Whiskey", "Anything"].sample,
+      user: user,
+      plan: plan
+    )
+  end
