@@ -8,6 +8,34 @@
     <!-- SELECT DATE & TIME -->
     <!-- SELECT DATE & TIME END -->
 
+  <div class="grid-6" style="margin-top: 24px;">
+    <%= simple_form_for @plan do |f| %>
+      <%= f.simple_fields_for :polls do |poll_form| %>
+        <%= poll_form.input :mood,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'grid-6',
+            item_wrapper_tag: 'div',
+            item_wrapper_class: 'grid-2 icon-card',
+            collection: Plan::MOODS %>
+      <% end %>
+      <div class="form-group">
+        <%= f.button :submit, 'Create Plans', class: 'button-standard' %>
+      </div>
+    <% end %>
+  </div>
+
+
+    <%# <%= f.input :mood,
+      as: :radio_buttons,
+      collection_wrapper_tag: 'div',
+      collection_wrapper_class: 'grid-2 icon-card',
+      item_wrapper_class: {class: 'icon'},
+      collection: Plan::MOODS %>
+
+
+
+
     <!-- QUESTION 1 -->
     <div class="grid-6" style="margin-top: 24px;">
       <h2>WHAT'S YOUR VIBE TONIGHT?</h2>
