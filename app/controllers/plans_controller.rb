@@ -23,6 +23,17 @@ class PlansController < ApplicationController
 
   def invitation
     @users = User.all
+    @plan = Plan.find(params[:id])
+  end
+
+  def invite
+    @plan = Plan.find(params[:id])
+    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to him by following to http://localhost:3000/plans/#{params[:id]} ").call
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(:invite, partial: "shared/invited_btn")
+      end
+    end
   end
 
   def show

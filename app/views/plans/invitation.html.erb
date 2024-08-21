@@ -12,7 +12,7 @@
         <% end %>
         <div class="card-friend-infos">
           <h3><%= user.username %></h2>
-          <%= link_to "Invite", "#", class: "invite-button" %>
+          <%= link_to "Invite", invite_plan_path(@plan), class: "invite-button", data: { turbo_method: :post }, id: "invite" %>
         </div>
       </div>
     <% end %>
