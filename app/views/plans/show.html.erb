@@ -1,46 +1,58 @@
-<div class="container-main">
+<div class="container show-title">
   <div class="confirmation-container" style="padding-top: 16px;">
-    <div class="confirmation" style="width: 65%;">
-      <div>
+    <div class="show-title">
+      <div style="display: flex; align-items: center; white-space: nowrap;">
         <h1>Your</h1>
-        <h1 class="yellow text">Plans Tonight</h1>
+        <h1 class="yellow-text" style="margin-left: 10px;">
+        Plans Tonight</h1>
+      </div>
+      <div style="display: flex; white-space: nowrap;  margin-bottom: 16px;">
         <h1>Have Been Confirmed</h1>
       </div>
     </div>
+  </div>
     <!-- Bar Image-->
     <div class="image-bar">
-      <div class="large-image">
-        <% if @bar.photo.attached? %>
+      <div class="image">
+        <% @bar.photo %>
           <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
-        <% else %>
-          <%= image_tag 'https://st4.depositphotos.com/14953852/24787/v/380/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg', alt: 'main image', class: 'img-fluid' %>
-        <% end %>
       </div>
     </div>
       <!-- Bar Description -->
     <div class="description-container" style="padding-top: 16px;">
-      <div class="bar-description" style="width: 65%;">
-        <div>
-          <h2><%= @bar.name %></h2>
-          <p><a href="<%= @bar.url %>" style="text-decoration: none; color: #007BFF;"><%= @bar.url %></a></p>
-          <p><strong>Address: </strong><%= @bar.address %></p>
+      <div class="bar-description">
+        <div style="margin-bottom: 16px;">
+          <h2><%= @bar.name %>
+          </h2>
+          <a href="<%= @bar.url %>" style="text-decoration: none; color: #007BFF; display: block; overflow-wrap: break-word;">
+            <%= @bar.url %>
+          </a>
+            <h3><strong>Address:</strong><%= @bar.address %>
+            </h3>
         </div>
-        <div class="bar-description-details">
-          <p><strong>Date: </strong><%= @plan.date_time %></p>
-          <p><strong>Mood: </strong><%= @bar.mood %></p>
-          <p><strong>Smoking: </strong><%= @bar.smoking %></p>
-          <p><strong>Food: </strong><%= @bar.food %></p>
-          <div class="bar-description-details space-between">
-            <p><strong>Price: </strong><%= @bar.price %></p>
-            <p><strong>Specialty: </strong><%= @bar.alcohol %></p>
-          </div>
+      <div class="bar-description-details"  style="display: flex; justify-content: space-between;">
+        <div class="column-left">
+          <h3><strong>Date: </strong><%= @plan.date_time %></h3>
+          <h3><strong>Smoking: </strong><%= @bar.smoking %></h3>
+          <%# <%= if @bar.smoking = true  %>
+          <h3><strong>Food: </strong><%= @bar.food %></h3>
+        </div>
+        <div class="column-right">
+          <h3><strong>Mood: </strong><%= @bar.mood %></h3>
+          <h3><strong>Price: </strong><%= @bar.price %></h3>
+          <h3><strong>Specialty: </strong><%= @bar.alcohol %></h3>
         </div>
       </div>
+      </div>
     </div>
-    <div class=btn>Add to Calendar
+    <div class="show-element">
+      <div class="homepage-button" style="margin: 8px;" >
+        <h3>Add to Calendar</h3>
+      </div>
     </div>
     <div>
       <h1>Map</h1>
+      <%= image_tag 'https://def.jtm-demo.com/images/google-map-placeholder.png', width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image"  %>
     </div>
     <div>
       <h1>Going Friends</h1>

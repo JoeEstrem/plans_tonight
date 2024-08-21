@@ -223,4 +223,4 @@ User.all.each do |user|
       user: user,
       plan: plan
     )
-  end
+end
