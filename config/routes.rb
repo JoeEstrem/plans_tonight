@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :plans, only: [:index]
   end
 
-  resources :plans, only: [:show, :create, :new, :post, :friends]
+  resources :plans, only: [:show, :create, :new, :post, :friends] do
+    get 'invitation', on: :member
+  end
 
   resources :polls, only: [:create, :edit, :show]
 

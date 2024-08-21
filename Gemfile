@@ -78,4 +78,8 @@ group :test do
 end
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
+gem 'line-bot-api', '~> 1.18.0 '
+
 gem "geocoder"
+

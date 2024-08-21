@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Invite your friends</h1>
+
+  <div class="plan-index-container">
+
+    <% @users.each do |user| %>
+      <div class="card-friend">
+        <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% end %>
+        <div class="card-friend-infos">
+          <h3><%= user.username %></h2>
+          <%= link_to "Invite", "#", class: "invite-button" %>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
+
+</div>
