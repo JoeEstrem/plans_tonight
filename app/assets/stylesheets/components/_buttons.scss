@@ -12,6 +12,24 @@
   }
 }
 
+.plans-btn {
+  text-decoration: none;
+  padding: 12px 0px;
+  width: 100%;
+  background-color: $yellow;
+  border: 1.5px solid $black;
+  color: $black;
+  border-radius: 50px;
+
+  p {
+    font-family: "Poppins", sans-serif;
+    color: $black;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+  }
+}
+
 .invite-button {
   padding: 4px 8px;
   text-decoration: none;

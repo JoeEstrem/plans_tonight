@@ -8,11 +8,10 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    raise
     if @plan.save
-      redirect_to @plan, notice: 'Plan was successfully created.'
+      redirect_to @plan, notice: 'Invite your friends to participate.'
     else
-      render :new
+      render :new, status: :unprocessable_entity, notice: "Please answer this question."
     end
   end
 
