@@ -1,0 +1,39 @@
+.input-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap
+}
+
+/* Style for the icon container */
+// .input-group-prepend {
+//   display: flex;
+//   align-items: center; /* Vertically center the icon */
+//   margin-right: -1px; /* Remove space between icon and input */
+// }
+
+/* Style for the icon */
+.input-group-text {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem 0 0 0.375rem;
+  padding: 0.5rem;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  height: 37px;
+}
+
+/* Style for the date-time picker input field */
+.form-control.datetime-picker {
+  border: 1px solid #ced4da;
+  border-radius: 0 0.375rem 0.375rem 0;
+  padding: 0.5rem;
+  width: 200px;
+  height: 100%;
+}
+
+/* Style for the form label */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
