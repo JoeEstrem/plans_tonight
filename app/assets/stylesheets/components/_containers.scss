@@ -19,3 +19,23 @@
     color: $white;
   }
 }
+
+.plans-list-element {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    text-align: left;
+  }
+}
+
+.plans-index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    min-height: 100vh;
+}

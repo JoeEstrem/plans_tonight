@@ -209,18 +209,28 @@ plan = Plan.create!(
   deadline: DateTime.now + 5.hours,
   location: "Example Location 1",
   user: User.first,
-  bar: Bar.first
+  bar: Bar.first,
+  status: "active"
+)
+
+plans = Plan.create!(
+  date_time: DateTime.now,
+  deadline: DateTime.now + 5.hours,
+  location: "Example Location 2",
+  user: User.last,
+  bar: Bar.last,
+  status: "pending"
 )
 
 User.all.each do |user|
-    Poll.create!(
-      accepted: [true, false].sample,
-      mood: ["Casual", "Cozy", "Music", "Dance", "Luxury", "Theme"].sample,
-      price: ["$", "$$", "$$$"].sample,
-      smoking: [true, false].sample,
-      food: [true, false].sample,
-      alcohol: ["Craft Beer", "Cocktail", "Whiskey", "Anything"].sample,
-      user: user,
-      plan: plan
-    )
-  end
+  Poll.create!(
+    accepted: [true, false].sample,
+    mood: ["Casual", "Cozy", "Music", "Dance", "Luxury", "Theme"].sample,
+    price: ["$", "$$", "$$$"].sample,
+    smoking: [true, false].sample,
+    food: [true, false].sample,
+    alcohol: ["Craft Beer", "Cocktail", "Whiskey", "Anything"].sample,
+    user: user,
+    plan: [plan, plans].sample
+  )
+end
