@@ -6,20 +6,19 @@ class LineMessageService
   def initialize(message)
     @message = message
     @client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+      config.channel_secret = ENV["SECRET_KEY_LINE"]
+      config.channel_token = ENV["CHANNEL_TOKEN_LINE"]
     }
   end
 
   def call
     message_block = {
       type: 'text',
-      text: message
+      text: "Hello world"
     }
-    @client.push_message('WE NEED TO GET A USER ID', message_block)
+    @client.push_message('alfonsdefromage', message_block)
     end
   end
-end
 
 # To use this
 # LineMessageService.new('Hey you have trash coming').call

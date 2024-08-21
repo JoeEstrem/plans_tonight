@@ -190,6 +190,7 @@ photo_url = "https://rimage.gnst.jp/rest/img/bcx9dk2w0000/s_000n.jpg?dt=16091013
 5.times do
   user = User.create!(
     email: Faker::Internet.email,
+    username: Faker::Internet.username,
     password: '123123'
   )
   gender = 'all'
