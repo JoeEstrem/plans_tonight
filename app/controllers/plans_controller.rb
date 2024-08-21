@@ -8,6 +8,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
+    raise
     if @plan.save
       redirect_to @plan, notice: 'Plan was successfully created.'
     else
