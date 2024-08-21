@@ -7,6 +7,14 @@
   margin: 32px;
 }
 
+.form-container {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(6, 1fr);
+  width: auto;
+  max-width: 800px;
+}
+
 .grid-2 {
   grid-column: span 2;
 }

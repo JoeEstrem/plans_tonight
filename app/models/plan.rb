@@ -4,4 +4,5 @@ class Plan < ApplicationRecord
   has_many :polls, dependent: :destroy
   accepts_nested_attributes_for :polls, allow_destroy: true
   MOODS = ["Casual", "Classy", "Dancing", "Music", "Unqiue", "Anything"]
+  ALCOHOLS = ["Craft Beer", "Lemon Sour", "Whiskey", "Cocktail", "Wine", "Anything"]
 end
