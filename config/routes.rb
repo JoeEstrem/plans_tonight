@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :plans, only: [:show, :create, :new, :post, :friends] do
-    get 'invitation', on: :member
+    member do
+      get 'invitation'
+      post 'invite'
+    end
   end
 
   resources :polls, only: [:create, :edit, :show]

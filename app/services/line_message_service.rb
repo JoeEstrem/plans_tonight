@@ -14,9 +14,9 @@ class LineMessageService
   def call
     message_block = {
       type: 'text',
-      text: "Hello world"
+      text: message
     }
-    @client.push_message('alfonsdefromage', message_block)
+    @client.push_message('U4a41c30ad340bdc0dbd9333ca64d1f14', message_block)
     end
   end
 
