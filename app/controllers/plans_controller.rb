@@ -20,9 +20,19 @@ class PlansController < ApplicationController
     @user = current_user.id
   end
 
+  def invitation
+    @users = User.all
+  end
+
   def show
     @plan = Plan.find(params[:id])
     @bar = @plan.bar
+    @marker = [
+      {
+        lat: @bar.latitude,
+        lng: @bar.longitude
+      }
+    ]
   end
 
 
