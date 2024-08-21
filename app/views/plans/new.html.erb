@@ -1,209 +1,212 @@
-<body>
-  <div class="grid-container">
+<html class="bg">
+  <body>
+    <div class="grid-container">
 
-    <div class="grid-6">
-      <h1>MAKE YOUR PLANS TONIGHT!</h1>
-    </div>
-
-    <!-- SELECT DATE & TIME -->
-    <!-- SELECT DATE & TIME END -->
-    <%= form_with model: @plan, local: true do |form| %>
-      <div class="form-group">
-        <%= form.label :deadline, "Select Deadline", class: "form-label" %>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-calendar"></i>
-            </span>
-          </div>
-          <%= form.text_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", "data-controller": "date-picker" %>
-        </div>
+      <div class="grid-6">
+        <h1>MAKE YOUR PLANS TONIGHT!</h1>
       </div>
-    <% end %>
+
+      <!-- SELECT DATE & TIME -->
+      <div class="grid-6">
+        <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
+      </div>
+      <div class="grid-6">
+        <%= form_with model: @plan, local: true do |form| %>
+            <div class="input-group">
+              <%= form.text_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", "data-controller": "date-picker" %>
+            </div>
+          </div>
+        <% end %>
+      <!-- SELECT DATE & TIME END -->
 
 
-  <%# <div class="grid-6" style="margin-top: 24px;"> %>
+    <%# <div class="grid-6" style="margin-top: 24px;"> %>
 
-    <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
+      <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
 
-      <!-- QUESTION 1 -->
-      <h2>WHAT VIBE ARE YOU FEELING?</h2>
-      <%= f.simple_fields_for :polls do |poll_form| %>
-        <%= poll_form.input :mood,
-            as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'form-container',
-            item_wrapper_tag: 'div',
-            item_wrapper_class: 'grid-2',
+        <!-- QUESTION 1 -->
+        <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
+        <%= f.simple_fields_for :polls do |poll_form| %>
+          <%= poll_form.input :mood,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'form-container',
+              item_wrapper_tag: 'div',
+              item_wrapper_class: 'grid-2',
               input_html: {class: 'category-selector'},
-            collection: mood_options.map { |mood, html| [html.html_safe, mood] },
-            label: "" %>
+              collection: mood_options.map { |mood, html| [html.html_safe, mood] },
+              required: true,
+              label: "" %>
+        <!-- Q1 END -->
+
+        <!-- QUESTION 2 -->
+        <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
+          <%= poll_form.input :alcohol,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'form-container',
+              item_wrapper_tag: 'div',
+              item_wrapper_class: 'grid-2',
+              input_html: {class: 'category-selector'},
+              collection: alcohol_options.map { |alcohol, html| [html.html_safe, alcohol] },
+              required: true,
+              label: "" %>
+        <!-- Q2 END -->
+
+        <!-- QUESTION 3 -->
+        <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
+          <%= poll_form.input :smoking,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'form-container',
+              item_wrapper_tag: 'div',
+              item_wrapper_class: 'grid-2',
+              input_html: {class: 'category-selector'},
+              collection: smoke_options.map { |smoke, html| [html.html_safe, smoke] },
+              required: true,
+              label: "" %>
+        <!-- Q3 END -->
+
+        <!-- QUESTION 4 -->
+        <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
+          <%= poll_form.input :food,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'form-container',
+              item_wrapper_tag: 'div',
+              item_wrapper_class: 'grid-2',
+              input_html: {class: 'category-selector'},
+              collection: food_options.map { |food, html| [html.html_safe, food] },
+              required: true,
+              label: "" %>
+        <!-- Q4 END -->
+
+        <!-- SUBMIT -->
+        <div class="form-group">
+          <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
+        </div>
+        <!-- SUBMIT END -->
+        <% end %>
+      <% end %>
+
+
+      <%# <!-- OLD - JOE NEEDS FOR REFERENCE -->
+      <div class="grid-6" style="margin-top: 24px;">
+        <h2>WHAT'S YOUR VIBE TONIGHT?</h2>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">😊</p>
+        <p>CASUAL</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">✨</p>
+        <p>CLASSY</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🪩</p>
+        <p>DANCING</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🎶</p>
+        <p>MUSIC</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🎭</p>
+        <p>UNIQUE</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🙌</p>
+        <p>ANYTHING</p>
+      </div>
       <!-- Q1 END -->
 
       <!-- QUESTION 2 -->
-      <h2>WHAT DO YOU WANT TO DRINK?</h2>
-        <%= poll_form.input :alcohol,
-            as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'form-container',
-            item_wrapper_tag: 'div',
-            item_wrapper_class: 'grid-2',
-            input_html: {class: 'category-selector'},
-            collection: alcohol_options.map { |alcohol, html| [html.html_safe, alcohol] },
-            label: "" %>
+      <div class="grid-6" style="margin-top: 24px;">
+        <h2>WHAT DO YOU WANT TO DRINK TONIGHT?</h2>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🍺</p>
+        <p>CRAFT BEER</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🍋</p>
+        <p>LEMON SOUR</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🥃</p>
+        <p>WHISKEY</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🍹</p>
+        <p>COCKTAIL</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🍷</p>
+        <p>WINE</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🥂</p>
+        <p>ANYTHING</p>
+      </div>
       <!-- Q2 END -->
 
       <!-- QUESTION 3 -->
-      <h2>Will you smoke?</h2>
-        <%= poll_form.input :smoking,
-            as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'form-container',
-            item_wrapper_tag: 'div',
-            item_wrapper_class: 'grid-2',
-            input_html: {class: 'category-selector'},
-            collection: smoke_options.map { |smoke, html| [html.html_safe, smoke] },
-            label: "" %>
+      <div class="grid-6" style="margin-top: 24px;">
+        <h2>WILL YOU SMOKE TONIGHT?</h2>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">👍</p>
+        <p>YEAH</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">👎</p>
+        <p>NAH</p>
+      </div>
       <!-- Q3 END -->
 
       <!-- QUESTION 4 -->
-      <h2>Will you smoke?</h2>
-        <%= poll_form.input :food,
-            as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'form-container',
-            item_wrapper_tag: 'div',
-            item_wrapper_class: 'grid-2',
-            input_html: {class: 'category-selector'},
-            collection: food_options.map { |food, html| [html.html_safe, food] },
-            label: "" %>
+      <div class="grid-6" style="margin-top: 24px;">
+        <h2>DO YOU WANT TO EAT THERE?</h2>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🙋‍♂️</p>
+        <p>YES PLEASE</p>
+      </div>
+      <div class="grid-2 icon-card">
+        <p class="icon">🙅‍♂️</p>
+        <p>NO THANKS</p>
+      </div>
       <!-- Q4 END -->
 
+      <!-- SELECT FRIENDS -->
+      <!-- SELECT FRIENDS END -->
+
       <!-- SUBMIT -->
-      <div class="form-group">
-        <%= f.button :submit, 'Create Plans', class: 'homepage-button' %>
-      </div>
-       <!-- SUBMIT END -->
-      <% end %>
-    <% end %>
+      <%# <%= link_to, "MAKE PLANS", plan_path(@plan), class: "button"%>
+      <!-- SUBMIT END -->
 
+    </div>
+  </body>
+  <%# <script>
+  function getJapanTime() {
+    const now = new Date();
+    const utcOffset = now.getTimezoneOffset() * 60000; // Offset in milliseconds
+    const japanOffset = 9 * 60 * 60000; // Japan offset in milliseconds
+    return new Date(now.getTime() + utcOffset + japanOffset);
+  }
 
-    <%# <!-- OLD - JOE NEEDS FOR REFERENCE -->
-    <div class="grid-6" style="margin-top: 24px;">
-      <h2>WHAT'S YOUR VIBE TONIGHT?</h2>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">😊</p>
-      <p>CASUAL</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">✨</p>
-      <p>CLASSY</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🪩</p>
-      <p>DANCING</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🎶</p>
-      <p>MUSIC</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🎭</p>
-      <p>UNIQUE</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🙌</p>
-      <p>ANYTHING</p>
-    </div>
-    <!-- Q1 END -->
+  document.addEventListener("DOMContentLoaded", () => {
+    const japanTime = getJapanTime();
 
-    <!-- QUESTION 2 -->
-    <div class="grid-6" style="margin-top: 24px;">
-      <h2>WHAT DO YOU WANT TO DRINK TONIGHT?</h2>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🍺</p>
-      <p>CRAFT BEER</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🍋</p>
-      <p>LEMON SOUR</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🥃</p>
-      <p>WHISKEY</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🍹</p>
-      <p>COCKTAIL</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🍷</p>
-      <p>WINE</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🥂</p>
-      <p>ANYTHING</p>
-    </div>
-    <!-- Q2 END -->
-
-    <!-- QUESTION 3 -->
-    <div class="grid-6" style="margin-top: 24px;">
-      <h2>WILL YOU SMOKE TONIGHT?</h2>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">👍</p>
-      <p>YEAH</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">👎</p>
-      <p>NAH</p>
-    </div>
-    <!-- Q3 END -->
-
-    <!-- QUESTION 4 -->
-    <div class="grid-6" style="margin-top: 24px;">
-      <h2>DO YOU WANT TO EAT THERE?</h2>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🙋‍♂️</p>
-      <p>YES PLEASE</p>
-    </div>
-    <div class="grid-2 icon-card">
-      <p class="icon">🙅‍♂️</p>
-      <p>NO THANKS</p>
-    </div>
-    <!-- Q4 END -->
-
-    <!-- SELECT FRIENDS -->
-    <!-- SELECT FRIENDS END -->
-
-    <!-- SUBMIT -->
-    <%# <%= link_to, "MAKE PLANS", plan_path(@plan), class: "button"%>
-    <!-- SUBMIT END -->
-
-  </div>
-</body>
-<%# <script>
-function getJapanTime() {
-  const now = new Date();
-  const utcOffset = now.getTimezoneOffset() * 60000; // Offset in milliseconds
-  const japanOffset = 9 * 60 * 60000; // Japan offset in milliseconds
-  return new Date(now.getTime() + utcOffset + japanOffset);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const japanTime = getJapanTime();
-
-  flatpickr(".datetime-picker", {
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-    altInput: true,
-    altFormat: "F j, Y - H:i",
-    time_24hr: true,
-    minDate: japanTime,
-    defaultDate: japanTime,
+    flatpickr(".datetime-picker", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      altInput: true,
+      altFormat: "F j, Y - H:i",
+      time_24hr: true,
+      minDate: japanTime,
+      defaultDate: japanTime,
+    });
   });
-});
-</script> %>
+  </script> %>
+</html>
