@@ -15,6 +15,11 @@ class PlansController < ApplicationController
     end
   end
 
+  def index
+    @plans = Plan.all
+    @user = current_user.id
+  end
+
   def show
     @plan = Plan.find(params[:id])
     @bar = @plan.bar
