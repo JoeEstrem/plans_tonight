@@ -24,6 +24,12 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
     @bar = @plan.bar
+    @marker = [
+      {
+        lat: @bar.latitude,
+        lng: @bar.longitude
+      }
+    ]
   end
 
 
