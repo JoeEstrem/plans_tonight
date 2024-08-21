@@ -7,36 +7,88 @@
 
     <!-- SELECT DATE & TIME -->
     <!-- SELECT DATE & TIME END -->
+    <%= form_with model: @plan, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :deadline, "Select Deadline", class: "form-label" %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
+          <%= form.text_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", "data-controller": "date-picker" %>
+        </div>
+      </div>
+    <% end %>
 
-  <div class="grid-6" style="margin-top: 24px;">
-    <%= simple_form_for @plan do |f| %>
+
+  <%# <div class="grid-6" style="margin-top: 24px;"> %>
+
+    <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
+
+      <!-- QUESTION 1 -->
+      <h2>WHAT VIBE ARE YOU FEELING?</h2>
       <%= f.simple_fields_for :polls do |poll_form| %>
         <%= poll_form.input :mood,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'grid-6',
+            collection_wrapper_class: 'form-container',
             item_wrapper_tag: 'div',
-            item_wrapper_class: 'grid-2 icon-card',
-            collection: Plan::MOODS %>
-      <% end %>
+            item_wrapper_class: 'grid-2',
+              input_html: {class: 'category-selector'},
+            collection: mood_options.map { |mood, html| [html.html_safe, mood] },
+            label: "" %>
+      <!-- Q1 END -->
+
+      <!-- QUESTION 2 -->
+      <h2>WHAT DO YOU WANT TO DRINK?</h2>
+        <%= poll_form.input :alcohol,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'form-container',
+            item_wrapper_tag: 'div',
+            item_wrapper_class: 'grid-2',
+            input_html: {class: 'category-selector'},
+            collection: alcohol_options.map { |alcohol, html| [html.html_safe, alcohol] },
+            label: "" %>
+      <!-- Q2 END -->
+
+      <!-- QUESTION 3 -->
+      <h2>Will you smoke?</h2>
+        <%= poll_form.input :smoking,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'form-container',
+            item_wrapper_tag: 'div',
+            item_wrapper_class: 'grid-2',
+            input_html: {class: 'category-selector'},
+            collection: smoke_options.map { |smoke, html| [html.html_safe, smoke] },
+            label: "" %>
+      <!-- Q3 END -->
+
+      <!-- QUESTION 4 -->
+      <h2>Will you smoke?</h2>
+        <%= poll_form.input :food,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'form-container',
+            item_wrapper_tag: 'div',
+            item_wrapper_class: 'grid-2',
+            input_html: {class: 'category-selector'},
+            collection: food_options.map { |food, html| [html.html_safe, food] },
+            label: "" %>
+      <!-- Q4 END -->
+
+      <!-- SUBMIT -->
       <div class="form-group">
-        <%= f.button :submit, 'Create Plans', class: 'button-standard' %>
+        <%= f.button :submit, 'Create Plans', class: 'homepage-button' %>
       </div>
+       <!-- SUBMIT END -->
+      <% end %>
     <% end %>
-  </div>
 
 
-    <%# <%= f.input :mood,
-      as: :radio_buttons,
-      collection_wrapper_tag: 'div',
-      collection_wrapper_class: 'grid-2 icon-card',
-      item_wrapper_class: {class: 'icon'},
-      collection: Plan::MOODS %>
-
-
-
-
-    <!-- QUESTION 1 -->
+    <%# <!-- OLD - JOE NEEDS FOR REFERENCE -->
     <div class="grid-6" style="margin-top: 24px;">
       <h2>WHAT'S YOUR VIBE TONIGHT?</h2>
     </div>
@@ -133,3 +185,25 @@
 
   </div>
 </body>
+<%# <script>
+function getJapanTime() {
+  const now = new Date();
+  const utcOffset = now.getTimezoneOffset() * 60000; // Offset in milliseconds
+  const japanOffset = 9 * 60 * 60000; // Japan offset in milliseconds
+  return new Date(now.getTime() + utcOffset + japanOffset);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const japanTime = getJapanTime();
+
+  flatpickr(".datetime-picker", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    altInput: true,
+    altFormat: "F j, Y - H:i",
+    time_24hr: true,
+    minDate: japanTime,
+    defaultDate: japanTime,
+  });
+});
+</script> %>

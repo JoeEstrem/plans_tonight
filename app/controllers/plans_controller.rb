@@ -8,6 +8,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
+    raise
     if @plan.save
       redirect_to @plan, notice: 'Plan was successfully created.'
     else
@@ -36,6 +37,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:date_time, :location, polls_attributes: [:mood, :alcohol, :smoking, :food])
+    params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food])
   end
 end
