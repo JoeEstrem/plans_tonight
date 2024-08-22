@@ -1,0 +1,10 @@
+         <%= f.input :smoking,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'form-container',
+              item_wrapper_tag: 'div',
+              item_wrapper_class: 'grid-2',
+              input_html: {class: 'category-selector'},
+              collection: smoke_options.map { |smoke, html| [html.html_safe, smoke] },
+              required: true,
+              label: "" %>

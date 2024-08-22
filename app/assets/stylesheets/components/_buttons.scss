@@ -20,6 +20,7 @@
   border: 1.5px solid $black;
   color: $black;
   border-radius: 50px;
+  text-align: center;
 
   p {
     font-family: "Poppins", sans-serif;
@@ -37,7 +38,8 @@
   background-color: $yellow;
   color: black;
   height: fit-content;
-  margin-top: 4px;
+  margin-top: -4px;
+  border-radius: 50px;
 
   &:active {
     background-color: white;

@@ -24,166 +24,35 @@
 
       <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
 
-        <!-- QUESTION 1 -->
-        <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
+
+
         <%= f.simple_fields_for :polls do |poll_form| %>
-          <%= poll_form.input :mood,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'form-container',
-              item_wrapper_tag: 'div',
-              item_wrapper_class: 'grid-2',
-              input_html: {class: 'category-selector'},
-              collection: mood_options.map { |mood, html| [html.html_safe, mood] },
-              required: true,
-              label: "" %>
-        <!-- Q1 END -->
+          <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
 
-        <!-- QUESTION 2 -->
-        <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
-          <%= poll_form.input :alcohol,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'form-container',
-              item_wrapper_tag: 'div',
-              item_wrapper_class: 'grid-2',
-              input_html: {class: 'category-selector'},
-              collection: alcohol_options.map { |alcohol, html| [html.html_safe, alcohol] },
-              required: true,
-              label: "" %>
-        <!-- Q2 END -->
+          <!-- QUESTION 1 -->
+          <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
+            <%= render 'polls/mood', f: poll_form %>
 
-        <!-- QUESTION 3 -->
-        <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
-          <%= poll_form.input :smoking,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'form-container',
-              item_wrapper_tag: 'div',
-              item_wrapper_class: 'grid-2',
-              input_html: {class: 'category-selector'},
-              collection: smoke_options.map { |smoke, html| [html.html_safe, smoke] },
-              required: true,
-              label: "" %>
-        <!-- Q3 END -->
+          <!-- QUESTION 2 -->
+          <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
+            <%= render 'polls/alcohol', f: poll_form %>
 
-        <!-- QUESTION 4 -->
-        <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
-          <%= poll_form.input :food,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'form-container',
-              item_wrapper_tag: 'div',
-              item_wrapper_class: 'grid-2',
-              input_html: {class: 'category-selector'},
-              collection: food_options.map { |food, html| [html.html_safe, food] },
-              required: true,
-              label: "" %>
-        <!-- Q4 END -->
+          <!-- QUESTION 3 -->
+          <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
+            <%= render 'polls/smoking', f: poll_form %>
 
-        <!-- SUBMIT -->
+          <!-- QUESTION 4 -->
+          <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
+            <%= render 'polls/food', f: poll_form %>
+
+          <!-- SUBMIT -->
+          <% end %>
+
         <div class="form-group">
           <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
         </div>
-        <!-- SUBMIT END -->
-        <% end %>
+
       <% end %>
-
-
-      <%# <!-- OLD - JOE NEEDS FOR REFERENCE -->
-      <div class="grid-6" style="margin-top: 24px;">
-        <h2>WHAT'S YOUR VIBE TONIGHT?</h2>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">😊</p>
-        <p>CASUAL</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">✨</p>
-        <p>CLASSY</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🪩</p>
-        <p>DANCING</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🎶</p>
-        <p>MUSIC</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🎭</p>
-        <p>UNIQUE</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🙌</p>
-        <p>ANYTHING</p>
-      </div>
-      <!-- Q1 END -->
-
-      <!-- QUESTION 2 -->
-      <div class="grid-6" style="margin-top: 24px;">
-        <h2>WHAT DO YOU WANT TO DRINK TONIGHT?</h2>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🍺</p>
-        <p>CRAFT BEER</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🍋</p>
-        <p>LEMON SOUR</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🥃</p>
-        <p>WHISKEY</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🍹</p>
-        <p>COCKTAIL</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🍷</p>
-        <p>WINE</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🥂</p>
-        <p>ANYTHING</p>
-      </div>
-      <!-- Q2 END -->
-
-      <!-- QUESTION 3 -->
-      <div class="grid-6" style="margin-top: 24px;">
-        <h2>WILL YOU SMOKE TONIGHT?</h2>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">👍</p>
-        <p>YEAH</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">👎</p>
-        <p>NAH</p>
-      </div>
-      <!-- Q3 END -->
-
-      <!-- QUESTION 4 -->
-      <div class="grid-6" style="margin-top: 24px;">
-        <h2>DO YOU WANT TO EAT THERE?</h2>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🙋‍♂️</p>
-        <p>YES PLEASE</p>
-      </div>
-      <div class="grid-2 icon-card">
-        <p class="icon">🙅‍♂️</p>
-        <p>NO THANKS</p>
-      </div>
-      <!-- Q4 END -->
-
-      <!-- SELECT FRIENDS -->
-      <!-- SELECT FRIENDS END -->
-
-      <!-- SUBMIT -->
-      <%# <%= link_to, "MAKE PLANS", plan_path(@plan), class: "button"%>
-      <!-- SUBMIT END -->
 
     </div>
   </body>

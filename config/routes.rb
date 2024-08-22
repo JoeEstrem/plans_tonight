@@ -14,9 +14,10 @@ Rails.application.routes.draw do
       patch 'mark_as_pending'
       patch 'mark_as_past'
     end
+    resources :polls, only: [:new, :create]
   end
 
-  resources :polls, only: [:create, :edit, :show]
+  resources :polls, only: [:edit, :show]
 
   resources :bars, only: [:show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

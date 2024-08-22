@@ -1,0 +1,10 @@
+      <%= f.input :food,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'form-container',
+              item_wrapper_tag: 'div',
+              item_wrapper_class: 'grid-2',
+              input_html: {class: 'category-selector'},
+              collection: food_options.map { |food, html| [html.html_safe, food] },
+              required: true,
+              label: "" %>

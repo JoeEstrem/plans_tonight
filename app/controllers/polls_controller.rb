@@ -11,8 +11,9 @@ class PollsController < ApplicationController
 
   def create
     @poll = Poll.new(poll_params)
+    @poll.user = current_user
     if @poll.save
-      redirect_to @poll, notice: 'Poll was successfully created.'
+      redirect_to plan_invitation_path(@plan), notice: 'Poll was successfully created.'
     else
       render :new
     end
@@ -21,6 +22,6 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:vibe)
+    params.require(:poll).permit(:mood, :alcohol, :smoking, :food)
   end
 end
