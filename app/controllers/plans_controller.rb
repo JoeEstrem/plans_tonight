@@ -19,6 +19,9 @@ class PlansController < ApplicationController
   def index
     @plans = Plan.all
     @user = current_user.id
+    @past_plans = Plan.past
+    @pending_plans = Plan.pending
+    @done_plans = Plan.done
   end
 
   def invitation
@@ -46,6 +49,21 @@ class PlansController < ApplicationController
         lng: @bar.longitude
       }
     ]
+  end
+
+  def mark_as_done
+    @plan.update(status: :done)
+    redirect_to @plan.user, notice: 'Plan was sucessfully marked as done'
+  end
+
+  def mark_as_pending
+    @plan.update(status: :pending)
+    redirect_to @plan.user, notice: 'Plan was sucessfully marked as pending'
+  end
+
+  def mark_as_past
+    @plan.past(status: :past)
+    redirect_to @plan.user, notice: 'plan was sucessfully marked as past'
   end
 
   private
