@@ -3,27 +3,28 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
 </head>
 <div class="container show-title">
-  <div class="confirmation-container" style="padding-top: 16px;">
+
+  <div class="confirmation-container" style="padding-top: 64px;">
     <div class="show-title">
       <div style="display: flex; align-items: center; white-space: nowrap;">
         <h1>Your</h1>
         <h1 class="yellow-text" style="margin-left: 10px;">
         Plans Tonight</h1>
       </div>
-      <div style="display: flex; white-space: nowrap;  margin-bottom: 16px;">
+      <div style="display: flex; white-space: nowrap;">
         <h1>Have Been Confirmed</h1>
       </div>
     </div>
   </div>
     <!-- Bar Image-->
-    <div class="image-bar">
+    <div class="image-bar" style="margin-top: 24px;">
       <div class="image">
         <% @bar.photo %>
           <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
       </div>
     </div>
       <!-- Bar Description -->
-    <div class="description-container" style="padding-top: 16px;">
+    <div class="description-container" style="padding-top: 32px;">
       <div class="bar-description">
         <div style="margin-bottom: 16px;">
           <h2><%= @bar.name %>
@@ -62,20 +63,32 @@
       </div>
       </div>
     </div>
-    <div class="show-element" style="padding: 16px;">
+    <!-- Add to Calendar -->
+    <div class="show-element" style="margin-top: 32px;">
         <%= link_to "Add to Calendar", "#", class:"homepage-button"  %>
       </div>
-    <div style="padding: 8px;">
+    <!-- Map -->
+    <div class="show-element" style="margin-top: 32px;">
       <h2>Map</h2>
-
-    <div style="width: 100%; height: 200px;"
+    <div style="width: 100%; height: 200px; margin-top: 16px;"
       data-controller="map"
       data-map-markers-value="<%= @marker.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_ACCESS_TOKEN'] %>">
     </div>
-
-    <div class="show-element" style="padding: 16px;">
-      <h2>Going Friends</h2>
+    <!-- Friends -->
+    <div class="show-element" style="margin-top: 32px;">
+      <h2>Friends Going</h2>
     </div>
+    <div class="plans-avatar-container" style="margin-bottom: 32px;">
+      <% @users.each do |user| %>
+        <div class="avatar-circle">
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+          <% end %>
+      </div>
+    <% end %>
   </div>
+</div>
 </div>
