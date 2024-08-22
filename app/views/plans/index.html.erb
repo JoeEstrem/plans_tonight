@@ -1,5 +1,5 @@
 
-  <div class="plans-index-container">
+  <%# <div class="plans-index-container">
     <div class="plans-list-element">
     <h1>Brewing Plans</h1>
 
@@ -21,7 +21,51 @@
           <p>plan-list description with <strong>relevant info</strong> only.</p>
         </div>
       </div>
-    </div>
+    </div> %>
+
+ <!-- Brewing Plans (pending) -->
+    <div class="container">
+  <div class="row">
+    <h1 class="my-4">Brewing Plans</h1>
+    <% @pending_plans.each do |plan| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %Y %I:%M %p") %></h5>
+            <p class="card-text">This plan is still pending.</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+    <!-- Upcoming Plans (Completed) -->
+ <div class="container">
+  <div class="row">
+    <h1 class="my-4">Upcoming Plans</h1>
+    <% @done_plans.each do |plan| %>
+      <div class="col-md-4 mb-4">
+        <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
+          <div class="card">
+            <%= image_tag plan.bar.photo.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: plan.bar.name, class: 'card-img-top' %>
+            <div class="card-body">
+              <h5 class="card-title"><%= plan.bar.name %></h5>
+              <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
+              <p class="card-text"><strong>Mood:</strong> <%= plan.bar.mood %></p>
+              <p class="card-text"><strong>Price:</strong> <%= plan.bar.price %></p>
+              <p class="card-text"><strong>Alcohol:</strong> <%= plan.bar.alcohol %></p>
+              <h6 class="mt-4">Polls Information</h6>
+              <% plan.polls.each do |poll| %>
+                <p><%= poll.mood %> mood, <%= poll.alcohol %> alcohol preference, <%= poll.smoking ? 'Smoking allowed' : 'No smoking' %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
     <%= link_to 'HOME', root_path, class: 'plans-btn' %>
 

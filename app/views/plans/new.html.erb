@@ -16,6 +16,7 @@
 
         <%= f.simple_fields_for :polls do |poll_form| %>
           <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+          <%= poll_form.input :submitted, as: :hidden, input_html: { value: true } %>
 
           <!-- QUESTION 1 -->
           <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
