@@ -11,4 +11,8 @@ class Plan < ApplicationRecord
   scope :past, -> { where(status: :past) }
   scope :pending, -> { where(status: :pending) }
   scope :done, -> { where(status: :done) }
+
+  def all_polls_filled?
+    polls.all?(&:filled?)
+  end
 end

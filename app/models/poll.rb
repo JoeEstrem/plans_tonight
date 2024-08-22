@@ -7,5 +7,7 @@ class Poll < ApplicationRecord
   validates :smoking, inclusion: { in: [true, false] }
   validates :food, inclusion: { in: [true, false] }
 
-
+  def filled?
+    submitted?
+  end
 end

@@ -13,6 +13,13 @@ class PollsController < ApplicationController
     @poll = Poll.new(poll_params)
     @poll.user = current_user
     if @poll.save
+      @poll.update(submitted: true)
+      @plan = @poll.plan
+
+      if @plan.all_polls_filled?
+        @plan.update(status: :done)
+      end
+
       redirect_to plan_invitation_path(@plan), notice: 'Poll was successfully created.'
     else
       render :new
