@@ -9,7 +9,8 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     if @plan.save
-      redirect_to @plan, notice: 'Invite your friends to participate.'
+      raise
+      redirect_to plan_invitation_path(@plan), notice: 'Invite your friends to participate.'
     else
       render :new, status: :unprocessable_entity, notice: "Please answer this question."
     end
@@ -50,6 +51,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food])
+    params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food, :user_id])
   end
 end
