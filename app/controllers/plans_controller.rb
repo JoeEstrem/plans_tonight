@@ -50,6 +50,10 @@ class PlansController < ApplicationController
         lng: @bar.longitude
       }
     ]
+
+    unless @plan.polls.find_by(user: current_user)
+      redirect_to new_plan_poll_path(@plan)
+    end
   end
 
   def mark_as_done
