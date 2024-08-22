@@ -6,30 +6,13 @@
         <h1>MAKE YOUR PLANS TONIGHT!</h1>
       </div>
 
-      <!-- SELECT DATE & TIME -->
-      <div class="grid-6">
-        <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
-      </div>
-      <div class="grid-6">
-        <%= form_with model: @plan, local: true do |form| %>
-            <div class="input-group grid-6">
-              <%= form.text_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
-            </div>
-          </div>
-        <% end %>
-      <!-- SELECT DATE & TIME END -->
-
-
-    <%# <div class="grid-6" style="margin-top: 24px;"> %>
-
       <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
 
-
-<h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
-          <div class="input-group grid-6">
-              <%= f.text_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
-            </div>
-          </div>
+        <!-- SELECT DATE & TIME -->
+        <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
+        <div class="input-group grid-6">
+          <%= f.text_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+        </div>
 
         <%= f.simple_fields_for :polls do |poll_form| %>
           <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
