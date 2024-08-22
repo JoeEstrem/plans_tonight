@@ -26,6 +26,10 @@ class PollsController < ApplicationController
 
       if @plan.all_polls_filled?
         @plan.update(status: :done)
+        @plan.bar = Bar.find_by(mood: @plan.polls.pluck(:mood).mode) || Bar.all.sample
+        @plan.save
+      else
+        @plan.update(status: :pending)
       end
 
       redirect_to plan_path(@plan), notice: 'Poll was successfully created.'
