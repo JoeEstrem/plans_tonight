@@ -2,6 +2,7 @@ class Plan < ApplicationRecord
   belongs_to :user
   belongs_to :bar, optional: true
   has_many :polls, dependent: :destroy
+  has_many :users, through: :polls
   accepts_nested_attributes_for :polls, allow_destroy: true
 
   validates :date_time, presence: true

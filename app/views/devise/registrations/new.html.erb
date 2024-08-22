@@ -19,6 +19,10 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :username,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "username" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -26,12 +30,12 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :profile_photo, as: :file, required: true, label: 'Profile Photo' %>
   </div>
 
-  <div class="form-actions plans-btn" style="margin-top: 16px;">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+    <%= f.button :submit, "Sign up", class:"form-actions plans-btn" %>
+
 <% end %>
-<div style="margin-top: 16px;">
+
 <%= render "devise/shared/links" %>
 </div>
