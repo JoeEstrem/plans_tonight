@@ -37,6 +37,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    @users = User.all
     @bar = @plan.bar
     @marker = [
       {
@@ -45,8 +46,6 @@ class PlansController < ApplicationController
       }
     ]
   end
-
-
 
   private
 
