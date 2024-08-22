@@ -2,7 +2,13 @@ class PollsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def new
-    @poll = Poll.new
+    @plan = Plan.find(params[:plan_id])
+
+    if @plan.polls.find_by(user: current_user)
+      redirect_to plan_path(@plan), notice: 'Your vote already exist.'
+    else
+      @poll = Poll.new
+    end
   end
 
   def show
@@ -12,6 +18,8 @@ class PollsController < ApplicationController
   def create
     @poll = Poll.new(poll_params)
     @poll.user = current_user
+    @plan = Plan.find(params[:plan_id])
+    @poll.plan = @plan
     if @poll.save
       @poll.update(submitted: true)
       @plan = @poll.plan
@@ -20,7 +28,7 @@ class PollsController < ApplicationController
         @plan.update(status: :done)
       end
 
-      redirect_to plan_invitation_path(@plan), notice: 'Poll was successfully created.'
+      redirect_to plan_path(@plan), notice: 'Poll was successfully created.'
     else
       render :new
     end

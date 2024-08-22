@@ -7,29 +7,29 @@
         <p>Share how you're feeling to contribute to the bar poll</p>
       </div>
 
+    <%= simple_form_for [@plan, @poll], html: { class: 'grid-6' } do |f| %>
      <!-- FORM -->
-    <%= f.simple_fields_for :polls do |poll_form| %>
 
-      <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+      <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
 
       <!-- Hidden Field for Submitted Status -->
-          <%= poll_form.input :submitted, as: :hidden, input_html: { value: 'true' } %>
+          <%= f.input :submitted, as: :hidden, input_html: { value: 'true' } %>
 
       <!-- QUESTION 1 -->
       <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
-        <%= render 'polls/mood', f: poll_form %>
+        <%= render 'polls/mood', f: f %>
 
       <!-- QUESTION 2 -->
       <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
-          <%= render 'polls/alcohol', f: poll_form %>
+          <%= render 'polls/alcohol', f: f %>
 
       <!-- QUESTION 3 -->
       <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
-        <%= render 'polls/smoking', f: poll_form %>
+        <%= render 'polls/smoking', f: f %>
 
       <!-- QUESTION 4 -->
       <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
-        <%= render 'polls/food', f: poll_form %>
+        <%= render 'polls/food', f: f %>
 
       <!-- SUBMIT -->
       <div class="form-group">
