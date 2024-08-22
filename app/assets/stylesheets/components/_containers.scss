@@ -41,6 +41,7 @@
 }
 
 .plans-index-container {
+    padding-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,6 +69,11 @@
     font-size: 16px;
   }
 }
+
+.container {
+  min-height: 100vh;
+}
+
 .plans-avatar-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -75,4 +81,5 @@
   justify-items: center;
   align-items: center;
   margin-top: 16px;
-}
+
+
