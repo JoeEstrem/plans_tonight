@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>Invite your friends</h1>
+  <h1>Invite <span class="plans-yellow">friends</span></h1>
 
   <div class="plan-index-container">
 
-    <% @users.each do |user| %>
+    <% @users.where.not(id: current_user).each do |user| %>
       <div class="card-friend">
         <% if user.photo.attached? %>
-          <%= cl_image_tag user.photo.key %>
+          <%= cl_image_tag user.photo.key, class:"avatar" %>
         <% else %>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
@@ -16,8 +16,10 @@
         </div>
       </div>
     <% end %>
-
-
   </div>
 
+</div>
+
+<div class="footer">
+  <%= link_to "Complete your plans", user_plans_path(current_user), class:"homepage-button"  %>
 </div>
