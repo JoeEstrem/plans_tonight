@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  skip_before_action :authenticate_user!
+  # skip_before_action :authenticate_user!
 
   def new
     @plan = Plan.find(params[:plan_id])
