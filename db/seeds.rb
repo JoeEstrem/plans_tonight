@@ -219,7 +219,7 @@ plans = Plan.create!(
   deadline: DateTime.now + 5.hours,
   location: "Example Location 2",
   user: User.last,
-  bar: Bar.last,
+  bar: nil,
   status: "pending"
 )
 
