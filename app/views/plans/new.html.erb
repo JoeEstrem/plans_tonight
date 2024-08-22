@@ -13,7 +13,7 @@
       <div class="grid-6">
         <%= form_with model: @plan, local: true do |form| %>
             <div class="input-group">
-              <%= form.text_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", "data-controller": "date-picker" %>
+              <%= form.text_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
             </div>
           </div>
         <% end %>
