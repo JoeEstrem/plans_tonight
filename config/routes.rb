@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     member do
       get 'invitation'
       post 'invite'
+      patch 'mark_as_done'
+      patch 'mark_as_pending'
+      patch 'mark_as_past'
     end
   end
 

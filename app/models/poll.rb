@@ -6,4 +6,6 @@ class Poll < ApplicationRecord
   validates :alcohol, presence: true
   validates :smoking, inclusion: { in: [true, false] }
   validates :food, inclusion: { in: [true, false] }
+
+
 end
