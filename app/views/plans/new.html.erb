@@ -12,7 +12,7 @@
       </div>
       <div class="grid-6">
         <%= form_with model: @plan, local: true do |form| %>
-            <div class="input-group">
+            <div class="input-group grid-6">
               <%= form.text_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
             </div>
           </div>
@@ -25,6 +25,11 @@
       <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
 
 
+<h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
+          <div class="input-group grid-6">
+              <%= f.text_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+            </div>
+          </div>
 
         <%= f.simple_fields_for :polls do |poll_form| %>
           <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
@@ -56,26 +61,4 @@
 
     </div>
   </body>
-  <%# <script>
-  function getJapanTime() {
-    const now = new Date();
-    const utcOffset = now.getTimezoneOffset() * 60000; // Offset in milliseconds
-    const japanOffset = 9 * 60 * 60000; // Japan offset in milliseconds
-    return new Date(now.getTime() + utcOffset + japanOffset);
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const japanTime = getJapanTime();
-
-    flatpickr(".datetime-picker", {
-      enableTime: true,
-      dateFormat: "Y-m-d H:i",
-      altInput: true,
-      altFormat: "F j, Y - H:i",
-      time_24hr: true,
-      minDate: japanTime,
-      defaultDate: japanTime,
-    });
-  });
-  </script> %>
 </html>

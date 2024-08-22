@@ -22,6 +22,6 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:mood, :alcohol, :smoking, :food)
+    params.require(:poll).permit(:mood, :alcohol, :smoking, :food, :user_id)
   end
 end
