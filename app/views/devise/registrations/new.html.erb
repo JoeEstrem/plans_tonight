@@ -1,4 +1,15 @@
-<h2>Sign up</h2>
+<div class="container show-title">
+  <div class="confirmation-container" style="padding-top: 64px;">
+    <div class="show-title">
+      <div style="display: flex; align-items: center; white-space: nowrap;">
+        <h1 class="yellow-text" style="margin-bottom: 32px;">
+        Plans Tonight</h1>
+      </div>
+      </div>
+    </div>
+  <div style="margin-bottom: 16px;">
+  <h2>Sign up</h2>
+  </div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -17,9 +28,10 @@
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions plans-btn" style="margin-top: 16px;">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
-
+<div style="margin-top: 16px;">
 <%= render "devise/shared/links" %>
+</div>
