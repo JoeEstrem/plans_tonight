@@ -8,9 +8,10 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
+    @plan.user = current_user
     if @plan.save
+      # redirect_to plan_invitation_path(@plan), notice: 'Invite your friends to participate.'
       raise
-      redirect_to plan_invitation_path(@plan), notice: 'Invite your friends to participate.'
     else
       render :new, status: :unprocessable_entity, notice: "Please answer this question."
     end
