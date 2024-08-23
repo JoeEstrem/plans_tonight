@@ -35,12 +35,7 @@ class PlansController < ApplicationController
   def invite
     @plan = Plan.find(params[:id])
     @poll = Poll.new
-
-    @poll.submitted = false
-    @poll.plan = @plan
-    @poll.user_id = params[:user_id]
-    @poll.save
-
+    create_poll
     LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to him by following to #{plan_url(@plan)}").call
     respond_to do |format|
       format.turbo_stream do
@@ -65,7 +60,7 @@ class PlansController < ApplicationController
     ]
     end
 
-    unless @plan.polls.find_by(user: current_user)
+    unless @plan.polls.find_by(user: current_user, submitted: true)
       redirect_to new_plan_poll_path(@plan)
     end
   end
@@ -90,10 +85,12 @@ class PlansController < ApplicationController
 
   private
 
-  # def create_poll
-  #   @poll = Poll.new(params[:id])
-  #   @poll.save
-  # end
+  def create_poll
+    @poll.submitted = false
+    @poll.plan = @plan
+    @poll.user_id = params[:user_id]
+    @poll.save
+  end
 
   def plan_params
     params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food, :user_id, :submitted])

@@ -7,7 +7,7 @@
         <p>Share how you're feeling to contribute to the bar poll</p>
       </div>
 
-    <%= simple_form_for [@plan, @poll], html: { class: 'grid-6' } do |f| %>
+    <%= simple_form_for [@plan, @poll], url: plan_polls_path(@plan), method: :post, html: { class: 'grid-6' } do |f| %>
      <!-- FORM -->
 
       <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
