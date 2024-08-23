@@ -24,7 +24,9 @@
     </div> %>
 
  <!-- Brewing Plans (pending) -->
-    <div class="container">
+
+<div class="container">
+
   <div class="row">
     <h1 class="my-4">Brewing Plans</h1>
     <% @pending_plans.each do |plan| %>
@@ -41,7 +43,7 @@
       </div>
     <% end %>
   </div>
-</div>
+
 
     <!-- Upcoming Plans (Completed) -->
  <div class="container">
@@ -68,7 +70,8 @@
       </div>
     <% end %>
   </div>
+</div>
 
 <div class="grid-container">
-  <%= link_to "Back", user_plans_path(current_user), class: "plans-btn grid-6" %>
+  <%= link_to 'HOME', root_path, class: 'plans-btn grid-6' %>
 </div>
