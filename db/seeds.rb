@@ -209,5 +209,5 @@ end
 #     alcohol: ["Craft Beer", "Cocktail", "Whiskey", "Anything"].sample,
 #     user: user,
 #     plan: [plan, plans].sample
-#   )
-end
+# #   )
+# end
