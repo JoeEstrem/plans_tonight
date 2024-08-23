@@ -28,12 +28,9 @@ class PollsController < ApplicationController
     end
 
     if @poll.save
-      @poll.update(submitted: true)
 
       if @plan.all_polls_filled? || @plan.deadline_passed?
-        @plan.update(status: :done)
-        @plan.bar = Bar.find_by(mood: @plan.polls.pluck(:mood).max) || Bar.all.sample
-        @plan.save
+        @plan.close_polls!
       else
         @plan.update(status: :pending)
       end
