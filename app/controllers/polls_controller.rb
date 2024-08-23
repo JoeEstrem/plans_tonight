@@ -16,10 +16,17 @@ class PollsController < ApplicationController
   end
 
   def create
-    @poll = Poll.new(poll_params)
-    @poll.user = current_user
+    #handeling create and update in same action
     @plan = Plan.find(params[:plan_id])
-    @poll.plan = @plan
+    @poll = Poll.find_by(plan: @plan, user: current_user)
+    if @poll
+      @poll.update(poll_params)
+    else
+      @poll = Poll.new(poll_params)
+      @poll.user = current_user
+      @poll.plan = @plan
+    end
+
     if @poll.save
       @poll.update(submitted: true)
 
