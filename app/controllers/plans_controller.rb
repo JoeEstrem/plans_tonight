@@ -9,11 +9,14 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user = current_user
-    @plan.status = :pending
+
+    @plan.update(status: :pending)
 
     if @plan.save
       redirect_to invitation_plan_path(@plan), notice: 'Invite your friends to participate.'
+
     else
+
       render :new, status: :unprocessable_entity, notice: "Please answer this question."
     end
   end
@@ -57,27 +60,27 @@ class PlansController < ApplicationController
     end
   end
 
-  def mark_as_done
-    @plan = Plan.find(params[:id])
-    @plan.update_status
-    redirect_to @plan.user, notice: 'Plan was successfully marked as done'
-  end
+  # def mark_as_done
+  #   @plan = Plan.find(params[:id])
+  #   @plan.update_status
+  #   redirect_to @plan.user, notice: 'Plan was successfully marked as done'
+  # end
 
-  def mark_as_pending
-    @plan = Plan.find(params[:id])
-    @plan.update(status: :pending)
-    redirect_to @plan.user, notice: 'Plan was successfully marked as pending'
-  end
+  # def mark_as_pending
+  #   @plan = Plan.find(params[:id])
+  #   @plan.update(status: :pending)
+  #   redirect_to @plan.user, notice: 'Plan was successfully marked as pending'
+  # end
 
-  def mark_as_past
-    @plan = Plan.find(params[:id])
-    @plan.update(status: :past)
-    redirect_to @plan.user, notice: 'Plan was successfully marked as past'
-  end
+  # def mark_as_past
+  #   @plan = Plan.find(params[:id])
+  #   @plan.update(status: :past)
+  #   redirect_to @plan.user, notice: 'Plan was successfully marked as past'
+  # end
 
   private
 
   def plan_params
-    params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food, :user_id])
+    params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food, :user_id, :submitted])
   end
 end
