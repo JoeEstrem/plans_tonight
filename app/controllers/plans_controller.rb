@@ -14,9 +14,7 @@ class PlansController < ApplicationController
 
     if @plan.save
       redirect_to invitation_plan_path(@plan), notice: 'Invite your friends to participate.'
-
     else
-
       render :new, status: :unprocessable_entity, notice: "Please answer this question."
     end
   end
@@ -36,10 +34,17 @@ class PlansController < ApplicationController
 
   def invite
     @plan = Plan.find(params[:id])
-    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to him by following to http://localhost:3000/plans/#{params[:id]}").call
+    @poll = Poll.new
+
+    @poll.submitted = false
+    @poll.plan = @plan
+    @poll.user_id = params[:user_id]
+    @poll.save
+
+    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to him by following to #{plan_url(@plan)}").call
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(:invite, partial: "shared/invited_btn")
+        render turbo_stream: turbo_stream.replace("invite-#{@poll.user.id}", partial: "shared/invited_btn")
       end
     end
   end
@@ -81,6 +86,11 @@ class PlansController < ApplicationController
   # end
 
   private
+
+  # def create_poll
+  #   @poll = Poll.new(params[:id])
+  #   @poll.save
+  # end
 
   def plan_params
     params.require(:plan).permit(:date_time, :deadline, :location, polls_attributes: [:mood, :alcohol, :smoking, :food, :user_id, :submitted])
