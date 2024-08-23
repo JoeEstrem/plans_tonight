@@ -12,7 +12,11 @@
         <% end %>
         <div class="card-friend-infos">
           <h3><%= user.username %></h2>
-          <%= link_to "Invite", invite_plan_path(@plan), class: "invite-button", data: { turbo_method: :post }, id: "invite" %>
+            <% if @plan.polls.find_by(user: user) %>
+              <%= render "shared/invited_btn" %>
+            <% else %>
+          <%= link_to "Invite", invite_plan_path(@plan, user_id: user.id), class: "invite-button", data: { turbo_method: :post }, id: "invite-#{user.id}" %>
+        <% end %>
         </div>
       </div>
     <% end %>

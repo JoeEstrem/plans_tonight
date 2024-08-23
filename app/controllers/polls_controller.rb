@@ -4,14 +4,14 @@ class PollsController < ApplicationController
   def new
     @plan = Plan.find(params[:plan_id])
 
-    if @plan.polls.find_by(user: current_user)
+    if @plan.polls.find_by(user: current_user, submitted: true)
       redirect_to plan_path(@plan), notice: 'Your vote already exist.'
     else
-      @poll = Poll.new
+      @poll = Poll.find_by(user: current_user, plan: @plan) || Poll.new
     end
   end
 
-  def show
+  def shows
     @poll = Poll.find(params[:id])
   end
 
@@ -22,7 +22,6 @@ class PollsController < ApplicationController
     @poll.plan = @plan
     if @poll.save
       @poll.update(submitted: true)
-      @plan = @poll.plan
 
       if @plan.all_polls_filled? || @plan.deadline_passed?
         @plan.update(status: :done)
