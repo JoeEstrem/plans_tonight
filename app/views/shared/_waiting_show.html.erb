@@ -26,7 +26,7 @@
 </div>
 
 <div class="grid-container">
-  <%= link_to "Close Poll", user_plans_path(current_user), method: :post, class: "plans-btn grid-6", data: { turbo_confirm: "Are you sure you want to close the poll now?" } %>
+  <%= link_to "Close poll", plan_path(@plan), method: :patch, class: "plans-btn grid-6", data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to close the poll now?" } %>
   <%= link_to "Back", user_plans_path(current_user), class: "plans-btn grid-6" %>
 </div>
 

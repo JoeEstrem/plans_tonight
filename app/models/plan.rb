@@ -21,6 +21,13 @@ class Plan < ApplicationRecord
     deadline.present? && deadline < Time.current
   end
 
+  def close_polls!
+    update(deadline: DateTime.now, status: :done)
+    moods = polls.pluck(:mood)
+    moods.delete(nil)
+    self.bar = Bar.find_by(mood: moods&.max) || Bar.all.sample
+    self.save
+  end
   # def update_status
   #   if deadline_passed? || all_polls_filled?
   #     assign_bar
