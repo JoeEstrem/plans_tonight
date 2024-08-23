@@ -9,7 +9,9 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user = current_user
+
     @plan.update(status: :pending)
+
     if @plan.save
       redirect_to invitation_plan_path(@plan), notice: 'Invite your friends to participate.'
 
