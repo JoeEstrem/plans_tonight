@@ -17,8 +17,8 @@ class LineMessageService
       text: message
     }
     @client.push_message('U4a41c30ad340bdc0dbd9333ca64d1f14', message_block)
-    end
   end
+end
 
 # To use this
 # LineMessageService.new('Hey you have trash coming').call
