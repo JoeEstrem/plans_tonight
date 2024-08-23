@@ -8,14 +8,14 @@
       </div>
 
 <div class="waiting-container">
-  <h2>Waiting for results...</h2>
+  <h2>Friends that have Submitted the poll...</h2>
 </div>
 
    <div class="plans-avatar-container" style="margin-bottom: 32px;">
-    <%= plan.user.poll.submitted? %>
-      <% @users.each do |user| %>
+    <% @plan.polls.where(submitted: true).each do |poll| %>
+      <%# <% @users.each do |user| %>
         <div class="avatar-circle">
-          <% if user.photo.attached? %>
+          <% if poll.user.photo.attached? %>
             <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
           <% else %>
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />

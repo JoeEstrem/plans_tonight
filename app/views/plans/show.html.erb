@@ -4,7 +4,7 @@
 </head>
 
 <!-- app/views/plans/show.html.erb -->
-<%= if @plan.bar = nil %>
+<% if @plan.bar.nil? %>
   <%= render 'shared/waiting_show' %>
 <% else %>
   <%= render 'shared/confirmation_show' %>
