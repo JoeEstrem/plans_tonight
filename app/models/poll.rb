@@ -1,7 +1,6 @@
 class Poll < ApplicationRecord
   belongs_to :user
   belongs_to :plan
-  belongs_to :bar
 
   validates :mood, presence: true
   validates :alcohol, presence: true

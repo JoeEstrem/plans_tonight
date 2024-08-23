@@ -15,8 +15,8 @@ bar = Bar.create!(
   smoking: true,
   food: true,
   alcohol: "Craft Beer",
-  longitude: 139.5605306023052,
-  latitude: 35.61685821763033,
+  longitude: 35.61685821763033,
+  latitude: 139.5605306023052,
   url: "https://tabelog.com/kanagawa/A1405/A140506/14075022/"
 )
 
@@ -33,8 +33,8 @@ bar = Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Cocktail",
-  longitude: 139.7048060202411,
-  latitude: 35.65142638822411,
+  longitude: 35.65142638822411,
+  latitude: 139.7048060202411,
   url: "https://www.instagram.com/hi_sputnik/"
 )
 
@@ -51,8 +51,8 @@ bar = Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Anything",
-  longitude: 139.70295191821114,
-  latitude: 35.66100916882782,
+  longitude: 35.66100916882782,
+  latitude: 139.70295191821114,
   url: "https://the-musicbar.jp/wp/wp-content/uploads/2023/10/FOOD_MusicBar_20230929_FIX_ol.pdf"
 )
 
@@ -69,8 +69,8 @@ bar = Bar.create!(
   smoking: true,
   food: false,
   alcohol: "Anything",
-  longitude: 139.70148363996984,
-  latitude: 35.65970776640392,
+  longitude: 35.65970776640392,
+  latitude: 139.70148363996984,
   url: "https://djbar-bridge.com/"
 )
 
@@ -87,8 +87,8 @@ bar = Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Anything",
-  longitude: 139.70974154845496,
-  latitude: 35.73350037074206,
+  longitude: 35.73350037074206,
+  latitude: 139.70974154845496,
   url: "https://musclegirls.jimdofree.com/"
 )
 
@@ -105,8 +105,8 @@ bar = Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Cocktail",
-  longitude: 139.7483423020964,
-  latitude: 35.65591424418253,
+  longitude: 35.65591424418253,
+  latitude: 139.7483423020964,
   url: "https://www.princehotels.co.jp/parktower/restaurant/stellargarden/"
 )
 
@@ -123,8 +123,8 @@ bar = Bar.create!(
   smoking: true,
   food: false,
   alcohol: "Anything",
-  longitude: 139.69459813396182,
-  latitude: 35.66355578251508,
+  longitude: 35.66355578251508,
+  latitude: 139.69459813396182,
   url: "https://www.womb.co.jp/reservation/"
 )
 
@@ -141,8 +141,8 @@ bar = Bar.create!(
   smoking: false,
   food: false,
   alcohol: "Craft Beer",
-  longitude: 139.66581370606173,
-  latitude: 35.67272189658194,
+  longitude: 35.67272189658194,
+  latitude: 139.66581370606173,
   url: "https://www.instagram.com/pintologytokyo/"
 )
 
@@ -159,8 +159,8 @@ bar = Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Cocktails",
-  longitude: 139.7494569872622,
-  latitude: 35.66718854657908,
+  longitude: 35.66718854657908,
+  latitude: 139.7494569872622,
   url: "https://www.andaztokyo.jp/restaurants/jp/rooftop-bar/?utm_source=gmb&utm_medium=organic#menu"
 )
 
@@ -177,8 +177,8 @@ photo_url = "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ
   smoking: false,
   food: false,
   alcohol: "Anything",
-  longitude: 139.70459031687258,
-  latitude: 35.69863637921583,
+  longitude: 35.69863637921583,
+  latitude: 139.70459031687258,
   url: "https://cuore.bar/"
 )
 
@@ -211,7 +211,7 @@ plan = Plan.create!(
   location: "Example Location 1",
   user: User.first,
   bar: Bar.first,
-  status: "active"
+  status: "pending"
 )
 
 plans = Plan.create!(
@@ -219,7 +219,7 @@ plans = Plan.create!(
   deadline: DateTime.now + 5.hours,
   location: "Example Location 2",
   user: User.last,
-  bar: nil,
+  bar: bar,
   status: "pending"
 )
 
