@@ -16,7 +16,7 @@
       <%# <% @users.each do |user| %>
         <div class="avatar-circle">
           <% if poll.user.photo.attached? %>
-            <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
+            <%= cl_image_tag poll.user.photo.key, class: "avatar-photo"  %>
           <% else %>
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
           <% end %>
@@ -24,5 +24,11 @@
     <% end %>
   </div>
 </div>
+
+<div class="grid-container">
+  <%= link_to "Close Poll", user_plans_path(current_user), method: :post, class: "plans-btn grid-6", data: { turbo_confirm: "Are you sure you want to close the poll now?" } %>
+  <%= link_to "Back", user_plans_path(current_user), class: "plans-btn grid-6" %>
+</div>
+
 </div>
 </div>

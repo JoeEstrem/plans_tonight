@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       patch 'mark_as_done'
       patch 'mark_as_pending'
       patch 'mark_as_past'
+      post 'close_poll'
     end
     resources :polls, only: [:new, :create]
   end

@@ -70,6 +70,14 @@ class PlansController < ApplicationController
     end
   end
 
+  def close_poll
+    @plan = Plan.find(params[:id])
+    @plan.polls.all = 'submitted'
+    # @plan.update(deadline: DateTime.now)
+
+    redirect_to root_path
+  end
+
   # def mark_as_done
   #   @plan = Plan.find(params[:id])
   #   @plan.update_status
