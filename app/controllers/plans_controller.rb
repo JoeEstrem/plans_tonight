@@ -52,6 +52,9 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
     @users = User.all
+    # plan.user = User.where(form_submitted: true)
+    # if @bar.all_users_confirmed?
+    #   redirect_to confirmed_show_path(@bar)
     @bar = @plan.bar
     if @bar
     @marker = [

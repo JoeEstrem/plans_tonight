@@ -7,7 +7,7 @@ class Plan < ApplicationRecord
 
   validates :date_time, presence: true
 
-  enum status: { pending: 'pending', done: 'done', past: 'past'}
+  enum status: { pending: 0, done: 1, past: 2}
 
   scope :past, -> { where(status: :past) }
   scope :pending, -> { where(status: :pending) }

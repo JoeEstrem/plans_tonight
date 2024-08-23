@@ -31,6 +31,7 @@
       <div class="col-md-4 mb-4">
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
         <div class="card">
+              <%= link_to 'View plan', plan_path(plan)%>
           <div class="card-body text-center">
             <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %Y %I:%M %p") %></h5>
             <p class="card-text">This plan is still pending.</p>
