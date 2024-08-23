@@ -21,8 +21,8 @@ Bar.create!(
   smoking: true,
   food: true,
   alcohol: "Craft Beer",
-  longitude: 35.61685821763033,
-  latitude: 139.5605306023052,
+  longitude: 139.5605306023052,
+  latitude: 35.61685821763033,
   url: "https://tabelog.com/kanagawa/A1405/A140506/14075022/"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipPz8eqe8ybBtXmygxakkO-eYg3rEgA19S7Ihgqt=s1360-w1360-h1020", 'user1.png')
@@ -36,8 +36,8 @@ Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Cocktail",
-  longitude: 35.65142638822411,
-  latitude: 139.7048060202411,
+  longitude: 139.7048060202411,
+  latitude: 35.65142638822411,
   url: "https://www.instagram.com/hi_sputnik/"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipPjOggnwKN0zVZIISLNx7rByM7VsCuUsPUrZbck=s1360-w1360-h1020", 'user2.png')
@@ -51,8 +51,8 @@ Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Anything",
-  longitude: 35.66100916882782,
-  latitude: 139.70295191821114,
+  longitude: 139.70295191821114,
+  latitude: 35.66100916882782,
   url: "https://the-musicbar.jp/wp/wp-content/uploads/2023/10/FOOD_MusicBar_20230929_FIX_ol.pdf"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipOe1bx7C9PLI-0xPc4L5hjc0mNyst7bpwCEfA8N=s1360-w1360-h1020", 'user3.png')
@@ -66,8 +66,8 @@ Bar.create!(
   smoking: true,
   food: false,
   alcohol: "Anything",
-  longitude: 35.65970776640392,
-  latitude: 139.70148363996984,
+  longitude: 139.70148363996984,
+  latitude: 35.65970776640392,
   url: "https://djbar-bridge.com/"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020", 'user4.png')
@@ -81,8 +81,8 @@ Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Anything",
-  longitude: 35.73350037074206,
-  latitude: 139.70974154845496,
+  longitude: 139.70974154845496,
+  latitude: 35.73350037074206,
   url: "https://musclegirls.jimdofree.com/"
 ).tap do |bar|
   attach_photo(bar, "https://thesmartlocal.jp/wp-content/uploads/2023/03/muscle-girls-3-1024x768.jpg", 'user5.png')
@@ -96,8 +96,8 @@ Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Cocktail",
-  longitude: 35.65591424418253,
-  latitude: 139.7483423020964,
+  longitude: 139.7483423020964,
+  latitude: 35.65591424418253,
   url: "https://www.princehotels.co.jp/parktower/restaurant/stellargarden/"
 ).tap do |bar|
   attach_photo(bar, "https://www.princehotels.com/parktower/wp-content/uploads/sites/14/2019/07/res-stellar-platinum.jpg.jpg", 'user6.png')
@@ -111,8 +111,8 @@ Bar.create!(
   smoking: true,
   food: false,
   alcohol: "Anything",
-  longitude: 35.66355578251508,
-  latitude: 139.69459813396182,
+  longitude: 139.69459813396182,
+  latitude: 35.66355578251508,
   url: "https://www.womb.co.jp/reservation/"
 ).tap do |bar|
   attach_photo(bar, "https://media.timeout.com/images/106017162/image.jpg", 'user7.png')
@@ -126,8 +126,8 @@ Bar.create!(
   smoking: false,
   food: false,
   alcohol: "Craft Beer",
-  longitude: 35.67272189658194,
-  latitude: 139.66581370606173,
+  longitude: 139.66581370606173,
+  latitude: 35.67272189658194,
   url: "https://www.instagram.com/pintologytokyo/"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipNtGDbqngmYCjWZjsq0UP69Q0GHKb4rgKz5F4Rp=s1360-w1360-h1020", 'user8.png')
@@ -141,8 +141,8 @@ Bar.create!(
   smoking: false,
   food: true,
   alcohol: "Cocktails",
-  longitude: 35.66718854657908,
-  latitude: 139.7494569872622,
+  longitude: 139.7494569872622,
+  latitude: 35.66718854657908,
   url: "https://www.andaztokyo.jp/restaurants/jp/rooftop-bar/?utm_source=gmb&utm_medium=organic#menu"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020", 'user9.png')
@@ -156,8 +156,8 @@ Bar.create!(
   smoking: false,
   food: false,
   alcohol: "Anything",
-  longitude: 35.69863637921583,
-  latitude: 139.70459031687258,
+  longitude: 139.70459031687258,
+  latitude: 35.69863637921583,
   url: "https://cuore.bar/"
 ).tap do |bar|
   attach_photo(bar, "https://lh3.googleusercontent.com/p/AF1QipPEnKA9-rtKSuidizmad6_MLKZ6t5djNm7yQcTx=s1360-w1360-h1020", 'user10.png')
@@ -182,32 +182,32 @@ end
   user.save
 end
 
-plan = Plan.create!(
-  date_time: DateTime.now,
-  deadline: DateTime.now + 5.hours,
-  location: "Example Location 1",
-  user: User.first,
-  bar: Bar.first,
-  status: "done"
-)
+# plan = Plan.create!(
+#   date_time: DateTime.now,
+#   deadline: DateTime.now + 5.hours,
+#   location: "Example Location 1",
+#   user: User.first,
+#   bar: Bar.first,
+#   status: "done"
+# )
 
-plans = Plan.create!(
-  date_time: DateTime.now,
-  deadline: DateTime.now + 5.hours,
-  location: "Example Location 2",
-  user: User.last,
-  status: "pending"
-)
+# plans = Plan.create!(
+#   date_time: DateTime.now,
+#   deadline: DateTime.now + 5.hours,
+#   location: "Example Location 2",
+#   user: User.last,
+#   status: "pending"
+# )
 
-User.all.each do |user|
-  Poll.create!(
-    accepted: [true, false].sample,
-    mood: ["Casual", "Cozy", "Music", "Dance", "Luxury", "Theme"].sample,
-    price: ["$", "$$", "$$$"].sample,
-    smoking: [true, false].sample,
-    food: [true, false].sample,
-    alcohol: ["Craft Beer", "Cocktail", "Whiskey", "Anything"].sample,
-    user: user,
-    plan: [plan, plans].sample
-  )
+# User.all.each do |user|
+#   Poll.create!(
+#     submitted: [true, false].sample,
+#     mood: ["Casual", "Cozy", "Music", "Dance", "Luxury", "Theme"].sample,
+#     price: ["$", "$$", "$$$"].sample,
+#     smoking: [true, false].sample,
+#     food: [true, false].sample,
+#     alcohol: ["Craft Beer", "Cocktail", "Whiskey", "Anything"].sample,
+#     user: user,
+#     plan: [plan, plans].sample
+#   )
 end
