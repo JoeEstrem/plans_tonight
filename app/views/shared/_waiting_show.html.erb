@@ -12,6 +12,7 @@
 </div>
 
    <div class="plans-avatar-container" style="margin-bottom: 32px;">
+    <%= plan.user.poll.submitted? %>
       <% @users.each do |user| %>
         <div class="avatar-circle">
           <% if user.photo.attached? %>

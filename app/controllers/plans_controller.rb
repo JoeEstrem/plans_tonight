@@ -16,7 +16,6 @@ class PlansController < ApplicationController
       redirect_to invitation_plan_path(@plan), notice: 'Invite your friends to participate.'
 
     else
-
       render :new, status: :unprocessable_entity, notice: "Please answer this question."
     end
   end
@@ -51,12 +50,14 @@ class PlansController < ApplicationController
     # if @bar.all_users_confirmed?
     #   redirect_to confirmed_show_path(@bar)
     @bar = @plan.bar
+    if @bar
     @marker = [
       {
         lat: @bar.latitude,
         lng: @bar.longitude
       }
     ]
+    end
 
     unless @plan.polls.find_by(user: current_user)
       redirect_to new_plan_poll_path(@plan)
