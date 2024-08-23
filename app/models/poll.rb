@@ -6,9 +6,10 @@ class Poll < ApplicationRecord
   validates :alcohol, presence: true
   validates :smoking, inclusion: { in: [true, false] }
   validates :food, inclusion: { in: [true, false] }
-  # validates :submitted, inclusion: { in: [true, false]}
+  validates :submitted, inclusion: { in: [true, false]}
+  validates :user , uniqueness: { scope: :plan }
 
-  # def filled?
-  #   submitted == true
-  # end
+  def filled?
+    submitted == true
+  end
 end
