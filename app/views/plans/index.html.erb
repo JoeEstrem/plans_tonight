@@ -29,12 +29,14 @@
     <h1 class="my-4">Brewing Plans</h1>
     <% @pending_plans.each do |plan| %>
       <div class="col-md-4 mb-4">
+        <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
         <div class="card">
           <div class="card-body text-center">
             <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %Y %I:%M %p") %></h5>
             <p class="card-text">This plan is still pending.</p>
           </div>
         </div>
+      <% end %>
       </div>
     <% end %>
   </div>

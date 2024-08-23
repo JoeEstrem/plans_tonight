@@ -25,7 +25,7 @@ class PollsController < ApplicationController
 
       if @plan.all_polls_filled? || @plan.deadline_passed?
         @plan.update(status: :done)
-        @plan.bar = Bar.find_by(mood: @plan.polls.pluck(:mood).mode) || Bar.all.sample
+        @plan.bar = Bar.find_by(mood: @plan.polls.pluck(:mood).max) || Bar.all.sample
         @plan.save
       else
         @plan.update(status: :pending)
@@ -40,6 +40,6 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:mood, :alcohol, :smoking, :food, :user_id)
+    params.require(:poll).permit(:mood, :alcohol, :smoking, :food, :user_id, :submitted)
   end
 end

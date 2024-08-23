@@ -53,12 +53,14 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @users = User.all
     @bar = @plan.bar
+    if @bar
     @marker = [
       {
         lat: @bar.latitude,
         lng: @bar.longitude
       }
     ]
+    end
 
     unless @plan.polls.find_by(user: current_user)
       redirect_to new_plan_poll_path(@plan)
