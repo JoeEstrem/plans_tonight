@@ -2,7 +2,7 @@ class Bar < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_one_attached :photo
 
-  validates :name, :address, :mood, :price, :longitude, :latitude, :url, presence: true
+  validates :name, :address, :location, :mood, :price, :longitude, :latitude, :url, presence: true
   validates :name, length: { minimum: 3, maximum: 50 }
   validates :address, uniqueness: true
   # validates :smoking, presence: true
