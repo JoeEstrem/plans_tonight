@@ -31,3 +31,20 @@
   height: 100%;
   object-fit: cover;
 }
+
+.avatar-circle-small {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.avatar-bordered-small {
+  width: 30px;
+  border-radius: 50%;
+  border: $black 1px solid;
+}
