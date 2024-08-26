@@ -6,14 +6,13 @@ Rails.application.routes.draw do
     resources :plans, only: [:index]
   end
 
-  resources :plans, only: [:show, :create, :new, :post] do
+  resources :plans, only: [:show, :create, :new, :post, :update] do
     member do
       get 'invitation'
       post 'invite'
       patch 'mark_as_done'
       patch 'mark_as_pending'
       patch 'mark_as_past'
-      post 'close_poll'
     end
     resources :polls, only: [:new, :create]
   end

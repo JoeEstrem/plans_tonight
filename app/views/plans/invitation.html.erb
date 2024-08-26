@@ -1,7 +1,10 @@
-<div class="container">
-  <h1>Invite <span class="plans-yellow">friends</span></h1>
+<div class="grid-container">
 
-  <div class="plan-index-container">
+  <div class="grid-6">
+    <h1>INVITE <span class="plans-yellow">FRIENDS</span></h1>
+  </div>
+
+  <div class="plan-index-container grid-6">
 
     <% @users.where.not(id: current_user).each do |user| %>
       <div class="card-friend">
@@ -11,12 +14,8 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
         <div class="card-friend-infos">
-          <h3><%= user.username %></h2>
-            <% if @plan.polls.find_by(user: user) %>
-              <%= render "shared/invited_btn" %>
-            <% else %>
-          <%= link_to "Invite", invite_plan_path(@plan, user_id: user.id), class: "invite-button", data: { turbo_method: :post }, id: "invite-#{user.id}" %>
-        <% end %>
+          <h3><%= user.username.upcase %></h2>
+          <%= link_to "INVITE", invite_plan_path(@plan, user_id: user.id), class: "invite-button", data: { turbo_method: :post }, id: "invite-#{user.id}" %>
         </div>
       </div>
     <% end %>
@@ -24,6 +23,6 @@
 
 </div>
 
-<div class="footer">
-  <%= link_to "Complete your plans", user_plans_path(current_user), class:"homepage-button"  %>
-</div>
+  <div class="footer">
+    <%= link_to "COMPLETE YOUR PLANS", user_plans_path(current_user), class:"homepage-button"  %>
+  </div>
