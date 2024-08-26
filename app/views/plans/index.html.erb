@@ -25,18 +25,18 @@
 
  <!-- Brewing Plans (pending) -->
 
-<div class="container">
+<div class="grid-container">
 
-  <div class="row">
-    <h1 class="my-4">Brewing Plans</h1>
+  <div class="grid-6">
+    <h1>Brewing Plans</h1>
     <% @pending_plans.each do |plan| %>
-      <div class="col-md-4 mb-4">
+      <div>
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
-        <div class="card">
-           <!--   <%= link_to 'View plan', plan_path(plan)%> -->
-          <div class="card-body text-center">
-            <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %Y %I:%M %p") %></h5>
-            <p class="card-text">This plan is still pending.</p>
+
+        <div>
+          <div class="plan-card">
+            <h5><%= plan.date_time.strftime("%B %d").upcase%> PLANS</h5>
+            <p class="card-text">THIS PLAN IS STILL BREWING</p>
           </div>
         </div>
       <% end %>
@@ -46,9 +46,8 @@
 
 
     <!-- Upcoming Plans (Completed) -->
- <div class="container">
-  <div class="row">
-    <h1 class="my-4">Upcoming Plans</h1>
+ <div class="grid-6">
+    <h1>Upcoming Plans</h1>
     <% @done_plans.each do |plan| %>
       <div class="col-md-4 mb-4">
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
