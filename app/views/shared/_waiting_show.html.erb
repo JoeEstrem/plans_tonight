@@ -11,19 +11,34 @@
   <h2>Friends that have Submitted the poll...</h2>
 </div>
 
-   <div class="plans-avatar-container" style="margin-bottom: 32px;">
+<%= turbo_stream_from "plan_#{@plan}_polls" %>
+<div id="polls" class="plans">
+  <div class="plans-avatar-container" style="margin-bottom: 32px;">
+     <% @plan.polls.each do |poll| %>
+    <div class="avatar-circle">
+      <% if poll.user.photo.attached? %>
+        <%= cl_image_tag poll.user.photo.key, class: "avatar-photo"  %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+      <% end %>
+      </div>
+  <% end %>
+</div>
+</div>
+
+   <%# <div class="plans-avatar-container" style="margin-bottom: 32px;">
     <% @plan.polls.where(submitted: true).each do |poll| %>
       <%# <% @users.each do |user| %>
-        <div class="avatar-circle">
-          <% if poll.user.photo.attached? %>
-            <%= cl_image_tag poll.user.photo.key, class: "avatar-photo"  %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
-          <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+        <%# <div class="avatar-circle"> %>
+          <%# <% if poll.user.photo.attached? %>
+            <%# <%= cl_image_tag poll.user.photo.key, class: "avatar-photo"  %>
+          <%# <% else %>
+            <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" /> %>
+          <%# <% end %>
+      <%# </div> %>
+    <%# <% end %>
+  <%# </div> %>
+<%# </div> %>
 
 <div class="grid-container">
   <%= link_to "Close poll", plan_path(@plan), method: :patch, class: "plans-btn grid-6", data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to close the poll now?" } %>
