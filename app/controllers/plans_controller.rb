@@ -65,7 +65,10 @@ class PlansController < ApplicationController
     unless @plan.polls.find_by(user: current_user, submitted: true)
       redirect_to new_plan_poll_path(@plan)
     end
+    # render turbo_stream: turbo_stream.replace(:polls, partial: "shared/waiting_show",
+    #   locals: { poll: @poll, plan: @plan})
   end
+
 
   def update
     @plan = Plan.find(params[:id])

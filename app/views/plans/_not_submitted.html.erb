@@ -1,0 +1,4 @@
+<div id="not_submitted" class="plans-avatar-container" style="margin-bottom: 32px;">
+     <% plan.polls.where(submitted: false).each do |poll| %>
+    <%= render "polls/poll", poll: poll %>
+  <% end %>
