@@ -32,11 +32,11 @@
     <% @pending_plans.each do |plan| %>
       <div>
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
+
         <div>
           <div class="plan-card">
-            <h5><%= plan.date_time.strftime("%B %d, %Y").upcase%> PLANS</h5>
+            <h5><%= plan.date_time.strftime("%B %d").upcase%> PLANS</h5>
             <p class="card-text">THIS PLAN IS STILL BREWING</p>
-             <%= link_to 'VIEW PLAN', plan_path(plan)%>
           </div>
         </div>
       <% end %>
@@ -56,8 +56,8 @@
             <div class="card-body">
               <% if plan.bar %>
               <h5 class="card-title"><%= plan.bar.name %></h5>
-              <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %Y %I:%M %p") %></h5>
-              <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
+              <h5 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
+              <!-- <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
               <p class="card-text"><strong>Mood:</strong> <%= plan.bar.mood %></p>
               <p class="card-text"><strong>Price:</strong> <%= plan.bar.price %></p>
               <p class="card-text"><strong>Alcohol:</strong> <%= plan.bar.alcohol %></p>
@@ -65,7 +65,7 @@
               <h6 class="mt-4">Polls Information</h6>
               <% plan.polls.each do |poll| %>
                 <p><%= poll.mood %> mood, <%= poll.alcohol %> alcohol preference, <%= poll.smoking ? 'Smoking allowed' : 'No smoking' %></p>
-              <% end %>
+              <% end %> -->
             </div>
           </div>
         <% end %>

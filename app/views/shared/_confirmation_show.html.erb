@@ -37,7 +37,7 @@
         </div>
       <div class="bar-description-details"  style="display: flex; justify-content: space-between;">
         <div class="column-left">
-          <h3><strong>Date: </strong><%= @plan.date_time.strftime("%B %d, %Y %I:%M %p") %></h3>
+          <h3><strong>Date: </strong><%= @plan.date_time.strftime("%F at %I:%M%p") %></h3>
             <h3>
               <strong>Smoking: </strong>
               <% if @bar.smoking %>
