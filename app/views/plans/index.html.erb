@@ -1,5 +1,4 @@
-
-  <%# <div class="plans-index-container">
+<%# <div class="plans-index-container">
     <div class="plans-list-element">
     <h1>Brewing Plans</h1>
 
@@ -22,41 +21,54 @@
         </div>
       </div>
     </div> %>
-
- <!-- Brewing Plans (pending) -->
-
+<!-- Brewing Plans (pending) -->
 <div class="grid-container">
-
   <div class="grid-6">
-    <h1>Brewing Plans</h1>
+    <h1>Brewing <span class="plans-yellow">Plans</span></h1>
     <% @pending_plans.each do |plan| %>
       <div>
-        <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
-        <div>
-          <div class="plan-card">
-            <h5><%= plan.date_time.strftime("%B %d").upcase%> PLANS</h5>
-            <p class="card-text">THIS PLAN IS STILL BREWING</p>
+        <%= link_to plan_path(plan), class: 'card-btn' do %>
+          <div>
+            <div class="plan-card">
+              <h5> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase%></span></h5>
+              <p class="card-text">THIS PLAN IS STILL BREWING</p>
+              <p class="card-text">FRIENDS GOING</p>
+              <div class="friends-plan-index">
+                <% plan.users.first(5).each do |user| %>
+                  <div class="avatar-circle-small">
+                    <% if user.photo.attached? %>
+                      <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
+                    <% else %>
+                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if plan.users.count > 5 %>
+                  <div class="avatar-circle-small">
+                    <%# <i class="fa-solid fa-plus" style="color: #161616;"></i> %>
+                    <i class="fa-solid fa-circle-plus" style="color: #161616;"></i>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
-
-
-    <!-- Upcoming Plans (Completed) -->
- <div class="grid-6">
-    <h1>Upcoming Plans</h1>
-    <% @done_plans.each do |plan| %>
-      <div class="col-md-4 mb-4">
-        <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
-          <div class="card">
-            <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
-            <div class="card-body">
-              <% if plan.bar %>
-              <h5 class="card-title"><%= plan.bar.name %></h5>
-              <h5 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
-              <!-- <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
+  <!-- Upcoming Plans (Completed) -->
+  <div class="grid-6">
+    <h1>Upcoming <span class="plans-yellow">Plans</h1>
+      <% @done_plans.each do |plan| %>
+        <div class="col-md-4 mb-4">
+          <%= link_to plan_path(plan), class: 'card-btn' do %>
+            <div class="card">
+              <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
+              <div class="card-body">
+                <% if plan.bar %>
+                  <h5 class="card-title"><%= plan.bar.name %></h5>
+                  <h6 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
+                  <!-- <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
               <p class="card-text"><strong>Mood:</strong> <%= plan.bar.mood %></p>
               <p class="card-text"><strong>Price:</strong> <%= plan.bar.price %></p>
               <p class="card-text"><strong>Alcohol:</strong> <%= plan.bar.alcohol %></p>
@@ -65,13 +77,13 @@
               <% plan.polls.each do |poll| %>
                 <p><%= poll.mood %> mood, <%= poll.alcohol %> alcohol preference, <%= poll.smoking ? 'Smoking allowed' : 'No smoking' %></p>
               <% end %> -->
-            </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-
-<div class="grid-container">
-  <%= link_to 'HOME', root_path, class: 'plans-btn grid-6' %>
-</div>
+    </div>
+    <div class="grid-container">
+      <%= link_to 'HOME', root_path, class: 'plans-btn grid-6' %>
+    </div>
