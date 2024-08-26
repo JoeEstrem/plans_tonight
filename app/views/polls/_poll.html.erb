@@ -1,0 +1,8 @@
+<div class="avatar-circle">
+  <% if poll.user.photo.attached? %>
+    <%= cl_image_tag poll.user.photo.key, class: "avatar-photo"  %>
+  <% else %>
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+  <% end %>
+</div>
+<% poll.submitted %>

@@ -83,3 +83,4 @@ gem 'line-bot-api', '~> 1.18.0 '
 
 gem "geocoder"
 
+gem "actioncable-enhanced-postgresql-adapter"
