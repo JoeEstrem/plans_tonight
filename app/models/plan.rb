@@ -6,6 +6,7 @@ class Plan < ApplicationRecord
   accepts_nested_attributes_for :polls, allow_destroy: true
 
   validates :date_time, presence: true
+  validates :deadline, presence: true
 
   enum status: { pending: 0, done: 1, past: 2}
 

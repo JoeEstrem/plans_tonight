@@ -3,11 +3,17 @@
     <div class="show-title">
       <div style="display: flex; align-items: center; white-space: nowrap;">
         <h1>Your</h1>
-        <h1 class="yellow-text" style="margin-left: 10px;">
-        Plans Tonight</h1>
+        <h1 class="yellow-text" style="margin-left: 10px;">Plans Tonight</h1>
       </div>
-
-<div class="waiting-container">
+      <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %H:%M") %></h5>
+      <div
+        data-controller="countdown"
+        data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
+        <div data-countdown-target="countdown"></div>
+      </div>
+    </div>
+  </div>
+  <div class="waiting-container">
   <h2>Friends that have Submitted the poll...</h2>
 </div>
 
@@ -24,6 +30,10 @@
     <% end %>
   </div>
 </div>
+
+
+
+
 
 <div class="grid-container">
   <%= link_to "Close poll", plan_path(@plan), method: :patch, class: "plans-btn grid-6", data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to close the poll now?" } %>
