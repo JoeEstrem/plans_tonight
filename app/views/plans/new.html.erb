@@ -1,9 +1,8 @@
-<html class="bg">
-  <body>
+
     <div class="grid-container">
 
       <div class="grid-6">
-        <h1>MAKE YOUR PLANS TONIGHT!</h1>
+        <h1>MAKE YOUR <span class="plans-yellow">PLANS TONIGHT!</span></h1>
       </div>
 
       <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
@@ -18,6 +17,13 @@
         <div class="input-group grid-6">
           <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
         </div>
+
+        <!-- SELECT LOCATION -->
+        <h2 style="margin-top: 24px">Select Location</h2>
+        <div class="input-group grid-6">
+          <%= f.text_field :location, class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
+        </div>
+
 
         <%= f.simple_fields_for :polls do |poll_form| %>
           <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
@@ -47,7 +53,4 @@
         </div>
 
       <% end %>
-
     </div>
-  </body>
-</html>
