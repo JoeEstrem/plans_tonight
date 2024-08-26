@@ -11,7 +11,12 @@
         <!-- SELECT DATE & TIME -->
         <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
         <div class="input-group grid-6">
-          <%= f.text_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+          <%= f.datetime_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+        </div>
+
+        <h2 style="margin-top: 24px">Create Deadline</h2>
+        <div class="input-group grid-6">
+          <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
         </div>
 
         <%= f.simple_fields_for :polls do |poll_form| %>
