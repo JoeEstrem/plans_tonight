@@ -2,97 +2,97 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
 </head>
-<div class="container show-title">
 
-  <div class="confirmation-container" style="padding-top: 64px;">
-    <div class="show-title">
-      <div style="display: flex; align-items: center; white-space: nowrap;">
-        <h1>Your</h1>
-        <h1 class="yellow-text" style="margin-left: 10px;">
-        Plans Tonight</h1>
-      </div>
-      <div style="display: flex; white-space: nowrap;">
-        <h1>Have Been Confirmed</h1>
-      </div>
-    </div>
-  </div>
-    <!-- Bar Image-->
-    <div class="image-bar" style="margin-top: 24px;">
-      <div class="image">
-        <% @bar.photo %>
-          <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
-      </div>
-    </div>
-      <!-- Bar Description -->
-    <div class="description-container" style="padding-top: 32px;">
-      <div class="bar-description">
-        <div style="margin-bottom: 16px;">
-          <h2><%= @bar.name %>
-          </h2>
-          <a href="<%= @bar.url %>" style="text-decoration: none; color: #007BFF; display: block; overflow-wrap: break-word;">
-            <%= @bar.url %>
-          </a>
-            <h3><strong>Address: </strong><%= @bar.address %>
-            </h3>
+<div class="grid-container bg">
+  <div class="show-title">
+    <div>
+      <div class="show-title">
+        <div style="display: flex; align-items: center; white-space: nowrap;">
+          <h1>YOUR</h1>
+          <h1 class="yellow-text" style="margin-left: 10px;">
+          PLANS TONIGHT</h1>
         </div>
-      <div class="bar-description-details"  style="display: flex; justify-content: space-between;">
-        <div class="column-left">
-          <h3><strong>Date: </strong><%= @plan.date_time.strftime("%F at %I:%M%p") %></h3>
-            <h3>
-              <strong>Smoking: </strong>
-              <% if @bar.smoking %>
-                <i class="fas fa-smoking"></i>
+        <div style="display: flex; white-space: nowrap;">
+          <h1>HAVE BEEN CONFIRMED</h1>
+        </div>
+      </div>
+    </div>
+      <!-- Bar Image-->
+      <div class="image-bar" style="margin-top: 24px;">
+        <div class="image">
+          <% @bar.photo %>
+            <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
+        </div>
+      </div>
+        <!-- Bar Description -->
+      <div class="description-container" style="padding-top: 32px;">
+        <div class="bar-description">
+          <div style="margin-bottom: 16px;">
+            <h2><%= @bar.name.upcase %></h2>
+            <h3><strong>ADDRESS: </strong><%= @bar.address %></h3>
+          </div>
+        <div class="bar-description-details"  style="display: flex; justify-content: space-between;">
+          <div class="column-left">
+            <h3><strong>DATE: </strong><%= @plan.date_time.strftime("%F") %></h3>
+            <h3><strong>TIME: </strong><%= @plan.date_time.strftime("%I:%M%p") %></h3>
+              <h3>
+                <strong>SMOKING: </strong>
+                <% if @bar.smoking %>
+                  <i class="fas fa-smoking"></i>
+                <% else %>
+                  <i class="fas fa-ban"></i>
+                <% end %>
+              </h3>
+              <h3>
+                <strong>FOOD: </strong>
+              <% if @bar.food %>
+                <i class="fas fa-utensils"></i>
               <% else %>
                 <i class="fas fa-ban"></i>
-               <% end %>
-            </h3>
-            <h3>
-              <strong>Food: </strong>
-            <% if @bar.food %>
-              <i class="fas fa-utensils"></i>
+              <% end %>
+              </h3>
+          </div>
+          <div class="column-right">
+            <h3><strong>MOOD: </strong><%= @bar.mood.upcase %></h3>
+            <h3><strong>PRICE: </strong><%= @bar.price %></h3>
+            <h3><strong>SPECIALTY: </strong><%= @bar.alcohol.upcase %></h3>
+            <h3><strong><%= link_to 'VIEW WEBSITE', @bar.url, style:"text-decoration: none; color: #FFD74D; display: block; overflow-wrap: break-word;" %></strong></h3>
+          </div>
+        </div>
+        </div>
+      </div>
+      <!-- Add to Calendar -->
+      <div class="show-element" style="margin-top: 32px;">
+          <%= link_to "ADD TO CALENDAR", "#", class:"plans-btn"  %>
+        </div>
+      <!-- Map -->
+      <div style="margin-top: 32px;">
+        <h2>MAP</h2>
+      <div style="width: 100%; height: 200px; margin-top: 16px;"
+        data-controller="map"
+        data-map-markers-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_ACCESS_TOKEN'] %>">
+      </div>
+      <!-- Friends -->
+      <div style="margin-top: 32px;">
+        <h2>FRIENDS GOING</h2>
+      </div>
+      <div class="plans-avatar-container" style="margin-bottom: 32px;">
+        <% @plan.users.each do |user| %>
+          <div class="avatar-circle">
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
             <% else %>
-              <i class="fas fa-ban"></i>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
             <% end %>
-            </h3>
         </div>
-        <div class="column-right">
-          <h3><strong>Mood: </strong><%= @bar.mood %></h3>
-          <h3><strong>Price: </strong><%= @bar.price %></h3>
-          <h3><strong>Specialty: </strong><%= @bar.alcohol %></h3>
-        </div>
-      </div>
-      </div>
+      <% end %>
     </div>
-    <!-- Add to Calendar -->
-    <div class="show-element" style="margin-top: 32px;">
-        <%= link_to "Add to Calendar", "#", class:"homepage-button"  %>
-      </div>
-    <!-- Map -->
-    <div class="show-element" style="margin-top: 32px;">
-      <h2>Map</h2>
-    <div style="width: 100%; height: 200px; margin-top: 16px;"
-      data-controller="map"
-      data-map-markers-value="<%= @marker.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_ACCESS_TOKEN'] %>">
-    </div>
-    <!-- Friends -->
-    <div class="show-element" style="margin-top: 32px;">
-      <h2>Friends Going</h2>
-    </div>
-    <div class="plans-avatar-container" style="margin-bottom: 32px;">
-      <% @plan.users.each do |user| %>
-        <div class="avatar-circle">
-          <% if user.photo.attached? %>
-            <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
-          <% end %>
-      </div>
-    <% end %>
   </div>
-</div>
-</div>
+  </div>
 
-<div class="grid-container">
-  <%= link_to "Back", user_plans_path(current_user), class: "plans-btn grid-6" %>
+  <div class="grid-6">
+    <%= link_to "BACK", user_plans_path(current_user), class: "plans-btn", style: "display: flex; width: 90%; justify-content: center; align-items: center;" %>
+  </div>
+
 </div>

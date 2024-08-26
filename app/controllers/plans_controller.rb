@@ -2,6 +2,7 @@ class PlansController < ApplicationController
   # skip_before_action :authenticate_user!
 
   def new
+    @body_class = "bg"
     @plan = Plan.new
     @plan.polls.build
   end
@@ -11,7 +12,6 @@ class PlansController < ApplicationController
     @plan.user = current_user
 
     @plan.update(status: :pending)
-
     if @plan.save
       redirect_to invitation_plan_path(@plan), notice: 'Invite your friends to participate.'
     else
@@ -25,14 +25,17 @@ class PlansController < ApplicationController
     @past_plans = Plan.past
     @pending_plans = Plan.pending
     @done_plans = Plan.done
+    @body_class = "bg"
   end
 
   def invitation
     @users = User.all
     @plan = Plan.find(params[:id])
+    @body_class = "bg"
   end
 
   def invite
+    @body_class = "bg"
     @plan = Plan.find(params[:id])
     @poll = Poll.new
     create_poll
@@ -45,6 +48,7 @@ class PlansController < ApplicationController
   end
 
   def show
+    @body_class = "bg"
     @plan = Plan.find(params[:id])
     @users = User.all
     # plan.user = User.where(form_submitted: true)
