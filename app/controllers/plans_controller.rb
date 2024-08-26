@@ -39,7 +39,7 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @poll = Poll.new
     create_poll
-    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to him by following to #{plan_url(@plan)}").call
+    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to them: #{plan_url(@plan)}").call
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace("invite-#{@poll.user.id}", partial: "shared/invited_btn")
