@@ -28,7 +28,7 @@
 <div class="grid-container">
 
   <div class="grid-6">
-    <h1>Brewing Plans</h1>
+    <h1>BREWING PLANS</h1>
     <% @pending_plans.each do |plan| %>
       <div>
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
@@ -47,7 +47,7 @@
 
     <!-- Upcoming Plans (Completed) -->
  <div class="grid-6">
-    <h1>Upcoming Plans</h1>
+    <h1>UPCOMING PLANS</h1>
     <% @done_plans.each do |plan| %>
       <div class="col-md-4 mb-4">
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
@@ -55,7 +55,7 @@
             <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
             <div class="card-body">
               <% if plan.bar %>
-              <h5 class="card-title"><%= plan.bar.name %></h5>
+              <h5 class="card-title"><%= plan.bar.name.upcase %></h5>
               <h5 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
               <!-- <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
               <p class="card-text"><strong>Mood:</strong> <%= plan.bar.mood %></p>
