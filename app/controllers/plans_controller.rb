@@ -2,6 +2,7 @@ class PlansController < ApplicationController
   # skip_before_action :authenticate_user!
 
   def new
+    @body_class = "bg"
     @plan = Plan.new
     @plan.polls.build
   end
@@ -24,14 +25,17 @@ class PlansController < ApplicationController
     @past_plans = Plan.past
     @pending_plans = Plan.pending
     @done_plans = Plan.done
+    @body_class = "bg"
   end
 
   def invitation
     @users = User.all
     @plan = Plan.find(params[:id])
+    @body_class = "bg"
   end
 
   def invite
+    @body_class = "bg"
     @plan = Plan.find(params[:id])
     @poll = Poll.new
     create_poll
@@ -44,6 +48,7 @@ class PlansController < ApplicationController
   end
 
   def show
+    @body_class = "bg"
     @plan = Plan.find(params[:id])
     @users = User.all
     @bar = @plan.bar

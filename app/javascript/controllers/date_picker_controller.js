@@ -22,6 +22,7 @@ export default class extends Controller {
       time_24hr: true,
       minDate: japanTime,
       defaultDate: japanTime,
+      enableSeconds: false
     });
   }
 }

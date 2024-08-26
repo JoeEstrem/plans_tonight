@@ -1,53 +1,30 @@
 
-  <%# <div class="plans-index-container">
-    <div class="plans-list-element">
-    <h1>Brewing Plans</h1>
-
-      <div class="card-plan-list">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-plan-list-infos">
-          <h2>plan-list name</h2>
-          <p>plan-list description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="plans-list-element">
-      <h1>Upcoming Plans</h1>
-      <div class="card-plan-list">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-plan-list-infos">
-          <h2>plan-list name</h2>
-          <p>plan-list description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div> %>
-
  <!-- Brewing Plans (pending) -->
 
 <div class="grid-container">
 
-  <div class="grid-6">
-    <h1>Brewing Plans</h1>
-    <% @pending_plans.each do |plan| %>
-      <div>
-        <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
-
-        <div>
-          <div class="plan-card">
-            <h5><%= plan.date_time.strftime("%B %d").upcase%> PLANS</h5>
-            <p class="card-text">THIS PLAN IS STILL BREWING</p>
-          </div>
+  <div class="row">
+  <h1 class="my-4">BREWING PLANS</h1>
+  <% @pending_plans.each do |plan| %>
+    <div class="col-md-4 mb-4">
+      <div class="card"
+           data-controller="countdown"
+           data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
+        <%= link_to 'VIEW PLAN', plan_path(plan), class: 'text-decoration-none' %>
+        <div class="card-body text-center">
+          <h5 class="card-title"><%= plan.date_time.strftime("%B %d") %></h5>
+          <p class="card-text">THIS PLAN IS STILL BREWING</p>
+          <p data-countdown-target="countdown">LOADING...</p> <!-- Countdown display -->
         </div>
-      <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 
 
     <!-- Upcoming Plans (Completed) -->
  <div class="grid-6">
-    <h1>Upcoming Plans</h1>
+    <h1>UPCOMING PLANS</h1>
     <% @done_plans.each do |plan| %>
       <div class="col-md-4 mb-4">
         <%= link_to plan_path(plan), class: 'text-decoration-none' do %>
@@ -55,7 +32,7 @@
             <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
             <div class="card-body">
               <% if plan.bar %>
-              <h5 class="card-title"><%= plan.bar.name %></h5>
+              <h5 class="card-title"><%= plan.bar.name.upcase %></h5>
               <h5 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
               <!-- <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
               <p class="card-text"><strong>Mood:</strong> <%= plan.bar.mood %></p>
