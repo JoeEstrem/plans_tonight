@@ -23,7 +23,7 @@
     </div> %>
 <!-- Brewing Plans (pending) -->
 <div class="grid-container">
-   <div class="grid-6">
+  <div class="grid-6">
     <h1>Brewing <span class="plans-yellow">Plans</span></h1>
     <% @pending_plans.each do |plan| %>
       <div>
@@ -52,7 +52,7 @@
               <div
               data-controller="countdown"
               data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
-              <div data-countdown-target="countdown"></div>
+                <div data-countdown-target="countdown"></div>
               </div>
             </div>
           </div>
@@ -60,7 +60,6 @@
       </div>
     <% end %>
   </div>
-
   <!-- Upcoming Plans (Completed) -->
   <div class="grid-6">
     <h1>UPCOMING <span class="plans-yellow">PLANS</h1>
@@ -92,8 +91,3 @@
         <%= link_to 'HOME', root_path, class: 'plans-btn' %>
       </div>
     </div>
-
-    <div class="grid-container">
-      <%= link_to 'HOME', root_path, class: 'plans-btn grid-6' %>
-    </div>
-
