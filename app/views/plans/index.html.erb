@@ -23,21 +23,21 @@
     </div> %>
 <!-- Brewing Plans (pending) -->
 <div class="grid-container">
-  <div class="grid-6">
+   <div class="grid-6">
     <h1>Brewing <span class="plans-yellow">Plans</span></h1>
     <% @pending_plans.each do |plan| %>
       <div>
         <%= link_to plan_path(plan), class: 'card-btn' do %>
           <div>
             <div class="plan-card">
-              <h5> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase%></span></h5>
+              <h5> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
               <p class="card-text">THIS PLAN IS STILL BREWING</p>
               <p class="card-text">FRIENDS GOING</p>
               <div class="friends-plan-index">
                 <% plan.users.first(5).each do |user| %>
                   <div class="avatar-circle-small">
                     <% if user.photo.attached? %>
-                      <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
+                      <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
                     <% else %>
                       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
                     <% end %>
@@ -45,10 +45,14 @@
                 <% end %>
                 <% if plan.users.count > 5 %>
                   <div class="avatar-circle-small">
-                    <%# <i class="fa-solid fa-plus" style="color: #161616;"></i> %>
                     <i class="fa-solid fa-circle-plus" style="color: #161616;"></i>
                   </div>
                 <% end %>
+              </div>
+              <div
+              data-controller="countdown"
+              data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
+              <div data-countdown-target="countdown"></div>
               </div>
             </div>
           </div>
