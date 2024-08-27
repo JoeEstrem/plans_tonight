@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   # skip_before_action :authenticate_user!
 
   def new
-    @body_class = "bg"
+    @body_class = "bg-yellow"
     @plan = Plan.new
     @plan.polls.build
   end
@@ -25,7 +25,7 @@ class PlansController < ApplicationController
     @past_plans = Plan.past
     @pending_plans = Plan.pending
     @done_plans = Plan.done
-    @body_class = "bg"
+    @body_class = "bg-yellow"
   end
 
   def invitation

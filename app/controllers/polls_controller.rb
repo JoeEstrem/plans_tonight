@@ -2,7 +2,7 @@ class PollsController < ApplicationController
   # skip_before_action :authenticate_user!
 
   def new
-    @body_class = "bg"
+    @body_class = "bg-yellow"
     @plan = Plan.find(params[:plan_id])
 
     if @plan.polls.find_by(user: current_user, submitted: true)

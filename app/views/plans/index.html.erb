@@ -23,8 +23,15 @@
     </div> %>
 <!-- Brewing Plans (pending) -->
 <div class="grid-container">
+
+  <div>
+    <h1 class="big-text"> YOUR<br>
+    PLANS</H1>
+  </div>
+
+
   <div class="grid-6">
-    <h1>BREWING <span class="plans-yellow">PLANS</span></h1>
+    <h2>BREWING PLANS</h2>
     <% @pending_plans.each do |plan| %>
       <div>
         <%= link_to plan_path(plan), class: 'card-btn' do %>
@@ -59,9 +66,9 @@
 
   <!-- Upcoming Plans (Completed) -->
   <div class="grid-6">
-    <h1>UPCOMING <span class="plans-yellow">PLANS</h1>
+    <h2 style="margin-top: 24px;">UPCOMING PLANS</h2>
       <% @done_plans.each do |plan| %>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4">
           <%= link_to plan_path(plan), class: 'card-btn' do %>
             <div class="card">
               <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
@@ -85,11 +92,6 @@
         <% end %>
       </div>
       <div class="grid-6">
-        <%= link_to 'HOME', root_path, class: 'plans-btn' %>
+        <%= link_to 'Home', root_path, class: 'plans-btn', style: 'margin-top: 24px;' %>
       </div>
     </div>
-
-    <div class="grid-container">
-      <%= link_to 'HOME', root_path, class: 'plans-btn grid-6' %>
-    </div>
-

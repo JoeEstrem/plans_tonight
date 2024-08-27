@@ -1,3 +1,14 @@
+.card {
+  border-radius: 16px 16px 16px 0px;
+  background-color: $white;
+  border: solid 6px $white;
+  margin-top: 12px;
+}
+
+.card-img-top {
+  border-radius: 16px 16px 0px 0px;
+}
+
 .icon-card {
   cursor: pointer;
   width: 100%;
@@ -24,7 +35,6 @@
   }
 
   input[type="radio"] {
-    /* Hide the default radio button */
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -48,11 +58,10 @@
 .plan-card {
   cursor: pointer;
   width: 100%;
-  background-color: $white;
-  border-radius: 8px;
-  border: solid 2px $gray;
-  padding: 16px 8px;
-  margin-top: 6px;
+  background-color: #FAFAFA;
+  border-radius: 16px 16px 16px 0px;
+  padding: 32px 8px;
+  margin-top: 12px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -90,7 +99,6 @@
   // }
 
   input[type="radio"] {
-    /* Hide the default radio button */
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -107,19 +115,19 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   background-color: $white;
-  border-radius: 8px;
-  border: solid 2px $gray;
+  border-radius: 16px 16px 16px 0px;
+  // border: solid 2px $gray;
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  transition: ease 0.3s;
+  transition: ease 0.2s;
   position: relative;
 }
 
 .category-selector:checked + label {
-  border: 6px solid $yellow;
+  border: 6px solid $black;
 }
 
 .card-plan-list {
@@ -199,6 +207,7 @@
 }
 
 .card-body {
+
   h5 {
     font-weight: bold;
   }

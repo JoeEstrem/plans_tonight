@@ -1,6 +1,8 @@
 <div class="grid-container">
   <div class="grid-6">
-    <h1>MAKE YOUR <span class="plans-yellow">PLANS TONIGHT!</span></h1>
+    <h1><span class="h1-white">MAKE YOUR</span><br>
+    <span class="big-text"> PLANS TONIGHT!</span></h1>
+    <p style="margin-top: -4px;">Answer the poll and get matched with the perfect bar.</p>
   </div>
   <%= simple_form_for @plan, html: { class: 'grid-6', data: { controller: "date-picker" } } do |f| %>
 
@@ -9,18 +11,13 @@
         <!-- SELECT DATE & TIME -->
         <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
         <div class="input-group grid-6">
-          <%= f.datetime_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
-        </div>
-
-        <h2 style="margin-top: 24px">Create Deadline</h2>
-        <div class="input-group grid-6">
-          <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+          <%= f.datetime_field :date_time, style: "box-shadow: 0 0 0; border: none;", class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "dateTime" } %>
         </div>
 
         <!-- SELECT LOCATION -->
-        <h2 style="margin-top: 24px">SELECT LOCATION</h2>
+        <h2 style="margin-top: 24px">PICK A LOCATION</h2>
         <div class="input-group grid-6">
-          <%= f.text_field :location, class: "form-control datetime-picker", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
+          <%= f.text_field :location, style: "box-shadow: 0 0 0; border: none;", class: "form-control datetime-picker", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
         </div>
 
 
@@ -34,21 +31,10 @@
         <!-- QUESTION 2 -->
         <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
         <%= render 'polls/alcohol', f: poll_form %>
-        <!-- QUESTION 3 -->
-        <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
-        <%= render 'polls/smoking', f: poll_form %>
-        <!-- QUESTION 4 -->
-        <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
-        <%= render 'polls/food', f: poll_form %>
-        <!-- SUBMIT -->
       <% end %>
       <div class="form-group">
-        <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
+        <%= f.button :submit, 'Invite Friends', class: 'plans-btn grid-6', style: 'margin-top: 24px;' %>
       </div>
     <% end %>
-    <% end %>
-    <div class="form-group">
-      <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
-    </div>
   <% end %>
 </div>
