@@ -7,7 +7,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +19,9 @@
     <%# <% unless params[:controller] == "pages" && params[:action] == "home" %>
     <%# <%= render "shared/navbar" %>
     <%# <% end %>
-    <%= render "shared/flashes" %>
+
+    <%# <%= render "shared/flashes" %>
+
     <%= yield %>
   </body>
 </html>

@@ -1,9 +1,7 @@
 <div class="grid-container">
-
   <div class="grid-6">
     <h1>MAKE YOUR <span class="plans-yellow">PLANS TONIGHT!</span></h1>
   </div>
-
   <%= simple_form_for @plan, html: { class: 'grid-6', data: { controller: "date-picker" } } do |f| %>
 
       <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
@@ -33,25 +31,24 @@
       <!-- QUESTION 1 -->
       <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
         <%= render 'polls/mood', f: poll_form %>
-
-      <!-- QUESTION 2 -->
-      <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
+        <!-- QUESTION 2 -->
+        <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
         <%= render 'polls/alcohol', f: poll_form %>
-
-      <!-- QUESTION 3 -->
-      <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
+        <!-- QUESTION 3 -->
+        <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
         <%= render 'polls/smoking', f: poll_form %>
-
-      <!-- QUESTION 4 -->
-      <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
+        <!-- QUESTION 4 -->
+        <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
         <%= render 'polls/food', f: poll_form %>
-
-      <!-- SUBMIT -->
+        <!-- SUBMIT -->
+      <% end %>
+      <div class="form-group">
+        <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
+      </div>
     <% end %>
     <% end %>
     <div class="form-group">
       <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
     </div>
-
   <% end %>
 </div>
