@@ -1,67 +1,52 @@
 <div class="grid-container">
-
   <div class="grid-6">
     <h1>MAKE YOUR <span class="plans-yellow">PLANS TONIGHT!</span></h1>
   </div>
-
   <%= simple_form_for @plan, html: { class: 'grid-6', data: { controller: "date-picker" } } do |f| %>
-
-      <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
-
-        <!-- SELECT DATE & TIME -->
-        <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
-        <div class="input-group grid-6">
-          <%= f.datetime_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
-        </div>
-
-        <h2 style="margin-top: 24px">Create Deadline</h2>
-        <div class="input-group grid-6">
-          <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
-        </div>
-
-        <!-- SELECT LOCATION -->
-        <h2 style="margin-top: 24px">SELECT LOCATION</h2>
-        <div class="input-group grid-6">
-          <%= f.text_field :location, class: "form-control datetime-picker", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
-        </div>
-
-    <h2 style="margin-top: 24px">Create Deadline</h2>
-    <div class="input-group grid-6">
-      <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "deadline" } %>
-    </div>
-
-    <!-- SELECT LOCATION -->
-    <h2 style="margin-top: 24px">Select Location</h2>
-    <div class="input-group grid-6">
-      <%= f.text_field :location, class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
-    </div>
-
-    <%= f.simple_fields_for :polls do |poll_form| %>
-      <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
-      <%= poll_form.input :submitted, as: :hidden, input_html: { value: true } %>
-
-      <!-- QUESTION 1 -->
-      <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
+    <%= simple_form_for @plan, html: { class: 'grid-6' }  do |f| %>
+      <!-- SELECT DATE & TIME -->
+      <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
+      <div class="input-group grid-6">
+        <%= f.datetime_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+      </div>
+      <h2 style="margin-top: 24px">Create Deadline</h2>
+      <div class="input-group grid-6">
+        <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { controller: "date-picker" } %>
+      </div>
+      <!-- SELECT LOCATION -->
+      <h2 style="margin-top: 24px">SELECT LOCATION</h2>
+      <div class="input-group grid-6">
+        <%= f.text_field :location, class: "form-control datetime-picker", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
+      </div>
+      <h2 style="margin-top: 24px">Create Deadline</h2>
+      <div class="input-group grid-6">
+        <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "deadline" } %>
+      </div>
+      <!-- SELECT LOCATION -->
+      <h2 style="margin-top: 24px">Select Location</h2>
+      <div class="input-group grid-6">
+        <%= f.text_field :location, class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
+      </div>
+      <%= f.simple_fields_for :polls do |poll_form| %>
+        <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+        <%= poll_form.input :submitted, as: :hidden, input_html: { value: true } %>
+        <!-- QUESTION 1 -->
+        <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
         <%= render 'polls/mood', f: poll_form %>
-
-      <!-- QUESTION 2 -->
-      <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
+        <!-- QUESTION 2 -->
+        <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
         <%= render 'polls/alcohol', f: poll_form %>
-
-      <!-- QUESTION 3 -->
-      <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
+        <!-- QUESTION 3 -->
+        <h2 style="margin-top: 24px">WILL YOU SMOKE?</h2>
         <%= render 'polls/smoking', f: poll_form %>
-
-      <!-- QUESTION 4 -->
-      <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
+        <!-- QUESTION 4 -->
+        <h2 style="margin-top: 24px">DO YOU WANT TO EAT THERE?</h2>
         <%= render 'polls/food', f: poll_form %>
-
-      <!-- SUBMIT -->
+        <!-- SUBMIT -->
+      <% end %>
+      <div class="form-group">
+        <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
+      </div>
     <% end %>
-
-    <div class="form-group">
-      <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
-    </div>
-
   <% end %>
 </div>
