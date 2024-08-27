@@ -32,6 +32,8 @@ class Plan < ApplicationRecord
   #   self.save
   # end
   def close_polls!(location)
+
+    location = location.capitalize
     update(deadline: DateTime.now, status: :done)
 
     # Find the first bar in the given location
