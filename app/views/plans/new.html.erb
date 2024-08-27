@@ -25,16 +25,6 @@
           <%= f.text_field :location, class: "form-control datetime-picker", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
         </div>
 
-    <h2 style="margin-top: 24px">Create Deadline</h2>
-    <div class="input-group grid-6">
-      <%= f.datetime_field :deadline, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "deadline" } %>
-    </div>
-
-    <!-- SELECT LOCATION -->
-    <h2 style="margin-top: 24px">Select Location</h2>
-    <div class="input-group grid-6">
-      <%= f.text_field :location, class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
-    </div>
 
     <%= f.simple_fields_for :polls do |poll_form| %>
       <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
@@ -58,7 +48,7 @@
 
       <!-- SUBMIT -->
     <% end %>
-
+    <% end %>
     <div class="form-group">
       <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
     </div>
