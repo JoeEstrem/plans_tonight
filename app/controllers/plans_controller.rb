@@ -39,7 +39,7 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @poll = Poll.new
     create_poll
-    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to him by following to #{plan_url(@plan)}").call
+    LineMessageService.new("Sup? #{@plan.user.username} invited you to have some Plans on #{@plan.date_time}. Respond to them: #{plan_url(@plan)}").call
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace("invite-#{@poll.user.id}", partial: "shared/invited_btn")
@@ -51,10 +51,8 @@ class PlansController < ApplicationController
     @body_class = "bg"
     @plan = Plan.find(params[:id])
     @users = User.all
-    # plan.user = User.where(form_submitted: true)
-    # if @bar.all_users_confirmed?
-    #   redirect_to confirmed_show_path(@bar)
     @bar = @plan.bar
+
     if @bar
     @marker = [
       {
@@ -67,7 +65,10 @@ class PlansController < ApplicationController
     unless @plan.polls.find_by(user: current_user, submitted: true)
       redirect_to new_plan_poll_path(@plan)
     end
+    # render turbo_stream: turbo_stream.replace(:polls, partial: "shared/waiting_show",
+    #   locals: { poll: @poll, plan: @plan})
   end
+
 
   def update
     @plan = Plan.find(params[:id])

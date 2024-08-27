@@ -13,27 +13,20 @@
       </div>
     </div>
   </div>
-  <div class="waiting-container">
+  <div class="waiting-container" style="margin-top: 16px;">
   <h2>Friends that have Submitted the poll...</h2>
 </div>
 
-   <div class="plans-avatar-container" style="margin-bottom: 32px;">
-    <% @plan.polls.where(submitted: true).each do |poll| %>
-      <%# <% @users.each do |user| %>
-        <div class="avatar-circle">
-          <% if poll.user.photo.attached? %>
-            <%= cl_image_tag poll.user.photo.key, class: "avatar-photo"  %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
-          <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= turbo_stream_from "plan_#{plan.id}_submitted" %>
+  <%= render "plans/submitted", plan: plan %>
+</div>
+  <div class="waiting-container" style="margin-top: 16px;">
+  <h2>Friends that have Not Submitted the poll...</h2>
 </div>
 
-
-
-
+  <%= turbo_stream_from "plan_#{plan.id}_not_submitted" %>
+  <%= render "plans/not_submitted", plan: plan %>
+</div>
 
 <div class="grid-container">
   <%= link_to "Close poll", plan_path(@plan), method: :patch, class: "plans-btn grid-6", data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to close the poll now?" } %>

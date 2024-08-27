@@ -42,6 +42,18 @@ class PollsController < ApplicationController
     end
   end
 
+  def update
+    @plan = Plan.find(params[:plan_id])
+    @poll = Poll.find_by(plan: @plan, user: current_user)
+
+    if @poll.update(poll_params)
+      handle_poll_submission
+      redirect_to plan_path(@plan), notice: 'Poll was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def poll_params
