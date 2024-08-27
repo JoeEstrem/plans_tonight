@@ -70,11 +70,22 @@ class PlansController < ApplicationController
   end
 
 
+  # def update
+  #   @plan = Plan.find(params[:id])
+  #   # @plan.polls.all = 'submitted'
+  #   @plan.close_polls!
+  #   redirect_to plan_path(@plan)
+  # end
   def update
     @plan = Plan.find(params[:id])
-    # @plan.polls.all = 'submitted'
-    @plan.close_polls!
-    redirect_to plan_path(@plan)
+    # Ensure the location is available and passed correctly
+    location = @plan.location
+
+    if @plan.close_polls!(location) # Pass the location argument
+      redirect_to plan_path(@plan), notice: 'Plan was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   # def mark_as_done

@@ -6,8 +6,14 @@ export default class extends Controller {
 
   connect() {
     const deadlineValue = this.data.get("deadlineValue");
-    if (deadlineValue) {
-      this.startCountdown(new Date(deadlineValue));
+    console.log("Raw deadline value:", deadlineValue);
+
+    // Parse and log the date
+    const deadline = new Date(deadlineValue);
+    console.log("Parsed deadline date:", deadline);
+
+    if (deadline) {
+      this.startCountdown(deadline);
     } else {
       this.countdownTarget.textContent = "No deadline set";
     }

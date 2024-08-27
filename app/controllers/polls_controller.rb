@@ -31,7 +31,7 @@ class PollsController < ApplicationController
     if @poll.save
 
       if @plan.all_polls_filled? || @plan.deadline_passed?
-        @plan.close_polls!
+        @plan.close_polls!(@plan.location)
       else
         @plan.update(status: :pending)
       end
