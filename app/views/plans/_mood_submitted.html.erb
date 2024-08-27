@@ -1,0 +1,61 @@
+<div id="mood_submitted" style="margin: 16px;">
+  <div class="plan-card-submitted">
+    <h1>😊</h1>
+    <h3>CASUAL</h3>
+    <div class="avatar-cirlce-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, mood: 'Casual').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+     </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>✨</h1>
+    <h3>CLASSY</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, mood: 'Classy').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🪩</h1>
+    <h3>DANCING</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+    <% plan.polls.where(submitted: true, mood: 'Dancing').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🎶</h1>
+    <h3>MUSIC</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, mood: 'Music').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🎭</h1>
+    <h3>UNIQUE</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, mood: 'Unique').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🙌</h1>
+    <h3>ANYTHING</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, mood: 'Anything').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -30,6 +30,20 @@
     pointer-events: none;
   }
 }
+.result-icon-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: $white;
+  border-radius: 8px;
+  border: solid 2px $gray;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  position: relative;
+}
 
 .plan-card {
   cursor: pointer;
@@ -188,4 +202,20 @@
   h5 {
     font-weight: bold;
   }
+}
+
+.plan-card-submitted {
+  width: 100%;
+  background-color: $white;
+  border-radius: 8px;
+  border: solid 2px $gray;
+  padding: 16px 8px;
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  position: relative;
+
 }
