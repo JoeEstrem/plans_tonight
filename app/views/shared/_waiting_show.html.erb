@@ -5,7 +5,7 @@
         <h1>Your</h1>
         <h1 class="yellow-text" style="margin-left: 10px;">Plans Tonight</h1>
       </div>
-      <h5 class="card-title"><%= plan.date_time.strftime("%B %d, %H:%M") %></h5>
+      <h2 class="card-title"><%= plan.date_time.strftime("%B %d, %H:%M") %></h2>
       <div
         data-controller="countdown"
         data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
@@ -15,18 +15,32 @@
   </div>
   <div class="waiting-container" style="margin-top: 16px;">
   <h2>Friends that have Submitted the poll...</h2>
-</div>
 
   <%= turbo_stream_from "plan_#{plan.id}_submitted" %>
   <%= render "plans/submitted", plan: plan %>
 </div>
   <div class="waiting-container" style="margin-top: 16px;">
   <h2>Friends that have Not Submitted the poll...</h2>
-</div>
 
   <%= turbo_stream_from "plan_#{plan.id}_not_submitted" %>
   <%= render "plans/not_submitted", plan: plan %>
 </div>
+
+
+<h2>Whats The Vibe?...</h2>
+<div class="waiting-container" id="mood_submitted" style="margin-top: 16px;">
+
+  <%= turbo_stream_from "plan_#{plan.id}_mood_submitted" %>
+  <%= render "plans/mood_submitted", plan: plan %>
+</div>
+
+<div class="waiting-container" style="margin-top: 16px;">
+  <h2>What Alcohol?...</h2>
+<div class="waiting-container" id="mood_submitted" style="margin-top: 16px;">
+
+  <%= turbo_stream_from "plan_#{plan.id}_drinking_submitted" %>
+  <%= render "plans/drinking_submitted", plan: plan %>
+    </div>
 
 <div class="grid-container">
   <%= link_to "Close poll", plan_path(@plan), method: :patch, class: "plans-btn grid-6", data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to close the poll now?" } %>

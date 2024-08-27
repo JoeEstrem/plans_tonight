@@ -14,7 +14,6 @@ class Poll < ApplicationRecord
   end
 
   after_update_commit :broadcast_poll
-  after_update_commit :broadcast_poll2
 
   private
 
@@ -23,12 +22,17 @@ class Poll < ApplicationRecord
                         partial: "plans/submitted",
                         locals: { poll: self, plan: plan },
                         target: 'submitted'
-  end
-
-  def broadcast_poll2
     broadcast_replace_to "plan_#{plan.id}_not_submitted",
                         partial: "plans/not_submitted",
                         locals: { poll: self, plan: plan },
                         target: 'not_submitted'
+    broadcast_replace_to "plan_#{plan.id}_mood_submitted",
+                        partial: "plans/mood_submitted",
+                        locals: { poll: self, plan: plan },
+                        target: 'mood_submitted'
+    broadcast_replace_to "plan_#{plan.id}_drinking_submitted",
+                        partial: "plans/drinking_submitted",
+                        locals: { poll: self, plan: plan },
+                        target: 'drinking_submitted'
   end
 end

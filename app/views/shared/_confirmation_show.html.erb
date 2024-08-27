@@ -1,8 +1,11 @@
-<head>
+<%# <head>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-</head>
-<div class="grid-container bg" data-controller="confetti-click" data-confetti-click-target="click"   data-controller="confetti">
+</head> %>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+<div class="particles-js"  data-controller="confetti-click">
+</div>
+<div class="grid-container bg">
   <div class="show-title">
     <div>
       <div class="show-title">
@@ -55,7 +58,7 @@
             <h3><strong>MOOD: </strong><%= @bar.mood.upcase %></h3>
             <h3><strong>PRICE: </strong><%= @bar.price %></h3>
             <h3><strong>SPECIALTY: </strong><%= @bar.alcohol.upcase %></h3>
-            <h3><strong><%= link_to 'VIEW WEBSITE', @bar.url, style:"text-decoration: none; color: #FFD74D; display: block; overflow-wrap: break-word;" %></strong></h3>
+            <h3><strong><%= link_to 'VIEW WEBSITE', @bar.url, style:"text-decoration: underline; color: #000; display: block; overflow-wrap: break-word;" %></strong></h3>
           </div>
         </div>
       </div>

@@ -1,0 +1,61 @@
+<div id="drinking_submitted" style="margin: 16px;">
+  <div class="plan-card-submitted">
+    <h1>🍺</h1>
+    <h3>CRAFT BEER</h3>
+    <div class="avatar-cirlce-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, alcohol: "Craft Beer").each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+     </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🍋</h1>
+    <h3>LEMON SOUR</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, alcohol: "Lemon Sour").each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🥃</h1>
+    <h3>WHISKEY</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+    <% plan.polls.where(submitted: true, alcohol: "Whiskey").each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🍹</h1>
+    <h3>COCKTAIL</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, alcohol: 'Cocktail').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🍷</h1>
+    <h3>WINE</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, alcohol: 'Wine').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="plan-card-submitted">
+    <h1>🥂</h1>
+    <h3>ANYTHING</h3>
+    <div class="plans-avatar-small" style="margin: 16px;">
+      <% plan.polls.where(submitted: true, alcohol: 'Anything').each do |poll| %>
+        <%= render "polls/subpoll", poll: poll %>
+      <% end %>
+    </div>
+  </div>
+</div>
