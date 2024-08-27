@@ -2,5 +2,5 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
-import { Confetti } from "stimulus-confetti"
-application.register('confetti', Confetti)
+// import { Confetti } from "stimulus-confetti"
+// application.register('confetti', Confetti)
