@@ -11,9 +11,9 @@
       <div class="show-title">
         <div style="display: flex; align-items: center; white-space: nowrap;">
           <h1><span class="big-text">YOUR<br>
-            <span class="yellow-text">PLANS<br>
-            TONIGHT</span></span><br>
-          HAVE BEEN CONFIRMED</h1>
+              <span class="yellow-text">PLANS<br>
+                TONIGHT</span></span><br>
+            HAVE BEEN CONFIRMED</h1>
         </div>
       </div>
     </div>
@@ -29,41 +29,41 @@
       <div class="bar-description">
         <div style="margin-bottom: 16px;">
           <h2><%= @bar.name.upcase %></h2>
-          <h3><strong>ADDRESS: </strong><%= @bar.address %></h3>
+          <h3><i class="fa-solid fa-location-dot" style="color: #FFD74D;"></i> <%= @bar.address %></h3>
         </div>
         <div class="bar-description-details"  style="display: flex; justify-content: space-between;">
           <div class="column-left">
-            <h3><strong>DATE: </strong><%= @plan.date_time.strftime("%F") %></h3>
-            <h3><strong>TIME: </strong><%= @plan.date_time.strftime("%I:%M%p") %></h3>
-            <h3>
-              <strong>SMOKING: </strong>
+            <% if @plan.date_time < DateTime.now + 1.week %>
+              <h3><strong><%= @plan.date_time.strftime("%A") %></strong></h3>
+            <% else %>
+              <h3><strong></strong><%= @plan.date_time.strftime("%a, %d %b") %></h3>
+            <% end %>
+            <h3><strong><%= @plan.date_time.strftime("%I:%M%p") %></strong></h3>
+            <div class="show-icons">
               <% if @bar.smoking %>
-                <i class="fas fa-smoking"></i>
+                <i class="fas fa-smoking" style="color: #161616;">  </i>
               <% else %>
-                <i class="fas fa-ban"></i>
+                <i class="fa-solid fa-ban-smoking" style="color: #161616;"></i>
               <% end %>
-            </h3>
-            <h3>
-              <strong>FOOD: </strong>
               <% if @bar.food %>
-                <i class="fas fa-utensils"></i>
+                <i class="fas fa-utensils" style="color: #161616;"></i>
               <% else %>
-                <i class="fas fa-ban"></i>
+                <i class="fa-solid fa-utensils" style="color: #adadad;"></i>
               <% end %>
-            </h3>
+            </div>
           </div>
           <div class="column-right">
-            <h3><strong>MOOD: </strong><%= @bar.mood.upcase %></h3>
-            <h3><strong>PRICE: </strong><%= @bar.price %></h3>
-            <h3><strong>SPECIALTY: </strong><%= @bar.alcohol.upcase %></h3>
-            <h3><strong><%= link_to 'VIEW WEBSITE', @bar.url, style:"text-decoration: underline; color: #000; display: block; overflow-wrap: break-word;" %></strong></h3>
+            <h3><strong><%= @bar.mood.upcase %></strong></h3>
+            <h3><strong><%= @bar.alcohol.upcase %></strong></h3>
+            <h3><strong><%= @bar.price %></strong></h3>
+            <h3><strong></strong></h3>
           </div>
         </div>
       </div>
     </div>
     <!-- Add to Calendar -->
     <div class="show-element" style="margin-top: 32px;">
-      <%= link_to "Add to calendar", "#", class:"plans-btn"  %>
+      <%= link_to 'VIEW WEBSITE', @bar.url, class: "plans-btn" %>
     </div>
     <!-- Map -->
     <div style="margin-top: 32px;">
@@ -78,7 +78,7 @@
         <h2>FRIENDS GOING</h2>
       </div>
       <div class="plans-avatar-container" style="margin-bottom: 32px;">
-        <% @plan.users.each do |user| %>
+        <% @plan.users.where.not(id: current_user).each do |user| %>
           <div class="avatar-circle">
             <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
