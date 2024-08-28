@@ -7,6 +7,7 @@ class Plan < ApplicationRecord
 
   validates :date_time, presence: true
   validates :deadline, presence: true
+  validates :location, presence: true
 
   enum status: { pending: 0, done: 1, past: 2}
 
