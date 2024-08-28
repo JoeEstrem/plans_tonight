@@ -88,3 +88,15 @@
   height:100%;
   z-index:-1;
 }
+
+.column-right {
+  margin-right: 80px;
+  span {
+    margin-right: 4px;
+  }
+}
+
+.show-icons {
+  display: flex;
+  justify-content: space-between;
+}

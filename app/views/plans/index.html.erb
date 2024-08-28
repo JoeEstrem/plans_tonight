@@ -23,13 +23,10 @@
     </div> %>
 <!-- Brewing Plans (pending) -->
 <div class="grid-container">
-
   <div>
     <h1 class="big-text"> YOUR<br>
-    PLANS</H1>
+      PLANS</H1>
   </div>
-
-
   <div class="grid-6">
     <h2>BREWING PLANS</h2>
     <% @pending_plans.order('created_at DESC').each do |plan| %>
@@ -41,7 +38,7 @@
               <p class="card-text">THIS PLAN IS STILL BREWING</p>
               <p class="card-text">FRIENDS GOING</p>
               <div class="friends-plan-index">
-                <% plan.users.first(5).each do |user| %>
+                <% plan.users.where.not(id: current_user).first(5).each do |user| %>
                   <div class="avatar-circle-small">
                     <% if user.photo.attached? %>
                       <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
@@ -70,40 +67,40 @@
   <!-- Upcoming Plans (Completed) -->
   <div class="grid-6">
     <h2 style="margin-top: 24px;">UPCOMING PLANS</h2>
-      <% @done_plans.order('created_at DESC').each do |plan| %>
-        <div class="col-md-4 mb-4">
-          <%= link_to plan_path(plan), class: 'card-btn' do %>
-            <div class="card">
-              <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
-              <div class="card-body">
-                <% if plan.bar %>
-                  <h5 class="card-title"><%= plan.bar.name %></h5>
-                  <% if plan.date_time < DateTime.now + 1.week %>
-                    <h6 class="card-title"><%= plan.date_time.strftime("%A at %I:%M%p") %></h5>
-                  <% else %>
-                    <h6 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
-                  <% end %>
+    <% @done_plans.order('created_at DESC').each do |plan| %>
+      <div class="col-md-4 mb-4">
+        <%= link_to plan_path(plan), class: 'card-btn' do %>
+          <div class="card">
+            <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
+            <div class="card-body">
+              <% if plan.bar %>
+                <h5 class="card-title"><%= plan.bar.name %></h5>
+                <% if plan.date_time < DateTime.now + 1.week %>
+                  <h6 class="card-title"><%= plan.date_time.strftime("%A at %I:%M%p") %></h5>
+                <% else %>
+                  <h6 class="card-title"><%= plan.date_time.strftime("%a, %d %b at %I:%M%p") %></h5>
                 <% end %>
-                <p class="card-text">FRIENDS GOING</p>
-                <div class="friends-plan-index">
-                  <% plan.users.first(5).each do |user| %>
-                    <div class="avatar-circle-small">
-                      <% if user.photo.attached? %>
-                        <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
-                      <% else %>
-                        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
+              <% end %>
+              <p class="card-text">FRIENDS GOING</p>
+              <div class="friends-plan-index">
+                <% plan.users.where.not(id: current_user).first(5).each do |user| %>
+                  <div class="avatar-circle-small">
+                    <% if user.photo.attached? %>
+                      <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
+                    <% else %>
+                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
       <% end %>
-    </div>
-      <div class="grid-6">
-        <%= link_to 'Home', root_path, class: 'plans-btn' %>
-      </div>
-    </div>
+    <% end %>
   </div>
+  <div class="grid-6">
+    <%= link_to 'Home', root_path, class: 'plans-btn' %>
+  </div>
+</div>
+</div>
