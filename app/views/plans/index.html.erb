@@ -23,6 +23,13 @@
     </div> %>
 <!-- Brewing Plans (pending) -->
 <div class="grid-container">
+
+  <div>
+    <h1 class="big-text"> YOUR<br>
+    PLANS</H1>
+  </div>
+
+
   <div class="grid-6">
     <h1>Brewing <span class="plans-yellow">Plans</span></h1>
     <% @pending_plans.order('created_at DESC').each do |plan| %>
@@ -93,9 +100,14 @@
             </div>
           </div>
         <% end %>
+
       <% end %>
     </div>
     <div class="grid-6">
       <%= link_to 'HOME', root_path, class: 'plans-btn' %>
+      </div>
+      <div class="grid-6">
+        <%= link_to 'Home', root_path, class: 'plans-btn', style: 'margin-top: 24px;' %>
+      </div>
     </div>
   </div>

@@ -2,23 +2,23 @@ module ApplicationHelper
 
   def mood_options
     {
-      "Casual" => "<p class='icon'>😊</p><p>CASUAL</p>".html_safe,
-      "Classy" => "<p class='icon'>✨</p><p>CLASSY</p>".html_safe,
-      "Dancing" => "<p class='icon'>🪩</p><p>DANCING</p>".html_safe,
-      "Music" => "<p class='icon'>🎶</p><p>MUSIC</p>".html_safe,
-      "Unique" => "<p class='icon'>🎭</p><p>UNIQUE</p>".html_safe,
-      "Anything" => "<p class='icon'>🙌</p><p>ANYTHING</p>".html_safe
+      "Casual" => "<p class='icon'>😊</p><p>Casual</p>".html_safe,
+      "Classy" => "<p class='icon'>✨</p><p>Classy</p>".html_safe,
+      "Dancing" => "<p class='icon'>🪩</p><p>Dancing</p>".html_safe,
+      "Music" => "<p class='icon'>🎶</p><p>Music</p>".html_safe,
+      "Unique" => "<p class='icon'>🎭</p><p>Unique</p>".html_safe,
+      "Anything" => "<p class='icon'>🙌</p><p>Anything</p>".html_safe
     }
   end
 
   def alcohol_options
     {
-      "Craft Beer" => "<p class='icon'>🍺</p><p>CRAFT BEER</p>".html_safe,
-      "Lemon Sour" => "<p class='icon'>🍋</p><p>LEMON SOUR</p>".html_safe,
-      "Whiskey" => "<p class='icon'>🥃</p><p>WHISKEY</p>".html_safe,
-      "Cocktail" => "<p class='icon'>🍹</p><p>COCKTAIL</p>".html_safe,
-      "Wine" => "<p class='icon'>🍷</p><p>WINE</p>".html_safe,
-      "Anything" => "<p class='icon'>🥂</p><p>ANYTHING</p>".html_safe
+      "Craft Beer" => "<p class='icon'>🍺</p><p>Craft Beer</p>".html_safe,
+      "Lemon Sour" => "<p class='icon'>🍋</p><p>Lemon Sour</p>".html_safe,
+      "Whiskey" => "<p class='icon'>🥃</p><p>Whiskey</p>".html_safe,
+      "Cocktail" => "<p class='icon'>🍹</p><p>Cocktail</p>".html_safe,
+      "Wine" => "<p class='icon'>🍷</p><p>Wine</p>".html_safe,
+      "Anything" => "<p class='icon'>🥂</p><p>Anything</p>".html_safe
     }
   end
 
