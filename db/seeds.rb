@@ -189,22 +189,68 @@ Bar.create!(
   attach_photo(bar, "https://cdn.sanity.io/images/rizm0do5/production/006d954b454f4a119053d86a88177689153ce7e8-1000x658.webp?rect=24,0,976,658&w=1380&h=930&q=80&fit=clip&auto=format", 'user11.png')
 end
 
-5.times do
-  user = User.create!(
-    email: Faker::Internet.email,
-    username: Faker::Internet.username,
-    password: '123123'
-  )
-  gender = 'all'
-  age = '26-35'
-  ethnicity = 'all'
-  url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
-  json = URI.open(url).string
-  src = JSON.parse(json)['src']
-  p photo_url = "https://this-person-does-not-exist.com#{src}"
-  file = URI.open(photo_url)
-  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
-  user.save
+User.create!(
+  email: "yutaasakura@gmail.com",
+  username: "Yuta Asakura",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNElmQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8b0905ab4c08e8c0479f28013bdeac4260e97ba6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hOeVpYTnBlbVZmZEc5ZlptbHNiRnNJYVFISWFRSElld1k2Q1dOeWIzQTZEbUYwZEdWdWRHbHZiZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--23cdbdf9871e44adeb4d843a03b0793a5f08394b/748A3411-5577-4F30-A69D-1B8E8C179282-47382-00001A23901F415F.jpeg", 'user12.png')
+end
+
+User.create!(
+  email: "jonasai-taher@gmail.com",
+  username: "Jonas Ai-Taher",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://avatars.githubusercontent.com/u/157728594?v=4", 'user13.png')
+end
+
+User.create!(
+  email: "Alihaddi@gmail.com",
+  username: "Ali Haddi",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOEVlQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--fa45c07f152e42ab8130e067208a14a447560cd0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/1696392921765%20(1).jpg", 'user15.png')
+end
+
+User.create!(
+  email: "miaoconnel@gmail.com",
+  username: "Mia O'Connell",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://avatars.githubusercontent.com/u/117554256?v=4", 'user16.png')
+end
+
+User.create!(
+  email: "eriyawata@gmail.com",
+  username: "Eri Yawata",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://avatars.githubusercontent.com/u/157731956?v=4", 'user18.png')
+end
+
+User.create!(
+  email: "youngkevein@gmail.com",
+  username: "Kevin Young",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://avatars.githubusercontent.com/u/35987034?v=4", 'user19.png')
+end
+
+User.create!(
+  email: "Ryuya@gmail.com",
+  username: "Ryuya Inagaki",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://avatars.githubusercontent.com/u/77526127?v=4", 'user25.png')
+end
+
+User.create!(
+  email: "ryo@gmail.com",
+  username: "Ryo Imaoka",
+  password: '123123'
+).tap do |user|
+  attach_photo(user, "https://avatars.githubusercontent.com/u/162281080?v=4", 'user27.png')
 end
 
 # plan = Plan.create!(
