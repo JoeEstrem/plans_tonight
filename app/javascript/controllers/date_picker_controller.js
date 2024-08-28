@@ -26,6 +26,7 @@ export default class extends Controller {
       minDate: japanTime,
       defaultDate: japanTime,
       enableSeconds: false,
+      minuteIncrement: 15,
       onChange: () => this.validateDeadline() // Validate on dateTime change
     });
 
