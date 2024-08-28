@@ -41,14 +41,14 @@
             <h3><strong><%= @plan.date_time.strftime("%I:%M%p") %></strong></h3>
             <div class="show-icons">
               <% if @bar.smoking %>
-                <i class="fas fa-smoking">  </i>
+                <i class="fas fa-smoking" style="color: #161616;">  </i>
               <% else %>
-                <i class="fas fa-ban">  </i>
+                <i class="fa-solid fa-ban-smoking" style="color: #161616;"></i>
               <% end %>
               <% if @bar.food %>
-                <i class="fas fa-utensils"></i>
+                <i class="fas fa-utensils" style="color: #161616;"></i>
               <% else %>
-                <i class="fas fa-ban"></i>
+                <i class="fa-solid fa-utensils" style="color: #adadad;"></i>
               <% end %>
             </div>
           </div>
