@@ -1,14 +1,19 @@
-<div id="drinking_submitted" style="margin: 16px;">
+<div id="drinking_submitted" class="grid-container m-0">
   <% { "Craft Beer" => "🍺", "Lemon Sour" => "🍋", "Whiskey" => "🥃", "Cocktail" => "🍹", "Wine" => "🍷", "Anything" => "🥂" }.each do |alcohol, emoji| %>
+
     <% if plan.polls.where(submitted: true, alcohol: alcohol).exists? %>
-      <div class="plan-card-submitted">
-        <h1><%= emoji %></h1>
-        <h3><%= alcohol.capitalize%></h3>
-                <div class="polls-avatar-container" style="margin: 16px;">
-          <% plan.polls.where(submitted: true, alcohol: alcohol).each do |poll| %>
-            <%= render "polls/subpoll", poll: poll %>
-          <% end %>
+      <div>
+        <div>
+          <p style="font-size: 32px;" class="poll-emoji grid-1"><%= emoji %></p>
         </div>
+        <div>
+          <p style="font-size: 10px; display: flex; justify-content: center; margin-top: 4px;"><%= alcohol.capitalize%><p>
+        </div>
+      </div>
+      <div>
+        <% plan.polls.where(submitted: true, alcohol: alcohol).each do |poll| %>
+          <%= render "polls/subpoll", poll: poll %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
