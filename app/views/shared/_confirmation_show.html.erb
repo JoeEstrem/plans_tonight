@@ -5,17 +5,15 @@
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 <div class="particles-js"  data-controller="confetti-click">
 </div>
-<div class="grid-container bg">
+<div class="grid-container">
   <div class="show-title">
     <div>
       <div class="show-title">
         <div style="display: flex; align-items: center; white-space: nowrap;">
-          <h1>YOUR</h1>
-          <h1 class="yellow-text" style="margin-left: 10px;">
-            PLANS TONIGHT</h1>
-        </div>
-        <div style="display: flex; white-space: nowrap;">
-          <h1>HAVE BEEN CONFIRMED</h1>
+          <h1><span class="big-text">YOUR<br>
+            <span class="yellow-text">PLANS<br>
+            TONIGHT</span></span><br>
+          HAVE BEEN CONFIRMED</h1>
         </div>
       </div>
     </div>
@@ -23,7 +21,7 @@
     <div class="image-bar" style="margin-top: 24px;">
       <div class="image">
         <% @bar.photo %>
-        <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main image" %>
+        <%= cl_image_tag @bar.photo.key, width: 800, height: 450, crop: :fill, class: "img-fluid", style: "border-radius: 16px;", alt: "Main image" %>
       </div>
     </div>
     <!-- Bar Description -->

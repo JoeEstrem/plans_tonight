@@ -31,7 +31,7 @@ class PlansController < ApplicationController
   def invitation
     @users = User.all
     @plan = Plan.find(params[:id])
-    @body_class = "bg"
+    @body_class = "bg-yellow"
   end
 
   def invite

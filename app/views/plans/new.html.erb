@@ -9,10 +9,10 @@
     <!-- SELECT DATE & TIME -->
     <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
     <div class="input-group grid-6">
-      <%= f.datetime_field :date_time, style: "box-shadow: 0 0 0; border: none;", class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "dateTime" } %>
+      <%= f.datetime_field :date_time, style: "box-shadow: 0 0 0 !important; border: none;", class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "dateTime" } %>
     </div>
     <!-- SELECT LOCATION -->
-    <h2 style="margin-top: 24px">Select Location</h2>
+    <h2 style="margin-top: 24px">SELECT LOCATION</h2>
     <div class="input-group grid-6">
       <%= f.text_field :location, style: "box-shadow: 0 0 0; border: none;", class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
     </div>
