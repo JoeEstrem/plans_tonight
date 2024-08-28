@@ -41,3 +41,21 @@ p {
   font-size: 72px;
   line-height: 1;
 }
+
+.poppy-text {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  margin: 20px;
+  padding-left: 0px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  transition: color 0.5s ease;
+  text-decoration: none;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none; /* Remove underline from link */
+  color: inherit; /* Inherit text color from card */
+}

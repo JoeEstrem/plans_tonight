@@ -1,27 +1,3 @@
-<%# <div class="plans-index-container">
-    <div class="plans-list-element">
-    <h1>Brewing Plans</h1>
-
-      <div class="card-plan-list">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-plan-list-infos">
-          <h2>plan-list name</h2>
-          <p>plan-list description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="plans-list-element">
-      <h1>Upcoming Plans</h1>
-      <div class="card-plan-list">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-plan-list-infos">
-          <h2>plan-list name</h2>
-          <p>plan-list description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div> %>
-<!-- Brewing Plans (pending) -->
 <div class="grid-container">
 
   <div>
@@ -32,44 +8,56 @@
 
   <div class="grid-6">
     <h2>BREWING PLANS</h2>
-    <% @pending_plans.order('created_at DESC').each do |plan| %>
-      <div>
-        <%= link_to plan_path(plan), class: 'card-btn' do %>
-          <div>
-            <div class="plan-card">
-              <h5> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
-              <p class="card-text">THIS PLAN IS STILL BREWING</p>
-              <p class="card-text">FRIENDS GOING</p>
-              <div class="friends-plan-index">
-                <% plan.users.first(5).each do |user| %>
-                  <div class="avatar-circle-small">
-                    <% if user.photo.attached? %>
-                      <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
-                    <% else %>
-                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
-                    <% end %>
-                  </div>
-                <% end %>
-                <% if plan.users.count > 5 %>
-                  <div class="avatar-circle-small">
-                    <i class="fa-solid fa-circle-plus" style="color: #161616;"></i>
-                  </div>
-                <% end %>
-              </div>
-              <div
-              data-controller="countdown"
-              data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
-                <div data-countdown-target="countdown"></div>
+    <% if @pending_plans.any? %>
+      <% @pending_plans.order('created_at DESC').each do |plan| %>
+        <div>
+          <%= link_to plan_path(plan), class: 'card-btn' do %>
+            <div>
+              <div class="plan-card">
+                <h5> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
+                <p class="card-text">THIS PLAN IS STILL BREWING</p>
+                <p class="card-text">FRIENDS GOING</p>
+                <div class="friends-plan-index">
+                  <% plan.users.first(5).each do |user| %>
+                    <div class="avatar-circle-small">
+                      <% if user.photo.attached? %>
+                        <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
+                      <% else %>
+                        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <% if plan.users.count > 5 %>
+                    <div class="avatar-circle-small">
+                      <i class="fa-solid fa-circle-plus" style="color: #161616;"></i>
+                    </div>
+                  <% end %>
+                </div>
+                <div
+                data-controller="countdown"
+                data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
+                  <div data-countdown-target="countdown"></div>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to new_plan_path, class: 'card-link' do %>
+        <div class = card>
+          <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
+            No plans are brewing!! Make some plans
+          </p>
+        </div>
+      <% end %>
     <% end %>
   </div>
+
   <!-- Upcoming Plans (Completed) -->
   <div class="grid-6">
     <h2 style="margin-top: 24px;">UPCOMING PLANS</h2>
+    <% if @done_plans.any? %>
       <% @done_plans.order('created_at DESC').each do |plan| %>
         <div class="col-md-4 mb-4">
           <%= link_to plan_path(plan), class: 'card-btn' do %>
@@ -98,12 +86,20 @@
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-      <div class="grid-6">
-        <%= link_to 'Home', root_path, class: 'plans-btn' %>
+    <% else %>
+      <div class = card>
+        <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
+          There are no Upcoming Plans!!
+        </p>
       </div>
-    </div>
+    <% end %>
   </div>
+
+    <!-- Home button -->
+  <div class="grid-6">
+    <%= link_to 'Home', root_path, class: 'plans-btn' %>
+  </div>
+</div>
