@@ -16,8 +16,7 @@
           <div>
             <div class="plan-card" style="font-family: 'Poppins', sans-serif;">
               <h5 style="font-family: 'Poppins', sans-serif;"> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
-              <p class="card-text" style="font-family: 'Poppins', sans-serif;">THIS PLAN IS STILL BREWING</p>
-              <p class="card-text" style="font-family: 'Poppins', sans-serif;">FRIENDS GOING</p>
+              <p class="card-text" style="font-family: 'Poppins', sans-serif; margin-top: 8px;">FRIENDS GOING</p>
               <div class="friends-plan-index">
                 <% plan.users.first(5).each do |user| %>
                   <div class="avatar-circle-small">
@@ -34,6 +33,7 @@
                   </div>
                 <% end %>
               </div>
+              <p class="card-text" style="font-family: 'Poppins', sans-serif; margin-top: 16px;">THIS PLAN IS STILL BREWING</p>
               <div
               data-controller="countdown"
               data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
@@ -47,7 +47,7 @@
       <%= link_to new_plan_path, class: 'card-link' do %>
         <div class = card>
           <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
-            No plans are brewing! 
+            No plans are brewing!
           </p>
         </div>
       <% end %>
