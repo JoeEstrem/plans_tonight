@@ -1,5 +1,15 @@
-<div id="submitted" class="plans-avatar-container" style="margin-bottom: 32px;">
-     <% plan.polls.where(submitted: true).each do |poll| %>
-    <%= render "polls/poll", poll: poll %>
+<div id="submitted" class="grid-container m-0">
+
+<div>
+  <% plan.polls.where(submitted: true).each do |poll| %>
+    <%= render "polls/poll", poll: poll, style: "border: solid 3px #FFD74D" %>
   <% end %>
+</div>
+
+<div>
+  <% plan.polls.where(submitted: false).each do |poll| %>
+    <%= render "polls/poll", poll: poll, style: "opacity: 50%; box-shadow: none;" %>
+  <% end %>
+</div>
+
 </div>

@@ -1,14 +1,19 @@
-<div id="mood_submitted" style="margin: 16px;">
+<div id="mood_submitted" class="grid-container m-0">
   <% { "Casual" => "😊", "Classy" => "✨", "Dancing" => "🪩", "Music" => "🎶", "Unique" => "🎭", "Anything" => "🙌" }.each do |mood, emoji| %>
+
     <% if plan.polls.where(submitted: true, mood: mood).exists? %>
-      <div class="plan-card-submitted">
-        <h1><%= emoji %></h1>
-        <h3><%= mood.capitalize %></h3>
-        <div class="polls-avatar-container" style="margin: 16px;">
-          <% plan.polls.where(submitted: true, mood: mood).each do |poll| %>
-            <%= render "polls/subpoll", poll: poll %>
-          <% end %>
+      <div>
+        <div>
+          <p style="font-size: 32px;" class="poll-emoji grid-1"><%= emoji %></p>
         </div>
+        <div>
+          <p style="font-size: 10px; display: flex; justify-content: center; margin-top: 4px;"><%= mood.capitalize %></p>
+        </div>
+      </div>
+      <div>
+        <% plan.polls.where(submitted: true, mood: mood).each do |poll| %>
+          <%= render "polls/subpoll", poll: poll %>
+        <% end %>
       </div>
     <% end %>
   <% end %>

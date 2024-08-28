@@ -15,6 +15,10 @@
   max-width: 800px;
 }
 
+.grid-1 {
+  grid-column: span 1;
+}
+
 .grid-2 {
   grid-column: span 2;
 }

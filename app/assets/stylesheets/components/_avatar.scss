@@ -2,6 +2,38 @@
   width: 40px;
   border-radius: 16px;
 }
+
+.avatar-sqr-1-container {
+  border-radius: 18px;
+  grid-column: span 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+}
+
+.avatar-sqr-1 {
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  min-width: 54px;
+  min-height: 54px;
+}
+
+.avatar-sqr-1-sub-t {
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  border: solid 2px $yellow;
+}
+
+.avatar-sqr-1-sub-f {
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  opacity: 50%;
+}
+
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;
