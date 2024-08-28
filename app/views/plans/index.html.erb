@@ -25,7 +25,7 @@
 <div class="grid-container">
   <div class="grid-6">
     <h1>Brewing <span class="plans-yellow">Plans</span></h1>
-    <% @pending_plans.each do |plan| %>
+    <% @pending_plans.order('created_at DESC').each do |plan| %>
       <div>
         <%= link_to plan_path(plan), class: 'card-btn' do %>
           <div>
@@ -63,7 +63,7 @@
   <!-- Upcoming Plans (Completed) -->
   <div class="grid-6">
     <h1>UPCOMING <span class="plans-yellow">PLANS</h1>
-      <% @done_plans.each do |plan| %>
+      <% @done_plans.order('created_at DESC').each do |plan| %>
         <div class="col-md-4 mb-4">
           <%= link_to plan_path(plan), class: 'card-btn' do %>
             <div class="card">
@@ -71,23 +71,31 @@
               <div class="card-body">
                 <% if plan.bar %>
                   <h5 class="card-title"><%= plan.bar.name %></h5>
-                  <h6 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
-                  <!-- <p class="card-text"><strong>Address:</strong> <%= plan.bar.address %></p>
-              <p class="card-text"><strong>Mood:</strong> <%= plan.bar.mood %></p>
-              <p class="card-text"><strong>Price:</strong> <%= plan.bar.price %></p>
-              <p class="card-text"><strong>Alcohol:</strong> <%= plan.bar.alcohol %></p>
-              <% end %>
-              <h6 class="mt-4">Polls Information</h6>
-              <% plan.polls.each do |poll| %>
-                <p><%= poll.mood %> mood, <%= poll.alcohol %> alcohol preference, <%= poll.smoking ? 'Smoking allowed' : 'No smoking' %></p>
-              <% end %> -->
+                  <% if plan.date_time < DateTime.now + 1.week %>
+                    <h6 class="card-title"><%= plan.date_time.strftime("%A at %I:%M%p") %></h5>
+                  <% else %>
+                    <h6 class="card-title"><%= plan.date_time.strftime("%F at %I:%M%p") %></h5>
+                  <% end %>
+                <% end %>
+                <p class="card-text">FRIENDS GOING</p>
+                <div class="friends-plan-index">
+                  <% plan.users.first(5).each do |user| %>
+                    <div class="avatar-circle-small">
+                      <% if user.photo.attached? %>
+                        <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
+                      <% else %>
+                        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
+            </div>
           </div>
         <% end %>
-      </div>
-      <div class="grid-6">
-        <%= link_to 'HOME', root_path, class: 'plans-btn' %>
-      </div>
+      <% end %>
     </div>
+    <div class="grid-6">
+      <%= link_to 'HOME', root_path, class: 'plans-btn' %>
+    </div>
+  </div>
