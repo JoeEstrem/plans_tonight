@@ -34,21 +34,34 @@
 }
 
 .invite-button {
-  padding: 4px 8px;
+  padding: 8px 16px;
   text-decoration: none;
-  font-size: small;
+  font-weight: 500;
+  font-size: 16px;
   background-color: $yellow;
-  color: black;
+  color: $black;
   height: fit-content;
-  margin-top: -4px;
-  border-radius: 50px;
+  border-radius: 18px 18px 18px 0px;
+}
 
-  &:active {
-    background-color: white;
-  }
+.invite-button-pressed {
+  margin-right: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 16px;
+  background-color: transparent;
+  color: $black;
+  height: fit-content;
+  border-radius: 18px 18px 18px 0px;
 }
 
 .card-btn {
   text-decoration: none;
   color: $black;
+}
+
+.log-out {
+  font-size: 16px;
+  color: $yellow;
+  margin-top: 24px;
 }

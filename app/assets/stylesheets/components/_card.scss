@@ -166,12 +166,13 @@
 
 .card-friend {
   overflow: hidden;
-  height: 60px;
-  background: white;
-  // box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  height: 64px;
+  background: $white;
   display: flex;
   align-items: center;
   margin: 8px;
+  border-radius: 18px 18px 18px 0px;
+  border: solid 4px $white;
 
   img {
     height: 100%;
@@ -181,7 +182,6 @@
 
   h3 {
     font-size: 16px;
-    font-weight: bold;
     padding-left: 4px;
   }
 
@@ -195,9 +195,8 @@
     padding: 8px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    margin-bottom: -17px;
-    border-bottom: solid 1px $gray;
   }
 }
 
