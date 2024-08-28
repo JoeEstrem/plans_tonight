@@ -1,7 +1,7 @@
 <div class="grid-6">
   <h2 style="margin-top: 24px;">UPCOMING PLANS</h2>
-  <% if @done_plans.any? %>
-    <% @done_plans.order('created_at DESC').each do |plan| %>
+  <% plans.order('created_at DESC').each do |plan| %>
+    <% if plan.users.include?(current_user) && plan.bar != nil %>
       <div class="col-md-4">
         <%= link_to plan_path(plan), class: 'card-btn' do %>
           <div class="card" style="box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);">
@@ -28,18 +28,9 @@
                 <% end %>
               </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% else %>
-      <div class = card>
-        <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
-          There are no upcoming plans!
-        </p>
-      </div>
-      <div class="grid-6">
-        <%= link_to 'Home', root_path, class: 'plans-btn', style: 'margin-top: 16px;' %>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  </div>
+  <% end %>
 </div>

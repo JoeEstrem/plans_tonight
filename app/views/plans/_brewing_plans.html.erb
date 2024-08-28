@@ -1,46 +1,37 @@
 <div class="grid-6">
   <h2>BREWING PLANS</h2>
-  <% if @pending_plans.any? %>
-    <% @pending_plans.order('created_at DESC').each do |plan| %>
-      <div>
-        <%= link_to plan_path(plan), class: 'card-btn' do %>
-          <div>
-            <div class="plan-card" style="font-family: 'Poppins', sans-serif;">
-              <h5 style="font-family: 'Poppins', sans-serif;"> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
-              <p class="card-text" style="font-family: 'Poppins', sans-serif; margin-top: 8px;">FRIENDS GOING</p>
-              <div class="friends-plan-index">
-                <% plan.users.first(5).each do |user| %>
-                  <div class="avatar-circle-small">
-                    <% if user.photo.attached? %>
-                      <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
-                    <% else %>
-                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
-                    <% end %>
-                  </div>
-                <% end %>
-                <% if plan.users.count > 5 %>
-                  <div class="avatar-circle-small">
-                    <i class="fa-solid fa-circle-plus" style="color: #161616;"></i>
-                  </div>
-                <% end %>
-              </div>
-              <p class="card-text" style="font-family: 'Poppins', sans-serif; margin-top: 16px;">THIS PLAN IS STILL BREWING</p>
-              <div
+  <% plans.order('created_at DESC').each do |plan| %>
+    <% if plan.users.include?(current_user) && plan.bar == nil %>
+      <%= link_to plan_path(plan), class: 'card-btn' do %>
+        <div>
+          <div class="plan-card" style="font-family: 'Poppins', sans-serif;">
+            <h5 style="font-family: 'Poppins', sans-serif;"> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
+            <p class="card-text" style="font-family: 'Poppins', sans-serif; margin-top: 8px;">FRIENDS GOING</p>
+            <div class="friends-plan-index">
+              <% plan.users.where.not(id: current_user).first(5).each do |user| %>
+                <div class="avatar-circle-small">
+                  <% if user.photo.attached? %>
+                    <%= cl_image_tag user.photo.key, class: "avatar-photo" %>
+                  <% else %>
+                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
+                  <% end %>
+                </div>
+              <% end %>
+              <% if plan.users.count > 5 %>
+                <div class="avatar-circle-small">
+                  <i class="fa-solid fa-circle-plus" style="color: #161616;"></i>
+                </div>
+              <% end %>
+            </div>
+            <p class="card-text" style="font-family: 'Poppins', sans-serif; margin-top: 16px;">THIS PLAN IS STILL BREWING</p>
+            <div
               data-controller="countdown"
               data-countdown-deadline-value="<%= plan.deadline.present? ? plan.deadline.strftime('%Y-%m-%dT%H:%M:%S') : '' %>">
-                <div data-countdown-target="countdown"></div>
-              </div>
+              <div data-countdown-target="countdown"></div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% else %>
-      <%= link_to new_plan_path, class: 'card-link' do %>
-        <div class = card>
-          <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
-            No plans are brewing!
-          </p>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
