@@ -57,6 +57,7 @@
 
 .plan-card {
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
   width: 100%;
   background-color: #FAFAFA;
   border-radius: 16px 16px 16px 0px;
@@ -68,6 +69,7 @@
   text-align: center;
   align-items: center;
   position: relative;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
 
   h5 {
     font-weight: bold;
@@ -124,6 +126,7 @@
   align-items: center;
   transition: ease 0.2s;
   position: relative;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
 }
 
 .category-selector:checked + label {
@@ -173,6 +176,7 @@
   margin: 8px;
   border-radius: 18px 18px 18px 0px;
   border: solid 4px $white;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
 
   img {
     height: 100%;
@@ -225,5 +229,4 @@
   text-align: center;
   align-items: center;
   position: relative;
-
 }

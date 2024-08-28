@@ -1,42 +1,20 @@
-<%# <div class="plans-index-container">
-    <div class="plans-list-element">
-    <h1>Brewing Plans</h1>
-
-      <div class="card-plan-list">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-plan-list-infos">
-          <h2>plan-list name</h2>
-          <p>plan-list description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="plans-list-element">
-      <h1>Upcoming Plans</h1>
-      <div class="card-plan-list">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-plan-list-infos">
-          <h2>plan-list name</h2>
-          <p>plan-list description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div> %>
-<!-- Brewing Plans (pending) -->
 <div class="grid-container">
   <div>
     <h1 class="big-text"> YOUR<br>
-      PLANS</H1>
+    PLANS!</H1>
   </div>
   <div class="grid-6">
     <h2>BREWING PLANS</h2>
+
+    <% if @pending_plans.any? %>
     <% @pending_plans.order('created_at DESC').each do |plan| %>
       <div>
         <%= link_to plan_path(plan), class: 'card-btn' do %>
           <div>
-            <div class="plan-card">
-              <h5> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
-              <p class="card-text">THIS PLAN IS STILL BREWING</p>
-              <p class="card-text">FRIENDS GOING</p>
+            <div class="plan-card" style="font-family: 'Poppins', sans-serif;">
+              <h5 style="font-family: 'Poppins', sans-serif;"> PLANS FOR <span class="plans-yellow"><%= plan.date_time.strftime("%B %d").upcase %></span></h5>
+              <p class="card-text" style="font-family: 'Poppins', sans-serif;">THIS PLAN IS STILL BREWING</p>
+              <p class="card-text" style="font-family: 'Poppins', sans-serif;">FRIENDS GOING</p>
               <div class="friends-plan-index">
                 <% plan.users.where.not(id: current_user).first(5).each do |user| %>
                   <div class="avatar-circle-small">
@@ -59,26 +37,36 @@
                 <div data-countdown-target="countdown"></div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to new_plan_path, class: 'card-link' do %>
+        <div class = card>
+          <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
+            No plans are brewing! 
+          </p>
+        </div>
+      <% end %>
     <% end %>
   </div>
+
   <!-- Upcoming Plans (Completed) -->
   <div class="grid-6">
     <h2 style="margin-top: 24px;">UPCOMING PLANS</h2>
+   <% if @done_plans.any? %>
     <% @done_plans.order('created_at DESC').each do |plan| %>
-      <div class="col-md-4 mb-4">
+      <div class="col-md-4">
         <%= link_to plan_path(plan), class: 'card-btn' do %>
-          <div class="card">
+          <div class="card" style="box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);">
             <%= image_tag plan&.bar&.photo&.attached? ? url_for(plan.bar.photo) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg', alt: 'plan photo', class: 'card-img-top' %>
-            <div class="card-body">
+            <div class="card-body" style="margin-top: 12px;">
               <% if plan.bar %>
-                <h5 class="card-title"><%= plan.bar.name %></h5>
+                <h5 class="card-title" style="font-family: 'Poppins', sans-serif;"><%= plan.bar.name %></h5>
                 <% if plan.date_time < DateTime.now + 1.week %>
-                  <h6 class="card-title"><%= plan.date_time.strftime("%A at %I:%M%p") %></h5>
+                  <h6 class="card-title" style="font-family: 'Poppins', sans-serif;"><%= plan.date_time.strftime("%A at %I:%M%p") %></h5>
                 <% else %>
-                  <h6 class="card-title"><%= plan.date_time.strftime("%a, %d %b at %I:%M%p") %></h5>
+                  <h6 class="card-title" style="font-family: 'Poppins', sans-serif;"><%= plan.date_time.strftime("%a, %d %b at %I:%M%p") %></h5>
                 <% end %>
               <% end %>
               <p class="card-text">FRIENDS GOING</p>
@@ -94,6 +82,20 @@
                 <% end %>
               </div>
             </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class = card>
+        <p class ="poppy-text" data-controller="poppy-text" data-poppy-text-target="text">
+          There are no upcoming plans!
+        </p>
+    </div>
+      <div class="grid-6">
+        <%= link_to 'Home', root_path, class: 'plans-btn', style: 'margin-top: 16px;' %>
+      </div>
+    <% end %>
+
           </div>
         </div>
       <% end %>
@@ -104,3 +106,4 @@
   </div>
 </div>
 </div>
+

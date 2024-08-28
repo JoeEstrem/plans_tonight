@@ -20,11 +20,11 @@ class PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all
+    @plans = current_user.plans
     @user = current_user.id
-    @past_plans = Plan.past
-    @pending_plans = Plan.pending
-    @done_plans = Plan.done
+    @past_plans = @plans.past
+    @pending_plans = @plans.pending
+    @done_plans = @plans.done
     @body_class = "bg-yellow"
   end
 
