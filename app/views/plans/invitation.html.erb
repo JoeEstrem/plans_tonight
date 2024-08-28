@@ -1,6 +1,6 @@
 <div class="grid-container">
   <div class="grid-6">
-    <h1>INVITE <span class="plans-yellow">FRIENDS</span></h1>
+    <h1><span class="h1-white">TIME TO</span><br><span class="big-text">INVITE FRIENDS<span></h1>
   </div>
   <div class="plan-index-container grid-6">
     <% @users.where.not(id: current_user).each do |user| %>
@@ -11,7 +11,7 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
         <div class="card-friend-infos">
-          <h3><%= user.username.upcase %></h2>
+          <h3 style="margin-bottom: 0px;"><%= user.username.capitalize %></h3>
           <% if @plan.polls.find_by(user: user) %>
             <%= render "shared/invited_btn" %>
           <% else %>
@@ -23,5 +23,5 @@
   </div>
 </div>
 <div class="footer">
-  <%= link_to "COMPLETE YOUR PLANS", user_plans_path(current_user), class:"homepage-button"  %>
+  <%= link_to "Complete your plans", user_plans_path(current_user), class:"homepage-button", style: "margin-top:0px;"  %>
 </div>

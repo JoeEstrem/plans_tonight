@@ -1,23 +1,28 @@
 <div class="grid-container">
   <div class="grid-6">
-    <h1>MAKE YOUR <span class="plans-yellow">PLANS TONIGHT!</span></h1>
+    <h1><span class="h1-white">MAKE YOUR</span><br>
+    <span class="big-text"> PLANS TONIGHT!</span></h1>
+    <p style="margin-top: -4px;">Answer the poll and get matched with the perfect bar.</p>
   </div>
   <%= simple_form_for @plan, html: { class: 'grid-6', data: { controller: "date-picker" } } do |f| %>
+
     <!-- SELECT DATE & TIME -->
     <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
     <div class="input-group grid-6">
-      <%= f.datetime_field :date_time, class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "dateTime" } %>
+      <%= f.datetime_field :date_time, style: "box-shadow: 0 0 0 !important; border: none;", class: "form-control datetime-picker", placeholder: "Select Date & Time", data: { date_picker_target: "dateTime" } %>
     </div>
     <!-- SELECT LOCATION -->
-    <h2 style="margin-top: 24px">Select Location</h2>
+    <h2 style="margin-top: 24px">SELECT LOCATION</h2>
     <div class="input-group grid-6">
-      <%= f.text_field :location, class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
+      <%= f.text_field :location, style: "box-shadow: 0 0 0; border: none;", class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
     </div>
+
     <%= f.simple_fields_for :polls do |poll_form| %>
       <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
       <%= poll_form.input :submitted, as: :hidden, input_html: { value: true } %>
       <!-- QUESTION 1 -->
       <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
+
       <%= render 'polls/mood', f: poll_form %>
       <!-- QUESTION 2 -->
       <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
@@ -25,7 +30,8 @@
     <% end %>
     <!-- SUBMIT -->
     <div class="form-group">
-      <%= f.button :submit, 'INVITE FRIENDS', class: 'plans-btn grid-6', style: 'margin-top: 16px;' %>
+      <%= f.button :submit, 'Invite friends', class: 'plans-btn grid-6', style: 'margin-top: 24px;' %>
     </div>
+
   <% end %>
 </div>

@@ -24,11 +24,25 @@ class Plan < ApplicationRecord
     deadline.present? && deadline < Time.current
   end
 
-  def close_polls!
+  # def close_polls!
+  #   update(deadline: DateTime.now, status: :done)
+  #   moods = polls.pluck(:mood)
+  #   moods.delete(nil)
+  #   self.bar = Bar.find_by(mood: moods&.max) || Bar.all.sample
+  #   self.save
+  # end
+  def close_polls!(location)
+
+    location = location.capitalize
     update(deadline: DateTime.now, status: :done)
-    moods = polls.pluck(:mood)
-    moods.delete(nil)
-    self.bar = Bar.find_by(mood: moods&.max) || Bar.all.sample
+
+    # Find the first bar in the given location
+    self.bar = Bar.where(location: location).first
+
+    # If no bar is found in the given location, fallback to a random bar
+    self.bar ||= Bar.all.sample
+
+    # Save the changes
     self.save
   end
 
