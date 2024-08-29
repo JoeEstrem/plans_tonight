@@ -197,13 +197,13 @@ User.create!(
   attach_photo(user, "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNElmQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8b0905ab4c08e8c0479f28013bdeac4260e97ba6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hOeVpYTnBlbVZmZEc5ZlptbHNiRnNJYVFISWFRSElld1k2Q1dOeWIzQTZEbUYwZEdWdWRHbHZiZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--23cdbdf9871e44adeb4d843a03b0793a5f08394b/748A3411-5577-4F30-A69D-1B8E8C179282-47382-00001A23901F415F.jpeg", 'user12.png')
 end
 
-User.create!(
-  email: "jonasai-taher@gmail.com",
-  username: "Jonas Ai-Taher",
-  password: '123123'
-).tap do |user|
-  attach_photo(user, "https://avatars.githubusercontent.com/u/157728594?v=4", 'user13.png')
-end
+# User.create!(
+#   email: "jonasai-taher@gmail.com",
+#   username: "Jonas Ai-Taher",
+#   password: '123123'
+# ).tap do |user|
+#   attach_photo(user, "https://avatars.githubusercontent.com/u/157728594?v=4", 'user13.png')
+# end
 
 User.create!(
   email: "Alihaddi@gmail.com",
@@ -213,13 +213,13 @@ User.create!(
   attach_photo(user, "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOEVlQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--fa45c07f152e42ab8130e067208a14a447560cd0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/1696392921765%20(1).jpg", 'user15.png')
 end
 
-User.create!(
-  email: "miaoconnel@gmail.com",
-  username: "Mia O'Connell",
-  password: '123123'
-).tap do |user|
-  attach_photo(user, "https://avatars.githubusercontent.com/u/117554256?v=4", 'user16.png')
-end
+# User.create!(
+#   email: "miaoconnel@gmail.com",
+#   username: "Mia O'Connell",
+#   password: '123123'
+# ).tap do |user|
+#   attach_photo(user, "https://avatars.githubusercontent.com/u/117554256?v=4", 'user16.png')
+# end
 
 User.create!(
   email: "eriyawata@gmail.com",
@@ -245,13 +245,13 @@ User.create!(
   attach_photo(user, "https://avatars.githubusercontent.com/u/77526127?v=4", 'user25.png')
 end
 
-User.create!(
-  email: "ryo@gmail.com",
-  username: "Ryo Imaoka",
-  password: '123123'
-).tap do |user|
-  attach_photo(user, "https://avatars.githubusercontent.com/u/162281080?v=4", 'user27.png')
-end
+# User.create!(
+#   email: "ryo@gmail.com",
+#   username: "Ryo Imaoka",
+#   password: '123123'
+# ).tap do |user|
+#   attach_photo(user, "https://avatars.githubusercontent.com/u/162281080?v=4", 'user27.png')
+# end
 
 # plan = Plan.create!(
 #   date_time: DateTime.now,
