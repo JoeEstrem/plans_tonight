@@ -1,4 +1,4 @@
-<div id="submitted" class="grid-container m-0" style="display; flex: flex-directon: row;">
+<div id="submitted" class="grid-container m-0" style="display; flex: flex-direction: row;">
   <% plan.polls.where(submitted: true).each do |poll| %>
     <div class="grid-1">
       <%= render "polls/poll", poll: poll, style: "border: none;" %>
