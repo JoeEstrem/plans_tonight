@@ -73,10 +73,11 @@
         data-map-markers-value="<%= marker.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_ACCESS_TOKEN'] %>">
       </div>
-      <!-- Friends -->
-      <div style="margin-top: 32px;">
-        <h2>FRIENDS GOING</h2>
-      </div>
+    </div>
+    <!-- Friends -->
+    <div style="margin-top: 32px;">
+      <h2>FRIENDS GOING</h2>
+    </div>
       <div class="grid-container m-0">
         <% plan.users.each do |user| %>
           <div class="avatar-sqr-1">
@@ -105,12 +106,10 @@
         <%= turbo_stream_from "plan_#{plan.id}_drinking_submitted" %>
         <%= render "plans/drinking_submitted", plan: plan %>
       </div>
-    </div>
-    <div class="grid-6" style="margin-top: 16px">
-      <%= link_to "Back", plans_path, class: "plans-btn", style: "display: flex; justify-content: center; align-items: center;" %>
-    </div>
-    <div class="grid-6" style="margin-top: 8px">
-      <%= link_to 'Home', root_path, class: 'plans-btn'%>
+      <div class="grid-6" style="margin-top: 16px">
+        <%= link_to "Back", plans_path, class: "plans-btn grid-6", style: "margin-top: 8px;" %>
+        <%= link_to 'Home', root_path, class: "plans-btn grid-6", style: "margin-top: 8px;" %>
+      </div>
     </div>
   </div>
 </div>

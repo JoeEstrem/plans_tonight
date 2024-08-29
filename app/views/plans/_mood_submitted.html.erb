@@ -1,18 +1,12 @@
 <div id="mood_submitted" class="grid-container m-0" style="display: flex; flex-direction: column;">
   <% { "Casual" => "😊", "Classy" => "✨", "Dancing" => "🪩", "Music" => "🎶", "Unique" => "🎭", "Anything" => "🙌" }.each do |mood, emoji| %>
-
     <% if plan.polls.where(submitted: true, mood: mood).exists? %>
-    <div>
-      <div class="grid-container m-0">
-        <div>
+      <div>
+        <div class="grid-container m-0">
           <div class="grid-1">
             <p style="font-size: 32px;" class="poll-emoji"><%= emoji %></p>
-          </div>
-          <div class="grid-1">
             <p style="font-size: 10px; display: flex; justify-content: center; margin-top: 4px;"><%= mood.capitalize %></p>
           </div>
-        </div>
-        <div>
           <% plan.polls.where(submitted: true, mood: mood).each do |poll| %>
             <div class="grid-1">
               <%= render "polls/subpoll", poll: poll %>
@@ -20,11 +14,6 @@
           <% end %>
         </div>
       </div>
-    </div>
     <% end %>
   <% end %>
 </div>
-
-
-<!-- if plan.polls.where(submitted: true, mood: mood).exist? -->
-<!--     -->
