@@ -19,20 +19,20 @@ class Poll < ApplicationRecord
 
   def broadcast_poll
     broadcast_replace_to "plan_#{plan.id}_submitted",
-                        partial: "plans/submitted",
+                        partial: "plans/results",
                         locals: { poll: self, plan: plan },
-                        target: 'submitted'
-    broadcast_replace_to "plan_#{plan.id}_not_submitted",
-                        partial: "plans/not_submitted",
-                        locals: { poll: self, plan: plan },
-                        target: 'not_submitted'
-    broadcast_replace_to "plan_#{plan.id}_mood_submitted",
-                        partial: "plans/mood_submitted",
-                        locals: { poll: self, plan: plan },
-                        target: 'mood_submitted'
-    broadcast_replace_to "plan_#{plan.id}_drinking_submitted",
-                        partial: "plans/drinking_submitted",
-                        locals: { poll: self, plan: plan },
-                        target: 'drinking_submitted'
+                        target: "plan_#{plan.id}_submitted"
+    # broadcast_replace_to "plan_#{plan.id}_not_submitted",
+    #                     partial: "plans/not_submitted",
+    #                     locals: { poll: self, plan: plan },
+    #                     target: 'not_submitted'
+    # broadcast_replace_to "plan_#{plan.id}_mood_submitted",
+    #                     partial: "plans/mood_submitted",
+    #                     locals: { poll: self, plan: plan },
+    #                     target: 'mood_submitted'
+    # broadcast_replace_to "plan_#{plan.id}_drinking_submitted",
+    #                     partial: "plans/drinking_submitted",
+    #                     locals: { poll: self, plan: plan },
+    #                     target: 'drinking_submitted'
   end
 end
