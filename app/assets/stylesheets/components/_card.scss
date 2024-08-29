@@ -238,6 +238,7 @@
   position: absolute;
   box-sizing: border-box;
   width: 100%;
+  grid-column: span 1;
   aspect-ratio: 1 / 1;
   background-color: $white;
   border-radius: 16px 16px 16px 0px;

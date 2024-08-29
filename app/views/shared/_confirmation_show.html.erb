@@ -36,7 +36,7 @@
             <% if plan.date_time < DateTime.now + 1.week %>
               <h3><strong><%= plan.date_time.strftime("%A") %></strong></h3>
             <% else %>
-              <h3><strong></strong><%= plan.date_time.strftime("%a, %d %b") %></h3>
+              <h3><strong><%= plan.date_time.strftime("%a, %d %b") %></strong></h3>
             <% end %>
             <h3><strong><%= plan.date_time.strftime("%I:%M%p") %></strong></h3>
             <div class="show-icons">
@@ -81,7 +81,7 @@
         <% plan.users.each do |user| %>
           <div class="avatar-sqr-1">
             <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "avatar-sqr-1-container"  %>
+              <%= cl_image_tag user.photo.key, class: "avatar-sqr-1-container avatar-sqr-1"  %>
             <% else %>
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
             <% end %>
@@ -101,12 +101,12 @@
       <div class="grid-6" style="margin-top: 16px;">
         <h2>WHAT'RE WE DRINKING?</h2>
       </div>
-      <div class="grid-6" id="mood_submitted">
+      <div class="grid-6" id="drinking_submitted">
         <%= turbo_stream_from "plan_#{plan.id}_drinking_submitted" %>
         <%= render "plans/drinking_submitted", plan: plan %>
       </div>
     </div>
-    <div class="grid-6" style="margin-top: 8px">
+    <div class="grid-6" style="margin-top: 16px">
       <%= link_to "Back", plans_path, class: "plans-btn", style: "display: flex; justify-content: center; align-items: center;" %>
     </div>
     <div class="grid-6" style="margin-top: 8px">

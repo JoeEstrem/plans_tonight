@@ -8,6 +8,7 @@ class PlansController < ApplicationController
   end
 
   def create
+    @body_class = "bg-yellow"
     @plan = Plan.new(plan_params)
     @plan.user = current_user
 
