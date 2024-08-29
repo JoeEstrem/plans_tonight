@@ -21,7 +21,7 @@ class PlansController < ApplicationController
 
   def index
     @plans = Plan.all
-    @user = current_user.id
+    @user = current_user
     @brewing_plans = current_user.invited_plans.where(bar: nil)
     @completed_plans = current_user.invited_plans.where.not(bar: nil)
     @body_class = "bg-yellow"
