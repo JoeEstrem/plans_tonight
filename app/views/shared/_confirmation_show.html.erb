@@ -63,37 +63,63 @@
     </div>
     <!-- Add to Calendar -->
     <div class="show-element" style="margin-top: 32px;">
-      <%= link_to 'VIEW WEBSITE', @bar.url, class: "plans-btn" %>
+      <%= link_to 'View Website', @bar.url, class: "plans-btn" %>
     </div>
     <!-- Map -->
     <div style="margin-top: 32px;">
-      <h2>MAP</h2>
+      <h1>MAP</h1>
       <div style="width: 100%; height: 200px; margin-top: 16px;"
         data-controller="map"
         data-map-markers-value="<%= @marker.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_ACCESS_TOKEN'] %>">
       </div>
+
+
       <!-- Friends -->
       <div style="margin-top: 32px;">
         <h2>FRIENDS GOING</h2>
       </div>
-      <div class="plans-avatar-container" style="margin-bottom: 32px;">
+      <div class="grid-container m-0">
         <% @plan.users.where.not(id: current_user).each do |user| %>
-          <div class="avatar-circle">
+          <div class="avatar-sqr-1">
             <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "avatar-photo"  %>
+              <%= cl_image_tag user.photo.key, class: "avatar-sqr-1-container"  %>
             <% else %>
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="avatar-photo" />
             <% end %>
           </div>
         <% end %>
       </div>
+
+      <div class="grid-6" style="margin-top: 16px;">
+        <h1>THE FINAL RESULTS</h1>
+      </div>
+
+      <div class="grid-6" style="margin-top: 16px;">
+        <h2>WHAT'S THE VIBE?</h2>
+      </div>
+      <div class="grid-6" id="mood_submitted">
+        <%= turbo_stream_from "plan_#{plan.id}_mood_submitted" %>
+        <%= render "plans/mood_submitted", plan: plan %>
+      </div>
+
+
+      <div class="grid-6" style="margin-top: 16px;">
+        <h2>WHAT'RE WE DRINKING?</h2>
+      </div>
+      <div class="grid-6" id="mood_submitted">
+        <%= turbo_stream_from "plan_#{plan.id}_drinking_submitted" %>
+        <%= render "plans/drinking_submitted", plan: plan %>
+      </div>
+
     </div>
-  </div>
-  <div class="grid-6">
-    <%= link_to "Back", user_plans_path(current_user), class: "plans-btn", style: "display: flex; width: 90%; justify-content: center; align-items: center;" %>
-  </div>
-  <div class="grid-6">
-    <%= link_to 'Home', root_path, class: 'plans-btn', style: "width: 90%" %>
+
+
+    <div class="grid-6" style="margin-top: 8px">
+      <%= link_to "Back", user_plans_path(current_user), class: "plans-btn", style: "display: flex; justify-content: center; align-items: center;" %>
+    </div>
+    <div class="grid-6" style="margin-top: 8px">
+      <%= link_to 'Home', root_path, class: 'plans-btn'%>
+    </div>
   </div>
 </div>
