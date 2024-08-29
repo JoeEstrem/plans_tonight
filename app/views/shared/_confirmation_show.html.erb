@@ -3,17 +3,17 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
 </head> %>
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-<div class="particles-js"  data-controller="confetti-click">
-</div>
-<div class="grid-container" id="plan_<%= plan.id  %>">
+
+<div class="show-container" id="plan_<%= plan.id  %>">
+  <div class="particles-js"  data-controller="confetti-click"></div>
   <div class="show-title">
     <div>
       <div class="show-title">
-        <div style="display: flex; align-items: center; white-space: nowrap;">
+        <div style="display: flex; align-items: center;">
           <h1><span class="big-text">YOUR<br>
               <span class="yellow-text">PLANS<br>
                 TONIGHT</span></span><br>
-            HAVE BEEN CONFIRMED</h1>
+            ARE CONFIRMED</h1>
         </div>
       </div>
     </div>
@@ -75,7 +75,10 @@
       </div>
     </div>
     <!-- Friends -->
-    <div style="margin-top: 32px;">
+      <div class="grid-6" style="margin-top: 32px;">
+        <h1>THE FINAL RESULTS</h1>
+      </div>
+    <div style="margin-top: 16px;">
       <h2>FRIENDS GOING</h2>
     </div>
       <div class="grid-container m-0">
@@ -89,9 +92,7 @@
           </div>
         <% end %>
       </div>
-      <div class="grid-6" style="margin-top: 16px;">
-        <h1>THE FINAL RESULTS</h1>
-      </div>
+
       <div class="grid-6" style="margin-top: 16px;">
         <h2>WHAT'S THE VIBE?</h2>
       </div>
