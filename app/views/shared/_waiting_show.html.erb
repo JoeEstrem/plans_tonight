@@ -30,7 +30,7 @@
   <div class="grid-6" style="margin-top: 16px;">
     <h2>WHAT'RE WE DRINKING?</h2>
   </div>
-  <div class="grid-6" id="mood_submitted">
+  <div class="grid-6" id="drinking_submitted">
     <%= turbo_stream_from "plan_#{plan.id}_drinking_submitted" %>
     <%= render "plans/drinking_submitted", plan: plan %>
   </div>
