@@ -1,11 +1,10 @@
 <div class="grid-container">
   <div class="grid-6">
     <h1><span class="h1-white">MAKE YOUR</span><br>
-    <span class="big-text"> PLANS TONIGHT!</span></h1>
+      <span class="big-text" style="font-size: 64px;"> PLANS TONIGHT!</span></h1>
     <p style="margin-top: -4px;">Answer the poll and get matched with the perfect bar.</p>
   </div>
   <%= simple_form_for @plan, html: { class: 'grid-6', data: { controller: "date-picker" } } do |f| %>
-
     <!-- SELECT DATE & TIME -->
     <h2 style="margin-top: 24px">SELECT TIME & DATE</h2>
     <div class="input-group grid-6">
@@ -16,13 +15,11 @@
     <div class="input-group grid-6">
       <%= f.text_field :location, style: "box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);", class: "form-control", placeholder: "Location", data: { autocomplete: "off", controller: "location-picker" } %>
     </div>
-
     <%= f.simple_fields_for :polls do |poll_form| %>
       <%= poll_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
       <%= poll_form.input :submitted, as: :hidden, input_html: { value: true } %>
       <!-- QUESTION 1 -->
       <h2 style="margin-top: 24px">WHAT VIBE ARE YOU FEELING?</h2>
-
       <%= render 'polls/mood', f: poll_form %>
       <!-- QUESTION 2 -->
       <h2 style="margin-top: 24px">WHAT ARE YOU DRINKING?</h2>
@@ -32,10 +29,8 @@
     <div class="form-group">
       <%= f.button :submit, 'Invite friends', class: 'plans-btn grid-6', style: 'margin-top: 24px;' %>
     </div>
-
     <div class="grid-container" style="margin-top: 16px">
       <%= link_to "Stop planning", root_path, class: "cancel-plans grid-6" %>
     </div>
-
   <% end %>
 </div>
