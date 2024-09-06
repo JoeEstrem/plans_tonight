@@ -1,7 +1,7 @@
 <h1>PLANS TONIGHT 🍻</h1>
 <p>Save the headache for tomorrow, make plans tonight hassle free.</p>
 
-<img src="https://github.com/JoeEstrem/plans_tonight/blob/master/Plans-Tonight-Show-1.png">
+<img src="https://github.com/JoeEstrem/plans_tonight/blob/master/Plans-Tonight-Show-1-1.png">
 
 <h2>FEATURES ✨</h2>
 <ul>
