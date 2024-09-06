@@ -1,14 +1,18 @@
-<h1>Plans Tonight 🍻</h1>
+<h1>PLANS TONIGHT 🍻</h1>
 <p>Save the headache for tomorrow, make plans tonight hassle free.</p>
 
-<h2>Features ✨</h2>
+<img src="https://github.com/JoeEstrem/plans_tonight/blob/master/Plans-Tonight-Show-1.png">
+
+<h2>FEATURES ✨</h2>
 <ul>
   <li>Organize plans with a group of friends.</li>
   <li>Participate in a poll to get matched with the perfect bar that fits your vibe.</li>
   <li>Keep track of all your plans in one place.</li>
 </ul>
 
-<h2>Tech Stack 👨‍💻</h2>
+<img src="https://github.com/JoeEstrem/plans_tonight/blob/master/Plans-Tonight-Show-2.png">
+
+<h2>TECH STACK 👨‍💻</h2>
 
 <p>Backend:</p>
 
@@ -24,7 +28,7 @@
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) 
 
 
-<h2>Authors ✏️</h2>
+<h2>AUTHORS ✏️</h2>
 <p>
   <a href="https://github.com/JoeEstrem">Joe Estrem</a><br>
   <a href="https://github.com/Alfonsdefromage">Igor Zapala</a><br>
