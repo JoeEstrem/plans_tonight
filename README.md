@@ -10,7 +10,7 @@
   <li>Keep track of all your plans in one place.</li>
 </ul>
 
-<img src="https://github.com/JoeEstrem/plans_tonight/blob/master/Plans-Tonight-Show-2.png">
+<img src="https://github.com/JoeEstrem/plans_tonight/blob/master/Plans-Tonight-Show.png">
 
 <h2>TECH STACK 👨‍💻</h2>
 
